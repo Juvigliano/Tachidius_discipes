@@ -1,6 +1,6 @@
 function [par, metaPar, txtPar] = pars_init_Tachidius_discipes(metaData)
 
-metaPar.model = 'sbp'; 
+metaPar.model = 'abp'; 
 
 %% reference parameter (not to be changed) 
 par.T_ref = 293.15;   free.T_ref = 0;   units.T_ref = 'K';        label.T_ref = 'Reference temperature'; 
@@ -28,7 +28,7 @@ par.E_Hh = 1.984e-04; free.E_Hh  = 1;   units.E_Hh = 'J';         label.E_Hh = '
 par.del_M = 1.8487;   free.del_M = 1;   units.del_M = '-';        label.del_M = 'shape coefficient'; 
 par.f = 1;            free.f     = 0;   units.f = '-';            label.f = 'scaled functional response for 0-var data'; 
 par.f_tL = 21.3266;   free.f_tL  = 1;   units.f_tL = '-';         label.f_tL = 'scaled functional response for tL data'; 
-
+par.E_Hj = 2e-04; free.E_Hj  = 1;   units.E_Hj = 'J';         label.E_Hb = 'maturity at birth'; 
 
 %% set chemical parameters from Kooy2010 
 [par, units, label, free] = addchem(par, units, label, free, metaData.phylum, metaData.class); 

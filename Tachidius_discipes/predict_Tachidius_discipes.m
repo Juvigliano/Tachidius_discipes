@@ -22,9 +22,10 @@ TC_tL_12 = tempcorr(temp.tL_12, T_ref, pars_T);
 TC_tL_21 = tempcorr(temp.tL_21, T_ref, pars_T);
 TC_tL_24 = tempcorr(temp.tL_24, T_ref, pars_T);
 
+
 % life cycle
-pars_tj = [g; k; l_T; v_Hb; v_Hp-1e-6; v_Hp];
-[tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, f);
+pars_tp = [g; k; l_T; v_Hb; v_Hp];
+[tau_p, tau_b, l_p, l_b, l_i, rho_B, info] = get_tp(pars_tp, f);
 
 if info == 0
   prdData = []; return;
@@ -84,6 +85,12 @@ EL21 = (L_i - (L_i - L_b) * exp( - rT_B * tL_21(:,1)))/ del_M; % cm, physical le
 L_b = L_m * get_lb([g, k, v_Hb], f_tL); L_i = L_m * f_tL; % cm, structural lengths
 rT_B = TC_tL_24 * k_M/ 3/ (1 + f_tL/ g); % 1/d, von Bert growth rate
 EL24 = (L_i - (L_i - L_b) * exp( - rT_B * tL_24(:,1)))/ del_M; % cm, physical length
+
+ % tN data
+  pars_R = [kap; kap_R; g; k_J; k_M; L_T; v; U_Hb; U_Hp]; % pars for cum_reprod
+EN = cum_reprod([0; tN_12(:,1)], f, pars_R);
+EN=EN (end);
+
 
 % pack to output
 prdData.tL = EL;

@@ -5276,6 +5276,92 @@ units.tL_24 = {'d', 'cm'}; label.tL_24 = {'time', 'length'};
 temp.tL_24 = C2K(24); units.temp.tL_24 = 'K'; label.temp.tL_24 = 'temperature';
 bibkey.tL_24 = {'Vigliano'};
 comment.tL_24 = 'experimental data';
+
+%%time- number of offspring
+data.tN_12 = [...
+    37.00	25
+37.00	29
+37.00	22
+37.00	26
+37.00	27
+37.00	33
+37.00	33
+37.00	27
+37.00	25
+37.00	30
+37.00	29
+37.00	20
+];
+
+units.tN_12 = {'d', '#'}; label.tN_12= {'time', 'clutch size'};
+temp.tN_12 = C2K(12); units.temp.tL_24 = 'K'; label.temp.tN_12 = 'temperature';
+bibkey.tL_24 = {'Vigliano'};
+comment.tL_24 = 'experimental data';
+
+data.tN_15 = [...
+    41	32.00
+25	32.00
+10	32.00
+31	33.00
+33	37.00
+31	37.00
+21	37.00
+25	37.00
+];
+units.tN_15 = {'d', '#'}; label.tN_15= {'time', 'clutch size'};
+temp.tN_15 = C2K(15); units.temp.tN_15 = 'K'; label.temp.tN_15 = 'temperature';
+bibkey.tL_15 = {'Vigliano'};
+comment.tL_15 = 'experimental data';
+
+data.tN_21 = [...
+   29	17.00
+18	18.00
+5	20.00
+18	23.00
+17	22.00
+12	22.00
+24	23.00
+34	23.00
+10	24.00
+];
+units.tN_21 = {'d', '#'}; label.tN_21= {'time', 'clutch size'};
+temp.tN_21 = C2K(21); units.temp.tL_21 = 'K'; label.temp.tN_21 = 'temperature';
+bibkey.tN_21 = {'Vigliano'};
+comment.tN_21 = 'experimental data';
+
+data.tN_24 = [...
+   29	17.00
+18	18.00
+5	20.00
+18	23.00
+17	22.00
+12	22.00
+24	23.00
+34	23.00
+10	24.00
+];
+units.tN_24 = {'d', '#'}; label.tN_24= {'time', 'clutch size'};
+temp.tN_24 = C2K(24); units.temp.tN_24 = 'K'; label.temp.tN_24 = 'temperature';
+bibkey.tN_24 = {'Vigliano'};
+comment.tN_24 = 'experimental data';
+
+data.tN_18 = [...
+18	23.00
+20	24.00
+18	24.00
+29	24.00
+21	24.00
+24	30.00
+34	30.00
+34	30.00
+32	30.00
+46	30.00
+];
+units.tN_18 = {'d', '#'}; label.tN_18= {'time', 'clutch size'};
+temp.tN_18 = C2K(21); units.temp.tN_18 = 'K'; label.temp.tN_18 = 'temperature';
+bibkey.tN_18 = {'Vigliano'};
+comment.tN_18 = 'experimental data';
+
 %% set weights for all real data
 weights = setweights(data, []);
 

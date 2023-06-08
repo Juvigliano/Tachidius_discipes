@@ -34,12 +34,12 @@ global pet
 % and the lower and upper limits of the range of simulations (lines 40-41);
 % Specify the confidence level (line 50).
 % Choose the step(s) you want to simulate (line58).
-pet = 'my_pet';  % replace my_pet, with your species name
+pet = 'Tachidius_discipes';  % replace my_pet, with your species name
 
 % parameter for the profile step
 pProfile ='v';    % name of the parameter for which the profile will be calculated
-lowVal = 0.005;   % lower value of the profile interval, depends on the parameter
-upperVal = 0.04;  % upper value of the profile interval, depends on the parameter
+lowVal = 0.01892;   % lower value of the profile interval, depends on the parameter
+upperVal = 0.01899;  % upper value of the profile interval, depends on the parameter
 dim = 10;         % increase for a smooth profile (optional)
 
 % input for the calibration step
