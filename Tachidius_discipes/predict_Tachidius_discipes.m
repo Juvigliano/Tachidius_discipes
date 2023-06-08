@@ -22,10 +22,9 @@ TC_tL_12 = tempcorr(temp.tL_12, T_ref, pars_T);
 TC_tL_21 = tempcorr(temp.tL_21, T_ref, pars_T);
 TC_tL_24 = tempcorr(temp.tL_24, T_ref, pars_T);
 
-
+TC_tN_12 = tempcorr(temp.tN_12, T_ref, pars_T);
 TC_tN_15 = tempcorr(temp.tN_15, T_ref, pars_T);
 TC_tN_18 = tempcorr(temp.tN_18, T_ref, pars_T);
-TC_tN_12 = tempcorr(temp.tN_12, T_ref, pars_T);
 TC_tN_21 = tempcorr(temp.tL_21, T_ref, pars_T);
 TC_tN_24 = tempcorr(temp.tL_24, T_ref, pars_T);
 % life cycle
