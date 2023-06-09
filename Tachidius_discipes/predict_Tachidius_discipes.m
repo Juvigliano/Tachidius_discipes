@@ -94,27 +94,30 @@ EL24 = (L_i - (L_i - L_b) * exp( - rT_B * tL_24(:,1)))/ del_M; % cm, physical le
  % tN data 12 C
   pars_R = [kap; kap_R; g; k_J*TC_tN_12; k_M*TC_tN_12; L_T; v*TC_tN_12; U_Hb/TC_tN_12; U_Hp/TC_tN_12]; % pars for cum_reprod
 EN = cum_reprod([0; tN_12(:,1)], f, pars_R);
-EN_12=EN(end);
+EN_12=ones(length(tN_12(:,1)),1)*EN(end);
 
  % tN data 15 C
   pars_R = [kap; kap_R; g; k_J*TC_tN_15; k_M*TC_tN_15; L_T; v*TC_tN_15; U_Hb/TC_tN_15; U_Hp/TC_tN_15]; % pars for cum_reprod
 EN = cum_reprod([0; tN_15(:,1)], f, pars_R);
-EN_15=EN(end);
+EN_15=ones(length(tN_15(:,1)),1)*EN(end);
+
 
  % tN data 18 C
   pars_R = [kap; kap_R; g; k_J*TC_tN_18; k_M*TC_tN_18; L_T; v*TC_tN_18; U_Hb/TC_tN_18; U_Hp/TC_tN_18]; % pars for cum_reprod
 EN = cum_reprod([0; tN_18(:,1)], f, pars_R);
-EN_18=EN(end);
+EN_18=ones(length(tN_18(:,1)),1)*EN(end);
 
 % tN data 21 C
   pars_R = [kap; kap_R; g; k_J*TC_tN_21; k_M*TC_tN_21; L_T; v*TC_tN_21; U_Hb/TC_tN_21; U_Hp/TC_tN_21]; % pars for cum_reprod
 EN = cum_reprod([0; tN_21(:,1)], f, pars_R);
-EN_21=EN(end);
+EN_21=ones(length(tN_21(:,1)),1)*EN(end);
+
 
 % tN data 24 C
   pars_R = [kap; kap_R; g; k_J*TC_tN_24; k_M*TC_tN_24; L_T; v*TC_tN_24; U_Hb/TC_tN_24; U_Hp/TC_tN_24]; % pars for cum_reprod
 EN = cum_reprod([0; tN_24(:,1)], f, pars_R);
-EN_24=EN (end);
+EN_24=ones(length(tN_24(:,1)),1)*EN(end);
+
 
 % pack to output
 prdData.tL = EL;
