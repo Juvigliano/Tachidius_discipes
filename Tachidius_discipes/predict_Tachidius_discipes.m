@@ -29,8 +29,8 @@ TC_tN_21 = tempcorr(temp.tL_21, T_ref, pars_T);
 TC_tN_24 = tempcorr(temp.tL_24, T_ref, pars_T);
 
 % life cycle
-pars_tp = [g; k; l_T; v_Hb; v_Hp];
-[tau_p, tau_b, l_p, l_b, l_i, rho_B, info] = get_tp(pars_tp, f);
+pars_tj = [g; k; l_T; v_Hb; v_Hp-1e-6; v_Hp];
+[tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, f);
 
 if info == 0
   prdData = []; return;
@@ -92,29 +92,29 @@ rT_B = TC_tL_24 * k_M/ 3/ (1 + f_tL/ g); % 1/d, von Bert growth rate
 EL24 = (L_i - (L_i - L_b) * exp( - rT_B * tL_24(:,1)))/ del_M; % cm, physical length
 
  % tN data 12 C
-  pars_R = [kap; kap_R; g; k_J; k_M; L_T; v*TC_tN_12; U_Hb/TC_tN_12; U_Hp/TC_tN_12]; % pars for cum_reprod
+  pars_R = [kap; kap_R; g; k_J*TC_tN_12; k_M*TC_tN_12; L_T; v*TC_tN_12; U_Hb/TC_tN_12; U_Hp/TC_tN_12]; % pars for cum_reprod
 EN = cum_reprod([0; tN_12(:,1)], f, pars_R);
-EN=EN (end);
+EN_12=EN(end);
 
  % tN data 15 C
-  pars_R = [kap; kap_R; g; k_J; k_M; L_T; v*TC_tN_15; U_Hb/TC_tN_15; U_Hp/TC_tN_15]; % pars for cum_reprod
+  pars_R = [kap; kap_R; g; k_J*TC_tN_15; k_M*TC_tN_15; L_T; v*TC_tN_15; U_Hb/TC_tN_15; U_Hp/TC_tN_15]; % pars for cum_reprod
 EN = cum_reprod([0; tN_15(:,1)], f, pars_R);
-EN=EN (end);
+EN_15=EN(end);
 
  % tN data 18 C
-  pars_R = [kap; kap_R; g; k_J; k_M; L_T; v*TC_tN_18; U_Hb/TC_tN_18; U_Hp/TC_tN_18]; % pars for cum_reprod
+  pars_R = [kap; kap_R; g; k_J*TC_tN_18; k_M*TC_tN_18; L_T; v*TC_tN_18; U_Hb/TC_tN_18; U_Hp/TC_tN_18]; % pars for cum_reprod
 EN = cum_reprod([0; tN_18(:,1)], f, pars_R);
-EN=EN (end);
+EN_18=EN(end);
 
 % tN data 21 C
-  pars_R = [kap; kap_R; g; k_J; k_M; L_T; v*TC_tN_21; U_Hb/TC_tN_21; U_Hp/TC_tN_21]; % pars for cum_reprod
+  pars_R = [kap; kap_R; g; k_J*TC_tN_21; k_M*TC_tN_21; L_T; v*TC_tN_21; U_Hb/TC_tN_21; U_Hp/TC_tN_21]; % pars for cum_reprod
 EN = cum_reprod([0; tN_21(:,1)], f, pars_R);
-EN=EN (end);
+EN_21=EN(end);
 
 % tN data 24 C
-  pars_R = [kap; kap_R; g; k_J; k_M; L_T; v*TC_tN_24; U_Hb/TC_tN_24; U_Hp/TC_tN_24]; % pars for cum_reprod
+  pars_R = [kap; kap_R; g; k_J*TC_tN_24; k_M*TC_tN_24; L_T; v*TC_tN_24; U_Hb/TC_tN_24; U_Hp/TC_tN_24]; % pars for cum_reprod
 EN = cum_reprod([0; tN_24(:,1)], f, pars_R);
-EN=EN (end);
+EN_24=EN (end);
 
 % pack to output
 prdData.tL = EL;
@@ -122,3 +122,10 @@ prdData.tL_18 = EL18;
 prdData.tL_12 = EL12;
 prdData.tL_21 = EL21;
 prdData.tL_24 = EL24;
+
+% pack to output
+prdData.tN_12= EN_12;
+prdData.tN_15 = EN_15;
+prdData.tN_18 = EN_18;
+prdData.tN_21 = EN_21;
+prdData.tN_24 = EN_24;
