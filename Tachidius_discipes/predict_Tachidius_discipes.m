@@ -15,6 +15,7 @@ end
 % compute temperature correction factors
 pars_T = T_A;
 TC_ah = tempcorr(temp.ah, T_ref, pars_T);
+TC_Tab = tempcorr(C2K(Tah(:,1)), T_ref, T_A);
 TC12 = tempcorr(temp.tL12, T_ref, pars_T);
 TC15 = tempcorr(temp.tL15, T_ref, pars_T);
 TC18 = tempcorr(temp.tL18, T_ref, pars_T);
@@ -38,6 +39,10 @@ Lw_h = aUL(end,3)/ del_M; % cm, physical length at hatch
 L_b = L_m * l_b;                  % cm, structural length at birth
 Lw_b = L_b/ del_M;                % cm, physical length at birth
 
+% get scaled time and length at birth at f = 1 (parents fed ad libitum)
+    pars_tjj = [g k l_T v v]; %this is added from Nitokra, they had v_Hb and v_Hj but I deleted because I dont have those values
+   % get scaled time and length at birth at f = 1 (parents fed ad libitum)
+  [t_b, l_b] = get_tb(pars_tjj([1 2 4]), 1); % overwrite t_b and l_b % overwrite t_b and l_b #not sure what pars_tjj does, I copied from Nitokra files
 % puberty/ ultimate
 L_p = L_m * l_p; % cm, structural length at puberty
 Lw_p = L_p/ del_M; % cm, physical length at puberty
@@ -105,7 +110,12 @@ for i = 1:length(tN24)
 [~, ELHR] = ode45(@dget_ELHR_sbp, [0 tN24(i,1)], ELHR0,[], p, TC24, f);
 EN24(i) = ELHR(end,4); 
 end
+ 
+%age at birth
+ Ea_b = (t_0+t_b/ k_M) ./ TC_Tab;
 
+ % %weight of carbon and nitrogen
+  EWC = (LWC(:,1) * del_M).^3 * (1 + f * w) * d_V * 12/ w_V*1e6;  % mug, carbon weight
 
 % pack to output
 prdData.tL12 = EL12;
@@ -119,7 +129,10 @@ prdData.tN15 = EN15;
 prdData.tN18 = EN18;
 prdData.tN21 = EN21;
 prdData.tN24 = EN24;
-
+%age at birth
+prdData.Tah = Ea_b;
+%carbon and nitrogen mass
+ prdData.LWC = EWC;
 
 end
 

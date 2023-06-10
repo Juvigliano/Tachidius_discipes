@@ -90,45 +90,48 @@ bibkey.tL24 = {'Vigliano'};
 
 
 data.tN15 = [...
-41	32.00
-25	32.00
-10	32.00
-31	33.00
-33	37.00
-31	37.00
-21	37.00
-25	37.00
+32.00	41
+32.00	25
+32.00	10
+33.00	31
+37.00	33
+37.00	31
+37.00	21
+37.00	25
+
 ];
 units.tN15 = {'d', '#'}; label.tN15= {'time', 'clutch size'};
 temp.tN15 = C2K(15); units.temp.tN15 = 'K'; label.temp.tN15 = 'temperature';
 bibkey.tL15 = {'Vigliano'};
 
 data.tN18 = [...
-18	23.00
-20	24.00
-18	24.00
-29	24.00
-21	24.00
-24	30.00
-34	30.00
-34	30.00
-32	30.00
-46	30.00
+23.00	18
+24.00	20
+24.00	18
+24.00	29
+24.00	21
+30.00	24
+30.00	34
+30.00	34
+30.00	32
+30.00	46
+
 ];
 units.tN18 = {'d', '#'}; label.tN18= {'time', 'clutch size'};
 temp.tN18 = C2K(21); units.temp.tN18 = 'K'; label.temp.tN18 = 'temperature';
 bibkey.tN18 = {'Vigliano'};
 
 data.tN21 = [...
-29	17.00
-18	18.00
-5	20.00
-18	23.00
-17	22.00
-12	22.00
-24	23.00
-34	23.00
-10	24.00
+17.00	29
+18.00	18
+20.00	5
+23.00	18
+22.00	17
+22.00	12
+23.00	24
+23.00	34
+24.00	10
+
 ];
 units.tN21 = {'d', '#'}; label.tN21= {'time', 'clutch size'};
 temp.tN21 = C2K(21); units.temp.tL21 = 'K'; label.temp.tN21 = 'temperature';
@@ -136,20 +139,89 @@ bibkey.tN_21 = {'Vigliano'};
 
 
 data.tN24 = [...
-   29	17.00
-18	18.00
-5	20.00
-18	23.00
-17	22.00
-12	22.00
-24	23.00
-34	23.00
-10	24.00
+  17.00	12
+18.00	21
+19.00	10
+19.00	23
+18.00	19
+19.00	10
+18.00	11
+18.00	12
+18.00	11
+18.00	10
+18.00	16
+18.00	15
+
 ];
 units.tN24 = {'d', '#'}; label.tN24= {'time', 'clutch size'};
 temp.tN24 = C2K(24); units.temp.tN24 = 'K'; label.temp.tN24 = 'temperature';
 bibkey.tN24 = {'Vigliano'};
 
+%%tN_T data
+data.Tah= [...
+24	2
+24	3
+24	4
+24	4
+24	3
+24	4
+24	2
+24	2
+24	2
+24	2
+24	2
+24	2
+21	3
+21	2
+21	1
+21	3
+21	2
+21	2
+21	2
+21	1
+21	1
+18	2
+18	3
+18	3
+18	3
+18	1
+18	4
+18	4
+18	3
+18	4
+18	4
+15	5
+15	5
+15	3
+15	4
+15	5
+15	5
+15	4
+15	4
+12	7
+12	7
+12	5
+12	5
+12	5
+12	5
+12	5
+12	5
+12	5
+12	5
+12	5
+12	7
+
+];
+units.Tah = {'K', 'days'}; label.Tah= {'temperature', 'time'};
+bibkey.Tah = {'Vigliano'};
+
+data.LWC=[...
+    0.026656936	1.009471481
+0.026656937	0.983820513
+0.026656938	1.035122449
+];
+units.LWC = {'cm', 'mug'}; label.LWC= {'length', 'carbon mass'};
+bibkey.LWC = {'Vigliano'};
 
 %% set weights for all real data
 weights = setweights(data, []);

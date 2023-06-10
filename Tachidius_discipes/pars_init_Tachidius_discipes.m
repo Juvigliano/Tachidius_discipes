@@ -22,6 +22,7 @@ par.E_Hb = 1.780e-04*0.1; free.E_Hb  = 1;   units.E_Hb = 'J';         label.E_Hb
 par.E_Hp = 1.046e-03*3; free.E_Hp  = 1;   units.E_Hp = 'J';         label.E_Hp = 'maturity at puberty'; 
 par.h_a = 2.684e-12;  free.h_a   = 1;   units.h_a = '1/d^2';      label.h_a = 'Weibull aging acceleration'; 
 par.s_G = 0.0001;     free.s_G   = 0;   units.s_G = '-';          label.s_G = 'Gompertz stress coefficient'; 
+par.t_0 = 1.6232;     free.t_0   = 1;   units.t_0 = 'd';          label.t_0 = 'time at start development (since egg sack has been spotted)'; 
 
 %% other parameters 
 par.E_Hh = 1.606e-05; free.E_Hh  = 1;   units.E_Hh = 'J';         label.E_Hh = 'maturity at hatch'; 
