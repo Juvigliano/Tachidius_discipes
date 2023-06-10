@@ -6,7 +6,6 @@ cPar = parscomp_st(par); vars_pull(par);
 v2struct(par); v2struct(cPar); v2struct(data); v2struct(auxData);
 
 filterChecks= E_Hh>= E_Hb;
-
 if filterChecks
     info=0;
     prdData={};
@@ -16,31 +15,22 @@ end
 % compute temperature correction factors
 pars_T = T_A;
 TC_ah = tempcorr(temp.ah, T_ref, pars_T);
-TC_tL = tempcorr(temp.tL, T_ref, pars_T);
-TC_tL_18 = tempcorr(temp.tL_18, T_ref, pars_T);
-TC_tL_12 = tempcorr(temp.tL_12, T_ref, pars_T);
-TC_tL_21 = tempcorr(temp.tL_21, T_ref, pars_T);
-TC_tL_24 = tempcorr(temp.tL_24, T_ref, pars_T);
-
-TC_tN_12 = tempcorr(temp.tN_12, T_ref, pars_T);
-TC_tN_15 = tempcorr(temp.tN_15, T_ref, pars_T);
-TC_tN_18 = tempcorr(temp.tN_18, T_ref, pars_T);
-TC_tN_21 = tempcorr(temp.tL_21, T_ref, pars_T);
-TC_tN_24 = tempcorr(temp.tL_24, T_ref, pars_T);
+TC12 = tempcorr(temp.tL12, T_ref, pars_T);
+TC15 = tempcorr(temp.tL15, T_ref, pars_T);
+TC18 = tempcorr(temp.tL18, T_ref, pars_T);
+TC21 = tempcorr(temp.tL21, T_ref, pars_T);
+TC24 = tempcorr(temp.tL24, T_ref, pars_T);
 
 % life cycle
-pars_tj = [g; k; l_T; v_Hb; v_Hp-1e-6; v_Hp];
-[tau_j, tau_p, tau_b, l_j, l_p, l_b, l_i, rho_j, rho_B, info] = get_tj(pars_tj, f);
-
-if info == 0
-  prdData = []; return;
-end
-
+pars_lb = [g, k, l_T, v_Hb, v_Hp];
+[l_p, l_b, info] = get_lp (pars_lb, f);
+if info == 0;  prdData = []; return; end
+pars_UE0 = [V_Hb; g; k_J; k_M; v]; % compose parameter vector
+[U_E0, ~, info] = initial_scaled_reserve(f, pars_UE0); % d.cm^2, initial scaled reserve
+if info == 0;  prdData = []; return; end
 
 % hatch
-pars_UE0 = [V_Hb; g; k_J; k_M; v]; % compose parameter vector
-U_E0 = initial_scaled_reserve(f, pars_UE0); % d.cm^2, initial scaled reserve
-[U_H aUL] = ode45(@dget_aul, [0; U_Hh], [0 U_E0 1e-10], [], kap, v, k_J, g, L_m);
+[~, aUL] = ode45(@dget_aul, [0; U_Hh], [0 U_E0 1e-10], [], kap, v, k_J, g, L_m);
 a_h = aUL(end,1)/ TC_ah; % d, age at hatch
 Lw_h = aUL(end,3)/ del_M; % cm, physical length at hatch
 
@@ -48,87 +38,139 @@ Lw_h = aUL(end,3)/ del_M; % cm, physical length at hatch
 L_b = L_m * l_b;                  % cm, structural length at birth
 Lw_b = L_b/ del_M;                % cm, physical length at birth
 
-% puberty
+% puberty/ ultimate
 L_p = L_m * l_p; % cm, structural length at puberty
 Lw_p = L_p/ del_M; % cm, physical length at puberty
-
-% ultimate
-l_i = f - l_T; % -, scaled ultimate length
-L_i = L_m * l_i; % cm, ultimate structural length
-Lw_i = L_p/ del_M; % cm, ultimate physical length
-Wd_i = L_p^3 * (1 + f * ome) * d_V; % g, ultimate dry weight
+Wd_p = L_p^3 * (1 + f * ome) * d_V; % g, ultimate dry weight
 
 % pack to output
 prdData.ah = a_h;
 prdData.Lh = Lw_h;
 prdData.Lb = Lw_b;
 prdData.Lp = Lw_p;
-prdData.Li = Lw_i;
-prdData.Wdi = Wd_i;
+prdData.Wdp = Wd_p;
 
-% time - length
-L_b = L_m * get_lb([g, k, v_Hb], f_tL); L_i = L_m * f_tL; % cm, structural lengths
-rT_B = TC_tL * k_M/ 3/ (1 + f_tL/ g); % 1/d, von Bert growth rate
-EL = (L_i - (L_i - L_b) * exp( - rT_B * tL(:,1)))/ del_M; % cm, physical length
+% uni-variate data
+p = [p_Am; v; p_M; k_J; kap; kap_G; E_G; E_Hb; E_Hp];
+E_b = f * E_m * L_b^3; % J, energy in reserve at birth
+ELHR0 = [E_b; L_b; E_Hb; 0]; % state variables at birth
 
-% time - length
-L_b = L_m * get_lb([g, k, v_Hb], f_tL); L_i = L_m * f_tL; % cm, structural lengths
-rT_B = TC_tL_18 * k_M/ 3/ (1 + f_tL/ g); % 1/d, von Bert growth rate
-EL18 = (L_i - (L_i - L_b) * exp( - rT_B * tL_18(:,1)))/ del_M; % cm, physical length
+[tsort, ~, ci] = unique(tL12(:,1)); 
+[~, ELHR] = ode45(@dget_ELHR_sbp, tsort, ELHR0,[], p, TC12, f);
+EL12 = ELHR(ci,2)./ del_M; 
 
-% time - length
-L_b = L_m * get_lb([g, k, v_Hb], f_tL); L_i = L_m * f_tL; % cm, structural lengths
-rT_B = TC_tL_12 * k_M/ 3/ (1 + f_tL/ g); % 1/d, von Bert growth rate
-EL12 = (L_i - (L_i - L_b) * exp( - rT_B * tL_12(:,1)))/ del_M; % cm, physical length
+[tsort, ~, ci] = unique(tL15(:,1)); 
+[~, ELHR] = ode45(@dget_ELHR_sbp, tsort, ELHR0,[], p, TC15, f);
+EL15 = ELHR(ci,2)/ del_M; 
 
-% time - length
-L_b = L_m * get_lb([g, k, v_Hb], f_tL); L_i = L_m * f_tL; % cm, structural lengths
-rT_B = TC_tL_21 * k_M/ 3/ (1 + f_tL/ g); % 1/d, von Bert growth rate
-EL21 = (L_i - (L_i - L_b) * exp( - rT_B * tL_21(:,1)))/ del_M; % cm, physical length
+[tsort, ~, ci] = unique(tL18(:,1)); 
+[~, ELHR] = ode45(@dget_ELHR_sbp, tsort, ELHR0,[], p, TC18, f);
+EL18 = ELHR(ci,2)/ del_M; 
 
-% time - length
-L_b = L_m * get_lb([g, k, v_Hb], f_tL); L_i = L_m * f_tL; % cm, structural lengths
-rT_B = TC_tL_24 * k_M/ 3/ (1 + f_tL/ g); % 1/d, von Bert growth rate
-EL24 = (L_i - (L_i - L_b) * exp( - rT_B * tL_24(:,1)))/ del_M; % cm, physical length
+[tsort, ~, ci] = unique(tL21(:,1)); 
+[~, ELHR] = ode45(@dget_ELHR_sbp, tsort, ELHR0,[], p, TC21, f);
+EL21 = ELHR(ci,2)/ del_M; 
 
- % tN data 12 C
-  pars_R = [kap; kap_R; g; k_J*TC_tN_12; k_M*TC_tN_12; L_T; v*TC_tN_12; U_Hb/TC_tN_12; U_Hp/TC_tN_12]; % pars for cum_reprod
-EN = cum_reprod([0; tN_12(:,1)], f, pars_R);
-EN_12=ones(length(tN_12(:,1)),1)*EN(end);
+[tsort, ~, ci] = unique(tL24(:,1)); 
+[~, ELHR] = ode45(@dget_ELHR_sbp, tsort, ELHR0,[], p, TC24, f);
+EL24 = ELHR(ci,2)/ del_M; 
 
- % tN data 15 C
-  pars_R = [kap; kap_R; g; k_J*TC_tN_15; k_M*TC_tN_15; L_T; v*TC_tN_15; U_Hb/TC_tN_15; U_Hp/TC_tN_15]; % pars for cum_reprod
-EN = cum_reprod([0; tN_15(:,1)], f, pars_R);
-EN_15=ones(length(tN_15(:,1)),1)*EN(end);
+% reproduction
+EN12 = zeros(size(tN12,1),1);
+for i = 1:length(tN12)
+[~, ELHR] = ode45(@dget_ELHR_sbp, [0 tN12(i,1)], ELHR0,[], p, TC12, f);
+EN12(i) = ELHR(end,4); 
+end
 
+EN15 = zeros(size(tN15,1),1);
+for i = 1:length(tN15)
+[~, ELHR] = ode45(@dget_ELHR_sbp, [0 tN15(i,1)], ELHR0,[], p, TC15, f);
+EN15(i) = ELHR(end,4); 
+end
 
- % tN data 18 C
-  pars_R = [kap; kap_R; g; k_J*TC_tN_18; k_M*TC_tN_18; L_T; v*TC_tN_18; U_Hb/TC_tN_18; U_Hp/TC_tN_18]; % pars for cum_reprod
-EN = cum_reprod([0; tN_18(:,1)], f, pars_R);
-EN_18=ones(length(tN_18(:,1)),1)*EN(end);
+EN18 = zeros(size(tN18,1),1);
+for i = 1:length(tN18)
+[~, ELHR] = ode45(@dget_ELHR_sbp, [0 tN18(i,1)], ELHR0,[], p, TC18, f);
+EN18(i) = ELHR(end,4); 
+end
 
-% tN data 21 C
-  pars_R = [kap; kap_R; g; k_J*TC_tN_21; k_M*TC_tN_21; L_T; v*TC_tN_21; U_Hb/TC_tN_21; U_Hp/TC_tN_21]; % pars for cum_reprod
-EN = cum_reprod([0; tN_21(:,1)], f, pars_R);
-EN_21=ones(length(tN_21(:,1)),1)*EN(end);
+EN21 = zeros(size(tN21,1),1);
+for i = 1:length(tN21)
+[~, ELHR] = ode45(@dget_ELHR_sbp, [0 tN21(i,1)], ELHR0,[], p, TC21, f);
+EN21(i) = ELHR(end,4); 
+end
 
+EN24 = zeros(size(tN24,1),1);
+for i = 1:length(tN24)
+[~, ELHR] = ode45(@dget_ELHR_sbp, [0 tN24(i,1)], ELHR0,[], p, TC24, f);
+EN24(i) = ELHR(end,4); 
+end
 
-% tN data 24 C
-  pars_R = [kap; kap_R; g; k_J*TC_tN_24; k_M*TC_tN_24; L_T; v*TC_tN_24; U_Hb/TC_tN_24; U_Hp/TC_tN_24]; % pars for cum_reprod
-EN = cum_reprod([0; tN_24(:,1)], f, pars_R);
-EN_24=ones(length(tN_24(:,1)),1)*EN(end);
-
-
-% pack to output
-prdData.tL = EL;
-prdData.tL_18 = EL18;
-prdData.tL_12 = EL12;
-prdData.tL_21 = EL21;
-prdData.tL_24 = EL24;
 
 % pack to output
-prdData.tN_12= EN_12;
-prdData.tN_15 = EN_15;
-prdData.tN_18 = EN_18;
-prdData.tN_21 = EN_21;
-prdData.tN_24 = EN_24;
+prdData.tL12 = EL12;
+prdData.tL15 = EL15;
+prdData.tL18 = EL18;
+prdData.tL21 = EL21;
+prdData.tL24 = EL24;
+% repro
+prdData.tN12= EN12;
+prdData.tN15 = EN15;
+prdData.tN18 = EN18;
+prdData.tN21 = EN21;
+prdData.tN24 = EN24;
+
+
+end
+
+function dELHR = dget_ELHR_sbp(t, ELHR, p, TC, f)
+  % Define changes in the state variables for abj model
+  % t: time
+  % ELHR: 4-vector with state variables
+  %         E , J, reserve energy
+  %         L , cm, structural length
+  %         E_H , J , cumulated energy inversted into maturity (E_H in Kooijman 2010)
+  %         E_R , J, reproduction buffer (E_R in Kooijman 2010)
+  %         
+  % dELHR: 4-vector with change in E, L, H, R
+
+  % unpack state variables
+
+  E = ELHR(1); L = ELHR(2); E_H = ELHR(3);
+
+  % unpack par
+  p_Am = p(1); v = p(2); p_M = p(3); k_J = p(4); 
+  kap = p(5); kap_G = p(6); 
+  E_G = p(7); E_Hb = p(8); E_Hp = p(9);
+
+  % temp correction
+  pT_Am = TC * p_Am ;
+  vT = TC * v;  
+  pT_M = TC * p_M;
+  kT_J = TC * k_J; 
+
+  pA = (pT_Am * f * L^2) * (E_H >= E_Hb);
+  if E_H < E_Hp
+    if  kap * E * vT >= pT_M * L^4 % section 4.1.5 comments to Kooy2010
+        r = (E * vT/ L - pT_M * L^3/ kap)/ (E + E_G * L^3/ kap); % d^-1, specific growth rate  
+    else 
+        r = (E * vT/ L - pT_M * L^3/ kap)/ (E + kap_G * E_G * L^3/ kap); % d^-1, specific growth rate                                      
+    end
+    pC  = E * (vT/ L - r); % J/d, mobilized energy flux
+    % generate derivatives
+    dE_H  = ((1 - kap) * pC - kT_J * E_H);     % J/d, change in cumulated energy invested in maturation
+    dE_R  = 0; % J/d, change in reproduction buffer
+  else
+    % adults do not grow, and do not shrink
+    r = 0; % d^-1, specific growth rate                                      
+    pC  = E * vT/ L; % J/d, mobilized energy flux
+    dE_H  = 0;     % J/d, change in cumulated energy invested in maturation
+    dE_R  = pC - pT_M * L^3 - kT_J * E_Hp; % J/d, change in reproduction buffer
+  end
+  % generate derivatives
+  dE    = pA - pC;  % J/d, change in energy in reserve
+  dL    = r * L / 3;    % cm^3/d, change in structural volume
+
+  % pack derivatives
+  dELHR = [dE; dL; dE_H; dE_R]; 
+end
