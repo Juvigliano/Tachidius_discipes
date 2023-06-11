@@ -23,13 +23,13 @@ TC21 = tempcorr(temp.tL21, T_ref, pars_T);
 TC24 = tempcorr(temp.tL24, T_ref, pars_T);
 
 % life cycle
-pars_lb = [g, k, l_T, v_Hb, v_Hp];
-[l_p, l_b, info] = get_lp (pars_lb, f);
+pars_tp = [g, k, l_T, v_Hb, v_Hp];
+[~, tau_b, l_p, l_b, info] = get_tp (pars_tp, f);
 if info == 0;  prdData = []; return; end
 pars_UE0 = [V_Hb; g; k_J; k_M; v]; % compose parameter vector
 [U_E0, ~, info] = initial_scaled_reserve(f, pars_UE0); % d.cm^2, initial scaled reserve
 if info == 0;  prdData = []; return; end
-
+E_0 = U_E0 * p_Am; % J, initial energy in egg
 % hatch
 [~, aUL] = ode45(@dget_aul, [0; U_Hh], [0 U_E0 1e-10], [], kap, v, k_J, g, L_m);
 a_h = aUL(end,1)/ TC_ah; % d, age at hatch
@@ -40,9 +40,6 @@ L_b = L_m * l_b;                  % cm, structural length at birth
 Lw_b = L_b/ del_M;                % cm, physical length at birth
 
 % get scaled time and length at birth at f = 1 (parents fed ad libitum)
-    pars_tjj = [g k l_T v v]; %this is added from Nitokra, they had v_Hb and v_Hj but I deleted because I dont have those values
-   % get scaled time and length at birth at f = 1 (parents fed ad libitum)
-  [t_b, l_b] = get_tb(pars_tjj([1 2 4]), 1); % overwrite t_b and l_b % overwrite t_b and l_b #not sure what pars_tjj does, I copied from Nitokra files
 % puberty/ ultimate
 L_p = L_m * l_p; % cm, structural length at puberty
 Lw_p = L_p/ del_M; % cm, physical length at puberty
@@ -84,35 +81,35 @@ EL24 = ELHR(ci,2)/ del_M;
 EN12 = zeros(size(tN12,1),1);
 for i = 1:length(tN12)
 [~, ELHR] = ode45(@dget_ELHR_sbp, [0 tN12(i,1)], ELHR0,[], p, TC12, f);
-EN12(i) = ELHR(end,4); 
+EN12(i) = kap_R * ELHR(end,4)/E_0; 
 end
 
 EN15 = zeros(size(tN15,1),1);
 for i = 1:length(tN15)
 [~, ELHR] = ode45(@dget_ELHR_sbp, [0 tN15(i,1)], ELHR0,[], p, TC15, f);
-EN15(i) = ELHR(end,4); 
+EN15(i) = kap_R * ELHR(end,4)/E_0; 
 end
 
 EN18 = zeros(size(tN18,1),1);
 for i = 1:length(tN18)
 [~, ELHR] = ode45(@dget_ELHR_sbp, [0 tN18(i,1)], ELHR0,[], p, TC18, f);
-EN18(i) = ELHR(end,4); 
+EN18(i) = kap_R * ELHR(end,4)/E_0; 
 end
 
 EN21 = zeros(size(tN21,1),1);
 for i = 1:length(tN21)
 [~, ELHR] = ode45(@dget_ELHR_sbp, [0 tN21(i,1)], ELHR0,[], p, TC21, f);
-EN21(i) = ELHR(end,4); 
+EN21(i) = kap_R * ELHR(end,4)/E_0; 
 end
 
 EN24 = zeros(size(tN24,1),1);
 for i = 1:length(tN24)
 [~, ELHR] = ode45(@dget_ELHR_sbp, [0 tN24(i,1)], ELHR0,[], p, TC24, f);
-EN24(i) = ELHR(end,4); 
+EN24(i) = kap_R * ELHR(end,4)/E_0; 
 end
  
 %age at birth
- Ea_b = (t_0+t_b/ k_M) ./ TC_Tab;
+ Ea_b = (tau_b/ k_M) ./ TC_Tab;
 
  % %weight of carbon and nitrogen
   EWC = (LWC(:,1) * del_M).^3 * (1 + f * w) * d_V * 12/ w_V*1e6;  % mug, carbon weight
