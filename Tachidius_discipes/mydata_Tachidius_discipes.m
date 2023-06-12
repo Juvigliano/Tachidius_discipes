@@ -213,13 +213,18 @@ data.Tah= [...
 units.Tah = {'K', 'days'}; label.Tah= {'temperature', 'time'};
 bibkey.Tah = {'Vigliano'};
 
-data.LWC=[...
-0.026656936	1.009471481
-0.026656937	0.983820513
-0.026656938	1.035122449
+LWCN= [...
+0.026656936	0.983820513	0.247615385
+0.026656936	1.035122449	0.254292517
+0.026656936	0.93593141	0.20389359
 ];
+data.LWC = LWCN(:,[1 2]);
 units.LWC = {'cm', 'mug'}; label.LWC= {'length', 'carbon mass'};
 bibkey.LWC = {'Vigliano'};
+
+% data.LWN(:,[1 3]);
+% units.LWN = {'cm', 'mug'}; label.LWN= {'length', 'nitrogen mass'};
+% bibkey.LWN = {'Vigliano'};
 
 %% set weights for all real data
 weights = setweights(data, []);
