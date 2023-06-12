@@ -86,7 +86,7 @@ data.tN12 = [...
 ];
 units.tN12 = {'d', '#'}; label.tN12= {'time', 'clutch size'};
 temp.tN12 = C2K(12); units.temp.tN12 = 'K'; label.temp.tN12 = 'temperature';
-bibkey.tL24 = {'Vigliano'};
+bibkey.tL24 = {'Vigliano'}; treat.tN12 = {0};
 
 
 data.tN15 = [...
@@ -102,6 +102,7 @@ data.tN15 = [...
 units.tN15 = {'d', '#'}; label.tN15= {'time', 'clutch size'};
 temp.tN15 = C2K(15); units.temp.tN15 = 'K'; label.temp.tN15 = 'temperature';
 bibkey.tL15 = {'Vigliano'};
+treat.tN15 = {0};
 
 data.tN18 = [...
 23.00	18
@@ -118,6 +119,7 @@ data.tN18 = [...
 units.tN18 = {'d', '#'}; label.tN18= {'time', 'clutch size'};
 temp.tN18 = C2K(18); units.temp.tN18 = 'K'; label.temp.tN18 = 'temperature';
 bibkey.tN18 = {'Vigliano'};
+treat.tN18 = {0};
 
 data.tN21 = [...
 17.00	29
@@ -133,7 +135,7 @@ data.tN21 = [...
 units.tN21 = {'d', '#'}; label.tN21= {'time', 'clutch size'};
 temp.tN21 = C2K(21); units.temp.tL21 = 'K'; label.temp.tN21 = 'temperature';
 bibkey.tN_21 = {'Vigliano'};
-
+treat.tN21 = {0};
 
 data.tN24 = [...
 17.00	12
@@ -152,6 +154,7 @@ data.tN24 = [...
 units.tN24 = {'d', '#'}; label.tN24= {'time', 'clutch size'};
 temp.tN24 = C2K(24); units.temp.tN24 = 'K'; label.temp.tN24 = 'temperature';
 bibkey.tN24 = {'Vigliano'};
+treat.tN24 = {0}; 
 
 %%tN_T data
 data.Tah= [...
@@ -227,6 +230,7 @@ weights.LWC = 10* weights.LWC;
 
 %% pack auxData and txtData for output
 auxData.temp = temp;
+auxData.treat = treat;
 txtData.units = units;
 txtData.label = label;
 txtData.bibkey = bibkey;
@@ -235,7 +239,7 @@ txtData.bibkey = bibkey;
 set1 = {'tL12','tL15', 'tL18','tL21', 'tL24'}; 
 subtitle1 = {'Growth at different temperatures'};
 set2 = {'tN12','tN15', 'tN18','tN21', 'tN24'}; 
-subtitle2 = {'Reproduction at different temperatures'};
+subtitle2 = {'Reproduction at 12, 15, 18, 21 and 24 debC'};
 metaData.grp.sets = {set1, set2};
 metaData.grp.comment = {subtitle1,subtitle2};
 
