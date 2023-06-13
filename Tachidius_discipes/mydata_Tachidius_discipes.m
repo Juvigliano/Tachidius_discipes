@@ -283,7 +283,7 @@ treat.LWCN = {1, {'Carbon weight','Nitrogen weight'}};
 data.Tap = [... time since hatch, age at puberty
 12  25.73
 15  25.14
-28  20.33 
+18  20.33 
 21  15.92
 24  14
 ];
