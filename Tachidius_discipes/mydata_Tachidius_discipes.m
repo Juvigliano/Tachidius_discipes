@@ -271,22 +271,24 @@ data.TR= [...
 units.TR = {'C', '#'}; label.TR= {'temperature', 'max reproduction rate'};
 bibkey.TR = {'Vigliano'};
 
-LWCN= [...
+data.LWCN= [...
 0.026656936	0.983820513	0.247615385
 0.026656937	1.035122449	0.254292517
 0.026656938	0.93593141	0.20389359
 ];
-data.LWC = LWCN(:,[1 2]);
-units.LWC = {'cm', 'mug'}; label.LWC= {'length', 'mass'};
-bibkey.LWC = {'Vigliano'};
+% data.LWC = LWCN(:,[1 2]);
+units.LWCN = {'cm', 'mugC', 'mugN'}; label.LWCN= {'length', 'carbon mass', 'nitrogen mass'};
+bibkey.LWCN = {'Vigliano'};  
+treat.LWCN = {1, {'Carbon weight','Nitrogen weight'}};
 
-data.LWN= LWCN(:,[1 3]);
-units.LWN = {'cm', 'mug'}; label.LWN= {'length', 'mass'};
-bibkey.LWN = {'Vigliano'};
+% data.LWN= LWCN(:,[1 3]);
+% units.LWN = {'cm', 'mug'}; label.LWN= {'length', 'mass'};
+% bibkey.LWN = {'Vigliano'};
+% treat.tLW = {1, {'Carbon weight','Nitrogen weight'}};
 
 %% set weights for all real data
 weights = setweights(data, []);
-weights.LWC = 10* weights.LWC; 
+% weights.LWCN = 10* weights.LWCN; 
 
 %% set pseudodata and respective weights
 [data, units, label, weights] = addpseudodata(data, units, label, weights);
@@ -303,10 +305,8 @@ set1 = {'tL12','tL15', 'tL18','tL21', 'tL24'};
 subtitle1 = {'Growth at different temperatures'};
 set2 = {'tN12','tN15', 'tN18','tN21', 'tN24'}; 
 subtitle2 = {'Reproduction at 12, 15, 18, 21 and 24 debC'};
-set3 = {'LWC','LWN'}; 
-subtitle3 = {'C and M mass'};
-metaData.grp.sets = {set1, set2,set3};
-metaData.grp.comment = {subtitle1,subtitle2,subtitle3};
+metaData.grp.sets = {set1, set2};
+metaData.grp.comment = {subtitle1,subtitle2};
 
 %% Discussion points
 D1  = 'There is a change of shape at metamorphosis, between naupliar stage 6 and copepodite 1 stages';

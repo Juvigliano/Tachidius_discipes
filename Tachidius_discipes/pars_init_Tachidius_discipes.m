@@ -30,6 +30,7 @@ par.f = 1;            free.f     = 0;   units.f = '-';            label.f = 'sca
 
 %% set chemical parameters from Kooy2010 
 [par, units, label, free] = addchem(par, units, label, free, metaData.phylum, metaData.class); 
+par.n_NV = 0.2;            free.n_NV     = 0;   units.n_NV = '-';            label.n_NV= 'chemical indice nitrogen in reserve'; 
 
 %% Pack output: 
 txtPar.units = units; txtPar.label = label; par.free = free; 

@@ -108,20 +108,19 @@ for i = 1:length(tN24)
 [~, ELHR] = ode45(@dget_ELHR_sbp, [0 tN24(i,1)], ELHR0,[], p, TC24, f);
 EN24(i) = kap_R * ELHR(end,4)/E_0; 
 end
-s_M= L_p/L_b;
-
+% s_M= L_p/L_b;
+s_M = 1;
 % T-R data
-    R_i = kap_R * (f * p_Am *s_M * L_p^2 - p_M * L_p^3 - k_J * E_Hp)/ E_0; % #/d, ultimate reproduction rate at T_ref
-
-   ER_i = R_i./TC_TR; % #/d, ultimate reproduction rate
+ R_i = kap_R * (f * p_Am *s_M * L_p^2 - p_M * L_p^3 - k_J * E_Hp)/ E_0; % #/d, ultimate reproduction rate at T_ref
+ ER_i = R_i./TC_TR; % #/d, ultimate reproduction rate
 
 %age at birth
  Ea_b = (tau_b/ k_M) ./ TC_Tab;
 
  % %weight of carbon and nitrogen
-  EWC = (LWC(:,1) * del_M).^3 * (1 + f * w) * d_V * 12/ w_V*1e6;  % mug, carbon weight
-  EWN = (LWN(:,1) * del_M).^3 * (1 + f * w) * d_V * 14/ w_V*1e6;  % mug, nitrogen weightf
-
+  EWC = (LWCN(:,1) * del_M).^3 * (1 + f * w) * d_V * 12/ w_V*1e6;  % mug, carbon weight
+  EWN = (LWCN(:,1) * del_M).^3 * (1 + f * w) * d_V * n_NV * 14/ w_V*1e6;  % mug, nitrogen weightf
+ 
 % pack to output
 prdData.tL12 = EL12;
 prdData.tL15 = EL15;
@@ -137,8 +136,7 @@ prdData.tN24 = EN24;
 %age at birth
 prdData.Tah = Ea_b;
 %carbon and nitrogen mass
-prdData.LWC = EWC;
-prdData.LWN= EWN;
+prdData.LWCN = [EWC EWN];
 prdData.TR= ER_i;
 end
 
