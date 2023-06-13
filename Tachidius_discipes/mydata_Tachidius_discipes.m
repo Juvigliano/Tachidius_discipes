@@ -64,7 +64,7 @@ units.tL21 = {'d', 'cm'}; label.tL21 = {'time', 'length'};
 temp.tL21 = C2K(21); units.temp.tL21 = 'K'; label.temp.tL21 = 'temperature';
 bibkey.tL21 = {'Vigliano'};
 
-data.tL24 = readmatrix('tL21.txt');
+data.tL24 = readmatrix('tL24.txt');
 units.tL24 = {'d', 'cm'}; label.tL24 = {'time', 'length'};
 temp.tL24 = C2K(24); units.temp.tL24 = 'K'; label.temp.tL24 = 'temperature';
 bibkey.tL24 = {'Vigliano'};
@@ -117,7 +117,7 @@ data.tN18 = [...
 30.00	46
 ];
 units.tN18 = {'d', '#'}; label.tN18= {'time', 'clutch size'};
-temp.tN18 = C2K(18); units.temp.tN18 = 'K'; label.temp.tN18 = 'temperature';
+temp.tN18 = C2K(18); units.temp.tN18 = 'C'; label.temp.tN18 = 'temperature';
 bibkey.tN18 = {'Vigliano'};
 treat.tN18 = {0};
 
@@ -152,7 +152,7 @@ data.tN24 = [...
 18.00	15
 ];
 units.tN24 = {'d', '#'}; label.tN24= {'time', 'clutch size'};
-temp.tN24 = C2K(24); units.temp.tN24 = 'K'; label.temp.tN24 = 'temperature';
+temp.tN24 = C2K(24); units.temp.tN24 = 'C'; label.temp.tN24 = 'temperature';
 bibkey.tN24 = {'Vigliano'};
 treat.tN24 = {0}; 
 
@@ -210,21 +210,79 @@ data.Tah= [...
 12	5
 12	7
 ];
-units.Tah = {'K', 'days'}; label.Tah= {'temperature', 'time'};
+units.Tah = {'K', 'd'}; label.Tah= {'temperature', 'time'};
 bibkey.Tah = {'Vigliano'};
+
+
+
+data.TR= [...
+12	0.971628449
+12	1.127089001
+12	0.855033035
+12	1.010493587
+12	1.049358725
+12	1.282549553
+12	1.282549553
+12	1.049358725
+12	0.971628449
+12	1.165954139
+12	1.127089001
+12	0.777302759
+15	1.630867144
+15	0.994431185
+15	0.397772474
+15	1.23309467
+15	1.312649165
+15	1.23309467
+15	0.835322196
+15	0.994431185
+18	0.885391048
+18	0.983767831
+18	0.885391048
+18	1.426463355
+18	1.032956222
+18	1.180521397
+18	1.672405312
+18	1.672405312
+18	1.574028529
+18	2.262666011
+21	1.82160804
+21	1.130653266
+21	0.314070352
+21	1.130653266
+21	1.067839196
+21	0.753768844
+21	1.507537688
+21	2.135678392
+21	0.628140704
+24	0.857142857
+24	1.5
+24	0.714285714
+24	1.642857143
+24	1.357142857
+24	0.714285714
+24	0.785714286
+24	0.857142857
+24	0.785714286
+24	0.714285714
+24	1.142857143
+24	1.071428571];
+
+units.TR = {'C', '#'}; label.TR= {'temperature', 'max reproduction rate'};
+bibkey.TR = {'Vigliano'};
 
 LWCN= [...
 0.026656936	0.983820513	0.247615385
-0.026656936	1.035122449	0.254292517
-0.026656936	0.93593141	0.20389359
+0.026656937	1.035122449	0.254292517
+0.026656938	0.93593141	0.20389359
 ];
 data.LWC = LWCN(:,[1 2]);
-units.LWC = {'cm', 'mug'}; label.LWC= {'length', 'carbon mass'};
+units.LWC = {'cm', 'mug'}; label.LWC= {'length', 'mass'};
 bibkey.LWC = {'Vigliano'};
 
-% data.LWN(:,[1 3]);
-% units.LWN = {'cm', 'mug'}; label.LWN= {'length', 'nitrogen mass'};
-% bibkey.LWN = {'Vigliano'};
+data.LWN= LWCN(:,[1 3]);
+units.LWN = {'cm', 'mug'}; label.LWN= {'length', 'mass'};
+bibkey.LWN = {'Vigliano'};
 
 %% set weights for all real data
 weights = setweights(data, []);
@@ -245,8 +303,10 @@ set1 = {'tL12','tL15', 'tL18','tL21', 'tL24'};
 subtitle1 = {'Growth at different temperatures'};
 set2 = {'tN12','tN15', 'tN18','tN21', 'tN24'}; 
 subtitle2 = {'Reproduction at 12, 15, 18, 21 and 24 debC'};
-metaData.grp.sets = {set1, set2};
-metaData.grp.comment = {subtitle1,subtitle2};
+set3 = {'LWC','LWN'}; 
+subtitle3 = {'C and M mass'};
+metaData.grp.sets = {set1, set2,set3};
+metaData.grp.comment = {subtitle1,subtitle2,subtitle3};
 
 %% Discussion points
 D1  = 'There is a change of shape at metamorphosis, between naupliar stage 6 and copepodite 1 stages';

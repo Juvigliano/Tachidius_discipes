@@ -21,7 +21,8 @@ TC15 = tempcorr(temp.tL15, T_ref, pars_T);
 TC18 = tempcorr(temp.tL18, T_ref, pars_T);
 TC21 = tempcorr(temp.tL21, T_ref, pars_T);
 TC24 = tempcorr(temp.tL24, T_ref, pars_T);
-
+%reproduction ct
+ TC_TR = tempcorr(C2K(TR(:,1)), T_ref, T_A);
 % life cycle
 pars_tp = [g, k, l_T, v_Hb, v_Hp];
 [~, tau_b, l_p, l_b, info] = get_tp (pars_tp, f);
@@ -107,12 +108,19 @@ for i = 1:length(tN24)
 [~, ELHR] = ode45(@dget_ELHR_sbp, [0 tN24(i,1)], ELHR0,[], p, TC24, f);
 EN24(i) = kap_R * ELHR(end,4)/E_0; 
 end
- 
+s_M= L_p/L_b;
+
+% T-R data
+    R_i = kap_R * (f * p_Am *s_M * L_p^2 - p_M * L_p^3 - k_J * E_Hp)/ E_0; % #/d, ultimate reproduction rate at T_ref
+
+   ER_i = R_i./TC_TR; % #/d, ultimate reproduction rate
+
 %age at birth
  Ea_b = (tau_b/ k_M) ./ TC_Tab;
 
  % %weight of carbon and nitrogen
   EWC = (LWC(:,1) * del_M).^3 * (1 + f * w) * d_V * 12/ w_V*1e6;  % mug, carbon weight
+  EWN = (LWN(:,1) * del_M).^3 * (1 + f * w) * d_V * 14/ w_V*1e6;  % mug, nitrogen weightf
 
 % pack to output
 prdData.tL12 = EL12;
@@ -129,8 +137,9 @@ prdData.tN24 = EN24;
 %age at birth
 prdData.Tah = Ea_b;
 %carbon and nitrogen mass
- prdData.LWC = EWC;
-
+prdData.LWC = EWC;
+prdData.LWN= EWN;
+prdData.TR= ER_i;
 end
 
 function dELHR = dget_ELHR_sbp(t, ELHR, p, TC, f)

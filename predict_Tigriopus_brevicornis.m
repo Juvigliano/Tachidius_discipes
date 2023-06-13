@@ -36,7 +36,7 @@ function [prdData, info] = predict_Tigriopus_brevicornis(par, data, auxData)
   Ww_i = Ww_p;                      % mug, ultimate wet weight 
  
   % reproduction 
-  R_i = kap_R * (f * p_Am * L_p^2 * (1 - kap) - p_M * L_p^3 - k_J * E_Hp)/ E_0; % #/d, ultimate reproduction rate at T_ref
+  R_i = kap_R * (f * p_Am *s_M * L_p^2 - p_M * L_p^3 - k_J * E_Hp)/ E_0; % #/d, ultimate reproduction rate at T_ref
   
   % life span
   h3_W = f * h_a * v/ 6/ L_p; % 1/d^3, cubed Weibull ageing rate
@@ -67,7 +67,7 @@ function [prdData, info] = predict_Tigriopus_brevicornis(par, data, auxData)
   EJ_N = TC_15 * J_M(:,4) * 14e6;                    % mug/d, N flux
   
   % T-R data
-  ER_i = R_i * TC_TRi;
+  ER_i = TR * TC_TRi;
   
   
   % pack to output
