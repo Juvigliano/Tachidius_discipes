@@ -15,6 +15,7 @@ end
 % compute temperature correction factors
 pars_T = T_A;
 TC_ah = tempcorr(temp.ah, T_ref, pars_T);
+TC_Tap = tempcorr(C2K(Tap(:,1)), T_ref, pars_T);
 TC_Tab = tempcorr(C2K(Tah(:,1)), T_ref, T_A);
 TC12 = tempcorr(temp.tL12, T_ref, pars_T);
 TC15 = tempcorr(temp.tL15, T_ref, pars_T);
@@ -25,7 +26,7 @@ TC24 = tempcorr(temp.tL24, T_ref, pars_T);
  TC_TR = tempcorr(C2K(TR(:,1)), T_ref, T_A);
 % life cycle
 pars_tp = [g, k, l_T, v_Hb, v_Hp];
-[~, tau_b, l_p, l_b, info] = get_tp (pars_tp, f);
+[tau_p, tau_b, l_p, l_b, info] = get_tp (pars_tp, f);
 if info == 0;  prdData = []; return; end
 pars_UE0 = [V_Hb; g; k_J; k_M; v]; % compose parameter vector
 [U_E0, ~, info] = initial_scaled_reserve(f, pars_UE0); % d.cm^2, initial scaled reserve
@@ -116,6 +117,9 @@ s_M = 1;
 
 %age at birth
  Ea_b = (tau_b/ k_M) ./ TC_Tab;
+ 
+%age at birth
+ Ea_p = (tau_p/ k_M) ./ TC_Tap;
 
  % %weight of carbon and nitrogen
   EWC = (LWCN(:,1) * del_M).^3 * (1 + f * w) * d_V * 12/ w_V*1e6;  % mug, carbon weight
@@ -133,10 +137,9 @@ prdData.tN15 = EN15;
 prdData.tN18 = EN18;
 prdData.tN21 = EN21;
 prdData.tN24 = EN24;
-%age at birth
-prdData.Tah = Ea_b;
-%carbon and nitrogen mass
-prdData.LWCN = [EWC EWN];
+prdData.Tah = Ea_b; %age at birth
+prdData.Tap = Ea_p;
+prdData.LWCN = [EWC EWN]; %carbon and nitrogen mass
 prdData.TR= ER_i;
 end
 

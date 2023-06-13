@@ -20,8 +20,8 @@ metaData.ecoCode.reprod  = {'O'};
 
 metaData.T_typical  = C2K(15); % K, body temp
 
-metaData.data_0     = {'ah','Lh','Lb','Lp','Li','Wdi','am'};
-metaData.data_1     = {'tL','tL','tL'};
+metaData.data_0     = {'ah','Lh','Lb','Lp','Wdp','am'};
+metaData.data_1     = {'tN','tR','tL','LWC','LWN','T-ah','t-ap'};
 
 metaData.COMPLETE   = 2; % using criteria of LikaKear2011
 
@@ -267,7 +267,6 @@ data.TR= [...
 24	0.714285714
 24	1.142857143
 24	1.071428571];
-
 units.TR = {'C', '#'}; label.TR= {'temperature', 'max reproduction rate'};
 bibkey.TR = {'Vigliano'};
 
@@ -280,6 +279,17 @@ data.LWCN= [...
 units.LWCN = {'cm', 'mugC', 'mugN'}; label.LWCN= {'length', 'carbon mass', 'nitrogen mass'};
 bibkey.LWCN = {'Vigliano'};  
 treat.LWCN = {1, {'Carbon weight','Nitrogen weight'}};
+
+data.Tap = [... time since hatch, age at puberty
+12  25.73
+15  25.14
+28  20.33 
+21  15.92
+24  14
+];
+units.Tap = {'C', 'd'}; label.Tap = {'temperature', 'age at puberty'};
+bibkey.Tap = {'Vigliano'};  
+
 
 % data.LWN= LWCN(:,[1 3]);
 % units.LWN = {'cm', 'mug'}; label.LWN= {'length', 'mass'};
