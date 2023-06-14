@@ -20,8 +20,8 @@ metaData.ecoCode.reprod  = {'O'};
 
 metaData.T_typical  = C2K(15); % K, body temp
 
-metaData.data_0     = {'ah','Lh','Lb','Lp','Wdp','am'};
-metaData.data_1     = {'tN','tR','tL','LWC','LWN','T-ah','t-ap'};
+metaData.data_0     = {'ah','Lh','Lb','Lp','Li','Wdi','am'};
+metaData.data_1     = {'tL','tL','tL'};
 
 metaData.COMPLETE   = 2; % using criteria of LikaKear2011
 
@@ -45,27 +45,27 @@ data.Wdp =0.0000205716902; units.Wdp = 'g'; label.Wdp = 'ultimate dry weight at 
 %% set uni-variate data
 % time - length
 data.tL12 = readmatrix('tL12.txt');
-units.tL12 = {'d', 'cm'}; label.tL12 = {'time', 'area^(1/2)'};
+units.tL12 = {'d', 'cm'}; label.tL12 = {'time', 'length'};
 temp.tL12 = C2K(12); units.temp.tL12 = 'K'; label.temp.tL12 = 'temperature';
 bibkey.tL12 = {'Vigliano'};
 
 data.tL15 = readmatrix('tL15.txt');
-units.tL15 = {'d', 'cm'}; label.tL15 = {'time', 'area^(1/2)'};
+units.tL15 = {'d', 'cm'}; label.tL15 = {'time', 'length'};
 temp.tL15 = C2K(15); units.temp.tL = 'K'; label.temp.tL15 = 'temperature';
 bibkey.tL15 = {'Vigliano'};
 
 data.tL18 = readmatrix('tL18.txt');
-units.tL18 = {'d', 'cm'}; label.tL18 = {'time', 'area^(1/2)'};
+units.tL18 = {'d', 'cm'}; label.tL18 = {'time', 'length'};
 temp.tL18 = C2K(18); units.temp.tL18 = 'K'; label.temp.tL18 = 'temperature';
 bibkey.tL18 = {'Vigliano'};
 
 data.tL21= readmatrix('tL21.txt');
-units.tL21 = {'d', 'cm'}; label.tL21 = {'time', 'area^(1/2)'};
+units.tL21 = {'d', 'cm'}; label.tL21 = {'time', 'length'};
 temp.tL21 = C2K(21); units.temp.tL21 = 'K'; label.temp.tL21 = 'temperature';
 bibkey.tL21 = {'Vigliano'};
 
 data.tL24 = readmatrix('tL24.txt');
-units.tL24 = {'d', 'cm'}; label.tL24 = {'time', 'area^(1/2)'};
+units.tL24 = {'d', 'cm'}; label.tL24 = {'time', 'length'};
 temp.tL24 = C2K(24); units.temp.tL24 = 'K'; label.temp.tL24 = 'temperature';
 bibkey.tL24 = {'Vigliano'};
 
@@ -210,7 +210,7 @@ data.Tah= [...
 12	5
 12	7
 ];
-units.Tah = {'K', 'd'}; label.Tah= {'temperature', 'age at hatching'};
+units.Tah = {'C', 'd'}; label.Tah= {'temperature', 'time'};
 bibkey.Tah = {'Vigliano'};
 
 
@@ -267,6 +267,7 @@ data.TR= [...
 24	0.714285714
 24	1.142857143
 24	1.071428571];
+
 units.TR = {'C', '#'}; label.TR= {'temperature', 'max reproduction rate'};
 bibkey.TR = {'Vigliano'};
 
@@ -279,17 +280,6 @@ data.LWCN= [...
 units.LWCN = {'cm', 'mugC', 'mugN'}; label.LWCN= {'length', 'carbon mass', 'nitrogen mass'};
 bibkey.LWCN = {'Vigliano'};  
 treat.LWCN = {1, {'Carbon weight','Nitrogen weight'}};
-
-data.Tap = [... time since hatch, age at puberty
-12  25.73
-15  25.14
-18  20.33 
-21  15.92
-24  14
-];
-units.Tap = {'C', 'd'}; label.Tap = {'temperature', 'age at puberty'};
-bibkey.Tap = {'Vigliano'};  
-
 
 % data.LWN= LWCN(:,[1 3]);
 % units.LWN = {'cm', 'mug'}; label.LWN= {'length', 'mass'};
