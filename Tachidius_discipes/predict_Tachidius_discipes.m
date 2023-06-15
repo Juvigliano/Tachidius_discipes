@@ -113,7 +113,7 @@ end
 s_M = 1;
 % T-R data
  R_i = kap_R * (f * p_Am *s_M * L_p^2 - p_M * L_p^3 - k_J * E_Hp)/ E_0; % #/d, ultimate reproduction rate at T_ref
- ER_i = R_i./TC_TR; % #/d, ultimate reproduction rate
+ ER_i = R_i * TC_TR; % #/d, ultimate reproduction rate
 
 %age at birth
  Ea_b = (tau_b/ k_M) ./ TC_Tab;
