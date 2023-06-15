@@ -297,8 +297,9 @@ bibkey.Tap = {'Vigliano'};
 % treat.tLW = {1, {'Carbon weight','Nitrogen weight'}};
 
 %% set weights for all real data
-weights = setweights(data, []);
-% weights.LWCN = 10* weights.LWCN; 
+ weights = setweights(data, []);
+  weights.LWCN= 0* weights.LWCN;
+ % weights.LWN = 0* weights.LWCN; 
 
 %% set pseudodata and respective weights
 [data, units, label, weights] = addpseudodata(data, units, label, weights);
