@@ -21,53 +21,53 @@ metaData.ecoCode.reprod  = {'O'};
 metaData.T_typical  = C2K(15); % K, body temp
 
 metaData.data_0     = {'ah','Lh','Lb','Lp','Wdp','am'};
-metaData.data_1     = {'tN','tR','tL','LWC','LWN','T-ah','t-ap'};
+metaData.data_1     = {'tN_T','tR_T','tL_T','LWC','LWN','T-ah','t-ap'};
 
 metaData.COMPLETE   = 2; % using criteria of LikaKear2011
 
 metaData.author     = {'Julieta Vigliano Relva'};
-metaData.date_subm  = [2023 5 22];
+metaData.date_subm  = [2023 6 16];
 metaData.email      = {'julieta.vigliano@ugent.be'};
 metaData.address    = {'UGent Ghent University'};
 
 metaData.curator    = {'Starrlight Augustine'};
 metaData.email_cur  = {'starrlight@tecnico.ulisboa.pt'};
-metaData.date_acc   = [2023 5 3];
+metaData.date_acc   = [2023 6 21];
 
 %% set zero-variate data
-data.ah = 4.375; units.ah = 'd'; label.ah = 'age at hatch'; bibkey.ah = {'Vigliano'};
+data.ah = 4.375; units.ah = 'd'; label.ah = 'age at hatch'; bibkey.ah = {'Vigl2023'};
   temp.ah = C2K(15); units.temp.ah = 'K'; label.temp.ah = 'temperature';
-data.Lh = 0.006852623; units.Lh = 'cm'; label.Lh = 'length at hatch'; bibkey.Lh = {'Vigliano'};
-data.Lb = 0.007812255; units.Lb = 'cm'; label.Lb = 'length at birth'; bibkey.Lb = {'Vigliano'};
-data.Lp = 0.0266569358756218; units.Lp = 'cm'; label.Lp = 'length at puberty'; bibkey.Lp = {'Vigliano'};
-data.Wdp =0.0000205716902; units.Wdp = 'g'; label.Wdp = 'ultimate dry weight at puberty'; bibkey.Wdp = {'Vigliano'};
+data.Lh = 0.006852623; units.Lh = 'cm'; label.Lh = 'length at hatch'; bibkey.Lh = {'Vigl2023'};
+data.Lb = 0.007812255; units.Lb = 'cm'; label.Lb = 'length at birth'; bibkey.Lb = {'Vigl2023'};
+data.Lp = 0.0266569358756218; units.Lp = 'cm'; label.Lp = 'length at puberty'; bibkey.Lp = {'Vigl2023'};
+data.Wdp =0.0000205716902; units.Wdp = 'g'; label.Wdp = 'ultimate dry weight at puberty'; bibkey.Wdp = {'Vigl2023'};
 
 %% set uni-variate data
 % time - length
 data.tL12 = readmatrix('tL12.txt');
 units.tL12 = {'d', 'cm'}; label.tL12 = {'time', 'area^(1/2)'};
 temp.tL12 = C2K(12); units.temp.tL12 = 'K'; label.temp.tL12 = 'temperature';
-bibkey.tL12 = {'Vigliano'};
+bibkey.tL12 = {'Vigl2023'};
 
 data.tL15 = readmatrix('tL15.txt');
 units.tL15 = {'d', 'cm'}; label.tL15 = {'time', 'area^(1/2)'};
-temp.tL15 = C2K(15); units.temp.tL = 'K'; label.temp.tL15 = 'temperature';
-bibkey.tL15 = {'Vigliano'};
+temp.tL15 = C2K(15); units.temp.tL15 = 'K'; label.temp.tL15 = 'temperature';
+bibkey.tL15 = {'Vigl2023'};
 
 data.tL18 = readmatrix('tL18.txt');
 units.tL18 = {'d', 'cm'}; label.tL18 = {'time', 'area^(1/2)'};
 temp.tL18 = C2K(18); units.temp.tL18 = 'K'; label.temp.tL18 = 'temperature';
-bibkey.tL18 = {'Vigliano'};
+bibkey.tL18 = {'Vigl2023'};
 
 data.tL21= readmatrix('tL21.txt');
 units.tL21 = {'d', 'cm'}; label.tL21 = {'time', 'area^(1/2)'};
 temp.tL21 = C2K(21); units.temp.tL21 = 'K'; label.temp.tL21 = 'temperature';
-bibkey.tL21 = {'Vigliano'};
+bibkey.tL21 = {'Vigl2023'};
 
 data.tL24 = readmatrix('tL24.txt');
 units.tL24 = {'d', 'cm'}; label.tL24 = {'time', 'area^(1/2)'};
 temp.tL24 = C2K(24); units.temp.tL24 = 'K'; label.temp.tL24 = 'temperature';
-bibkey.tL24 = {'Vigliano'};
+bibkey.tL24 = {'Vigl2023'};
 
 %%time- number of offspring
 data.tN12 = [...
@@ -86,7 +86,7 @@ data.tN12 = [...
 ];
 units.tN12 = {'d', '#'}; label.tN12= {'time', 'clutch size'};
 temp.tN12 = C2K(12); units.temp.tN12 = 'K'; label.temp.tN12 = 'temperature';
-bibkey.tL24 = {'Vigliano'}; treat.tN12 = {0};
+bibkey.tL24 = {'Vigl2023'}; treat.tN12 = {0};
 
 
 data.tN15 = [...
@@ -101,7 +101,7 @@ data.tN15 = [...
 ];
 units.tN15 = {'d', '#'}; label.tN15= {'time', 'clutch size'};
 temp.tN15 = C2K(15); units.temp.tN15 = 'K'; label.temp.tN15 = 'temperature';
-bibkey.tL15 = {'Vigliano'};
+bibkey.tN15 = {'Vigl2023'};
 treat.tN15 = {0};
 
 data.tN18 = [...
@@ -118,7 +118,7 @@ data.tN18 = [...
 ];
 units.tN18 = {'d', '#'}; label.tN18= {'time', 'clutch size'};
 temp.tN18 = C2K(18); units.temp.tN18 = 'C'; label.temp.tN18 = 'temperature';
-bibkey.tN18 = {'Vigliano'};
+bibkey.tN18 = {'Vigl2023'};
 treat.tN18 = {0};
 
 data.tN21 = [...
@@ -133,8 +133,8 @@ data.tN21 = [...
 24.00	10
 ];
 units.tN21 = {'d', '#'}; label.tN21= {'time', 'clutch size'};
-temp.tN21 = C2K(21); units.temp.tL21 = 'K'; label.temp.tN21 = 'temperature';
-bibkey.tN_21 = {'Vigliano'};
+temp.tN21 = C2K(21); units.temp.tN21 = 'K'; label.temp.tN21 = 'temperature';
+bibkey.tN21 = {'Vigl2023'};
 treat.tN21 = {0};
 
 data.tN24 = [...
@@ -153,7 +153,7 @@ data.tN24 = [...
 ];
 units.tN24 = {'d', '#'}; label.tN24= {'time', 'clutch size'};
 temp.tN24 = C2K(24); units.temp.tN24 = 'C'; label.temp.tN24 = 'temperature';
-bibkey.tN24 = {'Vigliano'};
+bibkey.tN24 = {'Vigl2023'};
 treat.tN24 = {0}; 
 
 %%tN_T data
@@ -211,7 +211,7 @@ data.Tah= [...
 12	7
 ];
 units.Tah = {'K', 'd'}; label.Tah= {'temperature', 'age at hatching'};
-bibkey.Tah = {'Vigliano'};
+bibkey.Tah = {'Vigl2023'};
 
 
 
@@ -268,7 +268,7 @@ data.TR= [...
 24	1.142857143
 24	1.071428571];
 units.TR = {'C', '#'}; label.TR= {'temperature', 'max reproduction rate'};
-bibkey.TR = {'Vigliano'};
+bibkey.TR = {'Vigl2023'};
 
 data.LWCN= [...
 0.026656936	0.983820513	0.247615385
@@ -277,7 +277,7 @@ data.LWCN= [...
 ];
 % data.LWC = LWCN(:,[1 2]);
 units.LWCN = {'cm', 'mugC', 'mugN'}; label.LWCN= {'length', 'carbon mass', 'nitrogen mass'};
-bibkey.LWCN = {'Vigliano'};  
+bibkey.LWCN = {'Vigl2023'};  
 treat.LWCN = {1, {'Carbon weight','Nitrogen weight'}};
 
 data.Tap = [... time since hatch, age at puberty
@@ -288,18 +288,17 @@ data.Tap = [... time since hatch, age at puberty
 24  14
 ];
 units.Tap = {'C', 'd'}; label.Tap = {'temperature', 'age at puberty'};
-bibkey.Tap = {'Vigliano'};  
+bibkey.Tap = {'Vigl2023'};  
 
 
 % data.LWN= LWCN(:,[1 3]);
 % units.LWN = {'cm', 'mug'}; label.LWN= {'length', 'mass'};
-% bibkey.LWN = {'Vigliano'};
+% bibkey.LWN = {'Vigl2023'};
 % treat.tLW = {1, {'Carbon weight','Nitrogen weight'}};
 
 %% set weights for all real data
  weights = setweights(data, []);
   weights.LWCN= 0* weights.LWCN;
- % weights.LWN = 0* weights.LWCN; 
 
 %% set pseudodata and respective weights
 [data, units, label, weights] = addpseudodata(data, units, label, weights);
@@ -320,9 +319,10 @@ metaData.grp.sets = {set1, set2};
 metaData.grp.comment = {subtitle1,subtitle2};
 
 %% Discussion points
-D1  = 'There is a change of shape at metamorphosis, between naupliar stage 6 and copepodite 1 stages';
+D1  = 'There is a change of shape at metamorphosis, between naupliar stage 6 and copepodite 1 stages, and the length is the square root of the ellipse surface';
+D2  = 'sbp model is coded as subfunction, and assumes no kappa rule in the adult stage. more investigations pending to resolve the final choice of model for this species.';
 % metaData.bibkey.D1 = {};
-metaData.discussion = struct('D1',D1);
+metaData.discussion = struct('D1',D1, 'D2',D2);
 
 %% Facts
 F1  = 'Sexual reproduction in adult stage; 12 molts: 6 naupliar stages, 5 copepodite stages, 1 adult stage ';
@@ -348,8 +348,8 @@ bibkey = 'Kooy2010'; type = 'Book'; bib = [ ...  % used in setting of chemical p
 metaData.biblist.(bibkey) = ['''@', type, '{', bibkey, ', ' bib, '}'';'];
 %
 
-bibkey = 'Vigliano'; type = 'misc'; bib = [ ...
-'author = {Vigliano}, ' ... 
+bibkey = 'Vigl2023'; type = 'misc'; bib = [ ...
+'author = {Vigl2023}, ' ... 
 'note = {experimental data}, ' ... 
 'year = {2023}, ' ... 
 'doi = {10.21203/rs.3.rs-2858869/v1}'];
