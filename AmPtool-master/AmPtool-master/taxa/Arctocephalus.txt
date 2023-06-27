@@ -1,6 +1,0 @@
-Arctocephalus_australis
-Arctocephalus_forsteri
-Arctocephalus_gazella
-Arctocephalus_philippii
-Arctocephalus_pusillus
-Arctocephalus_tropicalis

@@ -1,5 +1,0 @@
-Merops_apiaster
-Merops_bulocki
-Merops_orientalis
-Merops_pusillus
-Merops_viridis

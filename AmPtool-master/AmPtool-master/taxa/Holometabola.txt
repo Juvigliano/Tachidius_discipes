@@ -1,5 +1,0 @@
-Diptera
-Trichoptera
-Lepidoptera
-Hymenoptera
-Coleoptera
