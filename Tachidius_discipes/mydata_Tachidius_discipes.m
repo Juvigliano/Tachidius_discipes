@@ -30,9 +30,14 @@ metaData.date_subm  = [2023 6 16];
 metaData.email      = {'julieta.vigliano@ugent.be'};
 metaData.address    = {'UGent Ghent University'};
 
-metaData.curator    = {'Starrlight Augustine'};
-metaData.email_cur  = {'starrlight@tecnico.ulisboa.pt'};
-metaData.date_acc   = [2023 6 21];
+metaData.author_mod_1    = {'Julieta Vigliano Relva'};
+metaData.date_mod_1 = [2023 6 16];
+metaData.email_mod_1      = {'julieta.vigliano@ugent.be'};
+metaData.address_mod_1    = {'UGent Ghent University'};
+
+% metaData.curator    = {'Starrlight Augustine'};
+% metaData.email_cur  = {'starrlight@tecnico.ulisboa.pt'};
+% metaData.date_acc   = [2023 6 21];
 
 %% set zero-variate data
 data.ah = 4.375; units.ah = 'd'; label.ah = 'age at hatch'; bibkey.ah = {'Vigl2023'};
@@ -46,30 +51,76 @@ data.Wdp = 0.0000205716902; units.Wdp = 'g'; label.Wdp = 'ultimate dry weight at
 
 %% set uni-variate data
 % time - length
-data.tL12 = readmatrix('tL12.txt');
-units.tL12 = {'d', 'cm'}; label.tL12 = {'time', 'area^(1/2)'};
+% code modified to work with means and standard deviation
+data_tL = readmatrix('tL12.txt');
+[t, ai, ci] = unique(data_tL (:,1)); maxci = max(ci); 
+Lmean = zeros(size(t,1),1); % preallocate zeros for mean L values
+Lsd = zeros(size(t,1),1); % preallocate zeros for sd values
+for i = 1:maxci
+ Lmean(i) =    mean(data_tL (ci==i,2));
+ Lsd(i) =    std(data_tL (ci==i,2));
+end
+data.tL12 = [t, Lmean]; % d, cm- time, mean length
+units.tL12 = {'d', 'cm'}; label.tL12 = {'time', 'area^{(1/2)}'};
 temp.tL12 = C2K(12); units.temp.tL12 = 'K'; label.temp.tL12 = 'temperature';
 bibkey.tL12 = {'Vigl2023'};
+stdev.tL12 =Lsd ; units.stdev.tL12 = 'cm'; label.stdev.tL12 = 'standard deviation';
 %
-data.tL15 = readmatrix('tL15.txt');
-units.tL15 = {'d', 'cm'}; label.tL15 = {'time', 'area^(1/2)'};
+data_tL = readmatrix('tL15.txt');
+[t, ai, ci] = unique(data_tL (:,1)); maxci = max(ci); 
+Lmean = zeros(size(t,1),1); % preallocate zeros for mean L values
+Lsd = zeros(size(t,1),1); % preallocate zeros for sd values
+for i = 1:maxci
+ Lmean(i) =    mean(data_tL (ci==i,2));
+ Lsd(i) =    std(data_tL (ci==i,2));
+end
+data.tL15 = [t, Lmean]; % d, cm- time, mean length
+units.tL15 = {'d', 'cm'}; label.tL15 = {'time', 'area^{(1/2)}'};
 temp.tL15 = C2K(15); units.temp.tL15 = 'K'; label.temp.tL15 = 'temperature';
 bibkey.tL15 = {'Vigl2023'};
+stdev.tL15 =Lsd ; units.stdev.tL15 = 'cm'; label.stdev.tL15 = 'standard deviation';
 %
-data.tL18 = readmatrix('tL18.txt');
-units.tL18 = {'d', 'cm'}; label.tL18 = {'time', 'area^(1/2)'};
+data_tL = readmatrix('tL18.txt');
+[t, ai, ci] = unique(data_tL (:,1)); maxci = max(ci); 
+Lmean = zeros(size(t,1),1); % preallocate zeros for mean L values
+Lsd = zeros(size(t,1),1); % preallocate zeros for sd values
+for i = 1:maxci
+ Lmean(i) =    mean(data_tL (ci==i,2));
+ Lsd(i) =    std(data_tL (ci==i,2));
+end
+data.tL18 = [t, Lmean]; % d, cm- time, mean length
+units.tL18 = {'d', 'cm'}; label.tL18 = {'time', 'area^{(1/2)}'};
 temp.tL18 = C2K(18); units.temp.tL18 = 'K'; label.temp.tL18 = 'temperature';
 bibkey.tL18 = {'Vigl2023'};
+stdev.tL18 =Lsd ; units.stdev.tL18 = 'cm'; label.stdev.tL18 = 'standard deviation';
 %
-data.tL21= readmatrix('tL21.txt');
-units.tL21 = {'d', 'cm'}; label.tL21 = {'time', 'area^(1/2)'};
+data_tL = readmatrix('tL21.txt');
+[t, ai, ci] = unique(data_tL (:,1)); maxci = max(ci); 
+Lmean = zeros(size(t,1),1); % preallocate zeros for mean L values
+Lsd = zeros(size(t,1),1); % preallocate zeros for sd values
+for i = 1:maxci
+ Lmean(i) =    mean(data_tL (ci==i,2));
+ Lsd(i) =    std(data_tL (ci==i,2));
+end
+data.tL21 = [t, Lmean]; % d, cm- time, mean length
+units.tL21 = {'d', 'cm'}; label.tL21 = {'time', 'area^{(1/2)}'};
 temp.tL21 = C2K(21); units.temp.tL21 = 'K'; label.temp.tL21 = 'temperature';
 bibkey.tL21 = {'Vigl2023'};
+stdev.tL21 =Lsd ; units.stdev.tL21 = 'cm'; label.stdev.tL21 = 'standard deviation';
 %
-data.tL24 = readmatrix('tL24.txt');
-units.tL24 = {'d', 'cm'}; label.tL24 = {'time', 'area^(1/2)'};
+data_tL = readmatrix('tL24.txt');
+[t, ai, ci] = unique(data_tL (:,1)); maxci = max(ci); 
+Lmean = zeros(size(t,1),1); % preallocate zeros for mean L values
+Lsd = zeros(size(t,1),1); % preallocate zeros for sd values
+for i = 1:maxci
+ Lmean(i) =    mean(data_tL (ci==i,2));
+ Lsd(i) =    std(data_tL (ci==i,2));
+end
+data.tL24 = [t, Lmean]; % d, cm- time, mean length
+units.tL24 = {'d', 'cm'}; label.tL24 = {'time', 'area^{(1/2)}'};
 temp.tL24 = C2K(24); units.temp.tL24 = 'K'; label.temp.tL24 = 'temperature';
 bibkey.tL24 = {'Vigl2023'};
+stdev.tL24 =Lsd ; units.stdev.tL24 = 'cm'; label.stdev.tL24 = 'standard deviation';
 
 %%time- number of offspring
 data.tN12 = [...
@@ -295,6 +346,7 @@ weights.LWCN= 0* weights.LWCN;
 
 %% pack auxData and txtData for output
 auxData.temp = temp;
+auxData.stdev = stdev;
 auxData.treat = treat;
 txtData.units = units;
 txtData.label = label;
