@@ -353,12 +353,12 @@ txtData.label = label;
 txtData.bibkey = bibkey;
 % txtData.comment = comment;
 
-set1 = {'tL12','tL15', 'tL18','tL21', 'tL24'}; 
-subtitle1 = {'Growth at different temperatures'};
-set2 = {'tN12','tN15', 'tN18','tN21', 'tN24'}; 
-subtitle2 = {'Reproduction at 12, 15, 18, 21 and 24 debC'};
-metaData.grp.sets = {set1, set2};
-metaData.grp.subtitle = {subtitle1,subtitle2};
+% set1 = {'tL24','tL21', 'tL18','tL15', 'tL12'}; 
+% subtitle1 = {'Growth at 24, 21, 18, 15 and 12 C'};
+% set2 = {'tN24','tN21', 'tN18','tN15', 'tN12'}; 
+% subtitle2 = {'Reproduction at 24, 21, 18, 15 and 12 C'};
+% metaData.grp.sets = {set1, set2};
+% metaData.grp.subtitle = {subtitle1,subtitle2};
 
 %% Discussion points
 D1  = 'There is a change of shape at metamorphosis, between naupliar stage 6 and copepodite 1 stages, and the length is the square root of the ellipse surface';

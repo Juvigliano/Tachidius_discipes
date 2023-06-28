@@ -60,7 +60,7 @@ E_b = f * E_m * L_b^3; % J, energy in reserve at birth
 ELHR0 = [E_b; L_b; E_Hb; 0]; % state variables at birth
 
 [tsort, ~, ci] = unique(tL12(:,1)); 
-[~, ELHR] = ode45(@dget_ELHR_sbp, tsort, ELHR0,[], p, TC12, f);
+[~, ELHR] = ode45(@dget_ELHR_sbp, tsort-1, ELHR0,[], p, TC12, f);
 EL12 = ELHR(ci,2)./ del_M; 
 
 [tsort, ~, ci] = unique(tL15(:,1)); 
