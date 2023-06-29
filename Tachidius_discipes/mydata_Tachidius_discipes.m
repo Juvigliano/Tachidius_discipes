@@ -9,14 +9,14 @@ metaData.family     = 'Tachidiidae';
 metaData.species    = 'Tachidius_discipes';
 metaData.species_en = 'Copepod';
 
-metaData.ecoCode.climate = {'Dfb','Cfb'};
-metaData.ecoCode.ecozone = {'MAb','MAn'};
-metaData.ecoCode.habitat = {'jiSm','jiM','jiMm','jiMi','jiMcb'};
-metaData.ecoCode.embryo  = {'Mbf'};
-metaData.ecoCode.migrate = {'TW'};
-metaData.ecoCode.food    = {'jiD','jiB','jiPp'};
-metaData.ecoCode.gender  = {'D'};
-metaData.ecoCode.reprod  = {'O'};
+% metaData.ecoCode.climate = {'Dfb','Cfb'};
+% metaData.ecoCode.ecozone = {'MAb','MAn'};
+% metaData.ecoCode.habitat = {'jiSm','jiM','jiMm','jiMi','jiMcb'};
+% metaData.ecoCode.embryo  = {'Mbf'};
+% metaData.ecoCode.migrate = {'TW'};
+% metaData.ecoCode.food    = {'jiD','jiB','jiPp'};
+% metaData.ecoCode.gender  = {'D'};
+% metaData.ecoCode.reprod  = {'O'};
 
 metaData.T_typical  = C2K(15); % K, body temp
 
@@ -355,10 +355,14 @@ txtData.bibkey = bibkey;
 
 % set1 = {'tL24','tL21', 'tL18','tL15', 'tL12'}; 
 % subtitle1 = {'Growth at 24, 21, 18, 15 and 12 C'};
-% set2 = {'tN24','tN21', 'tN18','tN15', 'tN12'}; 
-% subtitle2 = {'Reproduction at 24, 21, 18, 15 and 12 C'};
 % metaData.grp.sets = {set1, set2};
 % metaData.grp.subtitle = {subtitle1,subtitle2};
+
+set1 = {'tN24','tN21', 'tN18','tN15', 'tN12'}; 
+subtitle1 = {'Reproduction at 24, 21, 18, 15 and 12 C'};
+metaData.grp.sets = {set1};
+metaData.grp.subtitle = {subtitle1};
+
 
 %% Discussion points
 D1  = 'There is a change of shape at metamorphosis, between naupliar stage 6 and copepodite 1 stages, and the length is the square root of the ellipse surface';
@@ -371,13 +375,13 @@ metaData.bibkey.F1 = {'Arnd2013'};
 metaData.facts = struct('F1',F1);
 
 %% Links
-metaData.links.id_CoL = '7BDXW'; % Cat of Life
-metaData.links.id_ITIS = '86559'; % ITIS
-metaData.links.id_EoL = '1020216'; % Ency of Life
-metaData.links.id_Wiki = 'Tachidiidae'; % Wikipedia
-metaData.links.id_ADW = 'Tachidius_discipes'; % Anim Div. Web
-metaData.links.id_Taxo = '603913'; % Taxonomicon
-metaData.links.id_WoRMS = '116814'; % WoRMS
+% metaData.links.id_CoL = '7BDXW'; % Cat of Life
+% metaData.links.id_ITIS = '86559'; % ITIS
+% metaData.links.id_EoL = '1020216'; % Ency of Life
+% metaData.links.id_Wiki = 'Tachidiidae'; % Wikipedia
+% metaData.links.id_ADW = 'Tachidius_discipes'; % Anim Div. Web
+% metaData.links.id_Taxo = '603913'; % Taxonomicon
+% metaData.links.id_WoRMS = '116814'; % WoRMS
 
 %% References
 bibkey = 'Kooy2010'; type = 'Book'; bib = [ ...  % used in setting of chemical parameters and pseudodata
