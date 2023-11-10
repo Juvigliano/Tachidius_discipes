@@ -1,4 +1,3 @@
-%alalallalaa
 % intialization has components
 %1: reading the parameters from the matlab file. Depneding of what I prefer
 %I can read it from the pars_init or.mat
