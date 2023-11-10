@@ -1,0 +1,2816 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+  <TITLE>Tachidius_discipes</TITLE>
+  <style>
+    #InputSymbol {
+      width: 10%; /* Width of search field */
+      font-size: 14px; /* Increase font-size */
+      border: 1px solid #ddd; /* Add a grey border */
+      margin-bottom: 12px; /* Add some space below the input */
+    }
+
+    #InputUnits {
+      width: 10%; /* Width of search field */
+      font-size: 14px; /* Increase font-size */
+      border: 1px solid #ddd; /* Add a grey border */
+      margin-bottom: 12px; /* Add some space below the input */
+    }
+
+    #InputLabel {
+      width: 10%; /* Width of search field */
+      font-size: 14px; /* Increase font-size */
+      border: 1px solid #ddd; /* Add a grey border */
+      margin-bottom: 12px; /* Add some space below the input */
+    }
+
+    #InputShort {
+      width: 15%; /* Width of toggle field */
+      font-size: 14px; /* Increase font-size */
+      border: 1px solid #ddd; /* Add a grey border */
+      margin-bottom: 12px; /* Add some space below the input */
+    }
+
+    #specPrintNm {
+      background-color: #f2f2f2
+    }
+
+    #species {
+      color: rgb(0,0,255)
+    }
+
+    #head {
+      background-color: #FFE7C6
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2}
+    td:nth-child(odd){border-left: solid 1px black}
+
+    #T_A {
+      color: rgb(25,0,255)
+    }
+
+    #z {
+      color: rgb(12,0,255)
+    }
+
+    #F_m {
+      color: rgb(0,0,0)
+    }
+
+    #kap_X {
+      color: rgb(51,0,255)
+    }
+
+    #kap_P {
+      color: rgb(51,0,255)
+    }
+
+    #v {
+      color: rgb(124,0,255)
+    }
+
+    #kap {
+      color: rgb(255,0,227)
+    }
+
+    #kap_R {
+      color: rgb(0,0,0)
+    }
+
+    #p_M {
+      color: rgb(255,84,84)
+    }
+
+    #p_T {
+      color: rgb(0,0,0)
+    }
+
+    #k_J {
+      color: rgb(0,0,0)
+    }
+
+    #E_G {
+      color: rgb(0,0,234)
+    }
+
+    #E_Hb {
+      color: rgb(0,0,19)
+    }
+
+    #E_Hp {
+      color: rgb(166,0,255)
+    }
+
+    #h_a {
+      color: rgb(0,0,0)
+    }
+
+    #s_G {
+      color: rgb(0,0,0)
+    }
+
+    #d_X {
+      color: rgb(0,0,0)
+    }
+
+    #d_V {
+      color: rgb(0,0,0)
+    }
+
+    #d_E {
+      color: rgb(0,0,0)
+    }
+
+    #d_P {
+      color: rgb(0,0,0)
+    }
+
+    #mu_X {
+      color: rgb(0,0,0)
+    }
+
+    #mu_V {
+      color: rgb(0,0,0)
+    }
+
+    #mu_E {
+      color: rgb(0,0,0)
+    }
+
+    #mu_P {
+      color: rgb(0,0,0)
+    }
+
+    #mu_C {
+      color: rgb(0,0,0)
+    }
+
+    #mu_H {
+      color: rgb(0,0,0)
+    }
+
+    #mu_O {
+      color: rgb(0,0,0)
+    }
+
+    #mu_N {
+      color: rgb(0,0,0)
+    }
+
+    #n_CX {
+      color: rgb(0,0,0)
+    }
+
+    #n_HX {
+      color: rgb(0,0,0)
+    }
+
+    #n_OX {
+      color: rgb(0,0,0)
+    }
+
+    #n_NX {
+      color: rgb(0,0,0)
+    }
+
+    #n_CV {
+      color: rgb(0,0,0)
+    }
+
+    #n_HV {
+      color: rgb(0,0,0)
+    }
+
+    #n_OV {
+      color: rgb(0,0,0)
+    }
+
+    #n_NV {
+      color: rgb(0,0,0)
+    }
+
+    #n_CE {
+      color: rgb(0,0,0)
+    }
+
+    #n_HE {
+      color: rgb(0,0,0)
+    }
+
+    #n_OE {
+      color: rgb(0,0,0)
+    }
+
+    #n_NE {
+      color: rgb(0,0,0)
+    }
+
+    #n_CP {
+      color: rgb(0,0,0)
+    }
+
+    #n_HP {
+      color: rgb(0,0,0)
+    }
+
+    #n_OP {
+      color: rgb(0,0,0)
+    }
+
+    #n_NP {
+      color: rgb(0,0,0)
+    }
+
+    #n_CC {
+      color: rgb(0,0,0)
+    }
+
+    #n_HC {
+      color: rgb(0,0,0)
+    }
+
+    #n_OC {
+      color: rgb(0,0,0)
+    }
+
+    #n_NC {
+      color: rgb(0,0,0)
+    }
+
+    #n_CH {
+      color: rgb(0,0,0)
+    }
+
+    #n_HH {
+      color: rgb(0,0,0)
+    }
+
+    #n_OH {
+      color: rgb(0,0,0)
+    }
+
+    #n_NH {
+      color: rgb(0,0,0)
+    }
+
+    #n_CO {
+      color: rgb(0,0,0)
+    }
+
+    #n_HO {
+      color: rgb(0,0,0)
+    }
+
+    #n_OO {
+      color: rgb(0,0,0)
+    }
+
+    #n_NO {
+      color: rgb(0,0,0)
+    }
+
+    #n_CN {
+      color: rgb(0,0,0)
+    }
+
+    #n_HN {
+      color: rgb(0,0,0)
+    }
+
+    #n_ON {
+      color: rgb(0,0,0)
+    }
+
+    #n_NN {
+      color: rgb(0,0,0)
+    }
+
+    #c_T {
+      color: rgb(0,0,8)
+    }
+
+    #p_Am {
+      color: rgb(0,0,28)
+    }
+
+    #w_X {
+      color: rgb(0,0,0)
+    }
+
+    #w_V {
+      color: rgb(0,0,0)
+    }
+
+    #w_E {
+      color: rgb(0,0,0)
+    }
+
+    #w_P {
+      color: rgb(0,0,0)
+    }
+
+    #M_V {
+      color: rgb(0,0,0)
+    }
+
+    #y_V_E {
+      color: rgb(0,0,17)
+    }
+
+    #y_E_V {
+      color: rgb(0,0,28)
+    }
+
+    #k_M {
+      color: rgb(255,84,84)
+    }
+
+    #k {
+      color: rgb(71,0,255)
+    }
+
+    #E_m {
+      color: rgb(163,0,255)
+    }
+
+    #m_Em {
+      color: rgb(163,0,255)
+    }
+
+    #g {
+      color: rgb(255,51,51)
+    }
+
+    #L_m {
+      color: rgb(12,0,255)
+    }
+
+    #L_T {
+      color: rgb(0,0,0)
+    }
+
+    #l_T {
+      color: rgb(0,0,0)
+    }
+
+    #ome {
+      color: rgb(163,0,255)
+    }
+
+    #J_E_Am {
+      color: rgb(0,0,0)
+    }
+
+    #y_E_X {
+      color: rgb(51,0,255)
+    }
+
+    #y_X_E {
+      color: rgb(51,0,255)
+    }
+
+    #p_Xm {
+      color: rgb(0,0,197)
+    }
+
+    #J_X_Am {
+      color: rgb(0,0,4)
+    }
+
+    #y_P_X {
+      color: rgb(51,0,255)
+    }
+
+    #y_X_P {
+      color: rgb(51,0,255)
+    }
+
+    #y_P_E {
+      color: rgb(51,0,255)
+    }
+
+    #eta_XA {
+      color: rgb(0,0,0)
+    }
+
+    #eta_PA {
+      color: rgb(0,0,0)
+    }
+
+    #eta_VG {
+      color: rgb(0,0,0)
+    }
+
+    #J_E_M {
+      color: rgb(0,0,57)
+    }
+
+    #J_E_T {
+      color: rgb(0,0,0)
+    }
+
+    #j_E_M {
+      color: rgb(255,84,84)
+    }
+
+    #j_E_J {
+      color: rgb(0,0,0)
+    }
+
+    #kap_G {
+      color: rgb(0,0,14)
+    }
+
+    #E_V {
+      color: rgb(0,0,0)
+    }
+
+    #K {
+      color: rgb(0,0,0)
+    }
+
+    #E_Hb {
+      color: rgb(0,0,19)
+    }
+
+    #M_Hb {
+      color: rgb(0,0,0)
+    }
+
+    #U_Hb {
+      color: rgb(0,0,0)
+    }
+
+    #V_Hb {
+      color: rgb(0,0,0)
+    }
+
+    #u_Hb {
+      color: rgb(0,0,230)
+    }
+
+    #v_Hb {
+      color: rgb(0,0,128)
+    }
+
+    #E_Hp {
+      color: rgb(166,0,255)
+    }
+
+    #M_Hp {
+      color: rgb(0,0,0)
+    }
+
+    #U_Hp {
+      color: rgb(0,0,28)
+    }
+
+    #V_Hp {
+      color: rgb(0,0,7)
+    }
+
+    #u_Hp {
+      color: rgb(51,0,255)
+    }
+
+    #v_Hp {
+      color: rgb(0,0,183)
+    }
+
+    #t_E {
+      color: rgb(1,0,255)
+    }
+
+    #t_starve {
+      color: rgb(45,0,255)
+    }
+
+    #s_M {
+      color: rgb(51,0,255)
+    }
+
+    #r_B {
+      color: rgb(0,0,167)
+    }
+
+    #W_dWm {
+      color: rgb(0,0,0)
+    }
+
+    #dWm {
+      color: rgb(0,0,0)
+    }
+
+    #U_E0 {
+      color: rgb(0,0,0)
+    }
+
+    #E_0 {
+      color: rgb(255,62,62)
+    }
+
+    #M_E0 {
+      color: rgb(0,0,0)
+    }
+
+    #Wd_0 {
+      color: rgb(0,0,0)
+    }
+
+    #Ww_0 {
+      color: rgb(0,0,0)
+    }
+
+    #l_b {
+      color: rgb(0,0,4)
+    }
+
+    #L_b {
+      color: rgb(54,0,255)
+    }
+
+    #M_Vb {
+      color: rgb(0,0,0)
+    }
+
+    #del_Ub {
+      color: rgb(255,142,142)
+    }
+
+    #Ww_b {
+      color: rgb(0,0,0)
+    }
+
+    #Wd_b {
+      color: rgb(0,0,0)
+    }
+
+    #E_Wb {
+      color: rgb(255,34,34)
+    }
+
+    #a_b {
+      color: rgb(255,152,152)
+    }
+
+    #g_Hb {
+      color: rgb(255,5,5)
+    }
+
+    #s_Hbp {
+      color: rgb(255,0,196)
+    }
+
+    #s_HLbp {
+      color: rgb(255,0,79)
+    }
+
+    #l_p {
+      color: rgb(0,0,12)
+    }
+
+    #L_p {
+      color: rgb(255,0,251)
+    }
+
+    #M_Vp {
+      color: rgb(0,0,0)
+    }
+
+    #M_Ep {
+      color: rgb(0,0,0)
+    }
+
+    #Ww_p {
+      color: rgb(0,0,0)
+    }
+
+    #Wd_p {
+      color: rgb(0,0,0)
+    }
+
+    #E_Wp {
+      color: rgb(255,152,152)
+    }
+
+    #a_p {
+      color: rgb(0,0,224)
+    }
+
+    #g_Hp {
+      color: rgb(255,0,178)
+    }
+
+    #s_s {
+      color: rgb(0,0,0)
+    }
+
+    #l_i {
+      color: rgb(0,0,12)
+    }
+
+    #L_i {
+      color: rgb(255,0,251)
+    }
+
+    #M_Vi {
+      color: rgb(0,0,0)
+    }
+
+    #M_Ei {
+      color: rgb(0,0,0)
+    }
+
+    #Ww_i {
+      color: rgb(0,0,0)
+    }
+
+    #Wd_i {
+      color: rgb(0,0,0)
+    }
+
+    #E_Wi {
+      color: rgb(255,152,152)
+    }
+
+    #xi_WE {
+      color: rgb(94,0,255)
+    }
+
+    #del_Wb {
+      color: rgb(255,72,72)
+    }
+
+    #del_Wp {
+      color: rgb(0,0,0)
+    }
+
+    #del_V {
+      color: rgb(94,0,255)
+    }
+
+    #h_W {
+      color: rgb(255,0,221)
+    }
+
+    #h_G {
+      color: rgb(0,0,1)
+    }
+
+    #S_b {
+      color: rgb(0,0,0)
+    }
+
+    #S_p {
+      color: rgb(9,0,255)
+    }
+
+    #a_m {
+      color: rgb(255,153,153)
+    }
+
+    #a_99 {
+      color: rgb(0,0,0)
+    }
+
+    #R_i {
+      color: rgb(255,140,140)
+    }
+
+    #N_i {
+      color: rgb(255,153,153)
+    }
+
+    #M_E0_min_G {
+      color: rgb(0,0,0)
+    }
+
+    #M_E0_min_R {
+      color: rgb(0,0,0)
+    }
+
+    #eb_min_G {
+      color: rgb(0,0,1)
+    }
+
+    #eb_min_R {
+      color: rgb(0,0,19)
+    }
+
+    #ep_min {
+      color: rgb(0,0,48)
+    }
+
+    #sM_min {
+      color: rgb(0,0,0)
+    }
+
+    #p_Xb {
+      color: rgb(255,0,138)
+    }
+
+    #J_Xb {
+      color: rgb(0,0,0)
+    }
+
+    #F_mb {
+      color: rgb(0,0,4)
+    }
+
+    #p_Xp {
+      color: rgb(0,0,70)
+    }
+
+    #J_Xp {
+      color: rgb(0,0,0)
+    }
+
+    #F_mp {
+      color: rgb(0,0,87)
+    }
+
+    #p_Xi {
+      color: rgb(0,0,70)
+    }
+
+    #J_Xi {
+      color: rgb(0,0,0)
+    }
+
+    #F_mi {
+      color: rgb(0,0,87)
+    }
+
+    #p_Ab {
+      color: rgb(255,0,150)
+    }
+
+    #p_Cb {
+      color: rgb(0,0,250)
+    }
+
+    #p_Sb {
+      color: rgb(0,0,73)
+    }
+
+    #p_Jb {
+      color: rgb(0,0,0)
+    }
+
+    #p_Gb {
+      color: rgb(0,0,116)
+    }
+
+    #p_Rb {
+      color: rgb(0,0,3)
+    }
+
+    #p_Db {
+      color: rgb(0,0,47)
+    }
+
+    #p_Ap {
+      color: rgb(255,135,135)
+    }
+
+    #p_Cp {
+      color: rgb(255,101,101)
+    }
+
+    #p_Sp {
+      color: rgb(255,116,116)
+    }
+
+    #p_Jp {
+      color: rgb(0,0,0)
+    }
+
+    #p_Gp {
+      color: rgb(57,0,255)
+    }
+
+    #p_Rp {
+      color: rgb(255,0,169)
+    }
+
+    #p_Dp {
+      color: rgb(255,79,79)
+    }
+
+    #p_Ai {
+      color: rgb(255,135,135)
+    }
+
+    #p_Ci {
+      color: rgb(255,101,101)
+    }
+
+    #p_Si {
+      color: rgb(255,116,116)
+    }
+
+    #p_Ji {
+      color: rgb(0,0,0)
+    }
+
+    #p_Gi {
+      color: rgb(0,0,0)
+    }
+
+    #p_Ri {
+      color: rgb(111,0,255)
+    }
+
+    #p_Di {
+      color: rgb(255,115,115)
+    }
+
+    #J_Cb {
+      color: rgb(0,0,0)
+    }
+
+    #J_Cp {
+      color: rgb(0,0,0)
+    }
+
+    #J_Ci {
+      color: rgb(0,0,0)
+    }
+
+    #J_Hb {
+      color: rgb(0,0,0)
+    }
+
+    #J_Hp {
+      color: rgb(0,0,0)
+    }
+
+    #J_Hi {
+      color: rgb(0,0,0)
+    }
+
+    #J_Ob {
+      color: rgb(0,0,0)
+    }
+
+    #J_Op {
+      color: rgb(0,0,0)
+    }
+
+    #J_Oi {
+      color: rgb(0,0,0)
+    }
+
+    #J_Nb {
+      color: rgb(0,0,0)
+    }
+
+    #J_Np {
+      color: rgb(0,0,0)
+    }
+
+    #J_Ni {
+      color: rgb(0,0,0)
+    }
+
+    #RQ_b {
+      color: rgb(0,0,0)
+    }
+
+    #UQ_b {
+      color: rgb(0,0,0)
+    }
+
+    #WQ_b {
+      color: rgb(0,0,0)
+    }
+
+    #SDA_b {
+      color: rgb(51,0,255)
+    }
+
+    #VO_b {
+      color: rgb(154,0,255)
+    }
+
+    #p_Tb {
+      color: rgb(0,0,153)
+    }
+
+    #RQ_p {
+      color: rgb(0,0,0)
+    }
+
+    #UQ_p {
+      color: rgb(0,0,0)
+    }
+
+    #WQ_p {
+      color: rgb(0,0,0)
+    }
+
+    #SDA_p {
+      color: rgb(51,0,255)
+    }
+
+    #VO_p {
+      color: rgb(13,0,255)
+    }
+
+    #p_Tp {
+      color: rgb(255,17,17)
+    }
+
+    #RQ_i {
+      color: rgb(0,0,0)
+    }
+
+    #UQ_i {
+      color: rgb(0,0,0)
+    }
+
+    #WQ_i {
+      color: rgb(0,0,0)
+    }
+
+    #SDA_i {
+      color: rgb(51,0,255)
+    }
+
+    #VO_i {
+      color: rgb(0,0,16)
+    }
+
+    #p_Ti {
+      color: rgb(255,115,115)
+    }
+
+  </style>
+
+</HEAD>
+
+<BODY>
+
+      <div>
+        <input type="text" id="InputSymbol" onkeyup="FunctionSymbol()" placeholder="Search for symbol ..">
+        <input type="text" id="InputUnits"  onkeyup="FunctionUnits()"  placeholder="Search for units ..">
+        <input type="text" id="InputLabel"  onkeyup="FunctionLabel()"  placeholder="Search for label ..">
+        <input type="text" id="InputShort"  onkeyup="FunctionShort()"  placeholder="Short/Medium/Long/Pars" title="Type S or M or L or P">
+      </div>
+
+      <TABLE id="Table">
+        <TR id="species"> <TH colspan="2"></TH>
+          <TH colspan="2" id="specPrintNm">Tachidius discipes</TH>
+          <TH colspan="2" id="specPrintNm"><a href="https://www.bio.vu.nl/thb/deb/deblab/add_my_pet/entries_web/Nitokra_spinipes/Nitokra_spinipes_res.html">Nitokra spinipes</a></TH>
+          <TH colspan="2" id="specPrintNm"><a href="https://www.bio.vu.nl/thb/deb/deblab/add_my_pet/entries_web/Tigriopus_brevicornis/Tigriopus_brevicornis_res.html">Tigriopus brevicornis</a></TH>
+          <TH></TH> <TH>date: 2023/11/10; allStat version: 2023/10/21</TH>
+        </TR>
+
+        <TR id="head"> <TH>symbol</TH> <TH>units</TH>
+          <TH>value</TH> <TH>&deg;C</TH>
+          <TH>value</TH> <TH>&deg;C</TH>
+          <TH>value</TH> <TH>&deg;C</TH>
+          <TH>func resp</TH> <TH>description</TH>
+        </TR>
+
+        <TR id="model"> <TD style="font-weight:bold">model</TD> <TD>-</TD>
+          <TD>sbp</TD> <TD>NA</TD>
+          <TD>abp</TD> <TD>NA</TD>
+          <TD>sbp</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>typified model</TD>
+        </TR>
+
+        <TR id="T_typical"> <TD style="font-weight:bold">T_typical</TD> <TD>&deg;C</TD>
+          <TD>15</TD> <TD>NA</TD>
+          <TD>22</TD> <TD>NA</TD>
+          <TD>15</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>typical body temperature</TD>
+        </TR>
+
+        <TR id="T_A"> <TD style="font-weight:bold">T_A</TD> <TD>K</TD>
+          <TD>3343.7</TD> <TD>NA</TD>
+          <TD>3059.96</TD> <TD>NA</TD>
+          <TD>12000</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>Arrhenius temperature</TD>
+        </TR>
+
+        <TR id="z"> <TD style="font-weight:bold">z</TD> <TD>-</TD>
+          <TD>0.065032</TD> <TD>NA</TD>
+          <TD>0.020766</TD> <TD>NA</TD>
+          <TD>0.95804</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>zoom factor</TD>
+        </TR>
+
+        <TR id="F_m"> <TD style="font-weight:bold">F_m</TD> <TD>l/d.cm^2</TD>
+          <TD>6.5</TD> <TD>20</TD>
+          <TD>6.5</TD> <TD>20</TD>
+          <TD>6.5</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>{F_m}, max spec searching rate</TD>
+        </TR>
+
+        <TR id="kap_X"> <TD style="font-weight:bold">kap_X</TD> <TD>-</TD>
+          <TD>0.8</TD> <TD>NA</TD>
+          <TD>0.8</TD> <TD>NA</TD>
+          <TD>0.18</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>digestion efficiency of food to reserve</TD>
+        </TR>
+
+        <TR id="kap_P"> <TD style="font-weight:bold">kap_P</TD> <TD>-</TD>
+          <TD>0.1</TD> <TD>NA</TD>
+          <TD>0.1</TD> <TD>NA</TD>
+          <TD>0.7</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>faecation efficiency of food to faeces</TD>
+        </TR>
+
+        <TR id="v"> <TD style="font-weight:bold">v</TD> <TD>cm/d</TD>
+          <TD>0.012445</TD> <TD>20</TD>
+          <TD>0.020316</TD> <TD>20</TD>
+          <TD>0.021357</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>energy conductance</TD>
+        </TR>
+
+        <TR id="kap"> <TD style="font-weight:bold">kap</TD> <TD>-</TD>
+          <TD>0.99959</TD> <TD>NA</TD>
+          <TD>0.77611</TD> <TD>NA</TD>
+          <TD>0.12086</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>allocation fraction to soma</TD>
+        </TR>
+
+        <TR id="kap_R"> <TD style="font-weight:bold">kap_R</TD> <TD>-</TD>
+          <TD>0.95</TD> <TD>NA</TD>
+          <TD>0.95</TD> <TD>NA</TD>
+          <TD>0.95</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>reproduction efficiency</TD>
+        </TR>
+
+        <TR id="p_M"> <TD style="font-weight:bold">p_M</TD> <TD>J/d.cm^3</TD>
+          <TD>1726.91</TD> <TD>20</TD>
+          <TD>592.71</TD> <TD>20</TD>
+          <TD>21.4773</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>[p_M], vol-spec somatic maint</TD>
+        </TR>
+
+        <TR id="p_T"> <TD style="font-weight:bold">p_T</TD> <TD>J/d.cm^2</TD>
+          <TD>0</TD> <TD>20</TD>
+          <TD>0</TD> <TD>20</TD>
+          <TD>0</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>{p_T}, surf-spec somatic maint</TD>
+        </TR>
+
+        <TR id="k_J"> <TD style="font-weight:bold">k_J</TD> <TD>1/d</TD>
+          <TD>0.002</TD> <TD>20</TD>
+          <TD>0.002</TD> <TD>20</TD>
+          <TD>0.002</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>maturity maint rate coefficient</TD>
+        </TR>
+
+        <TR id="E_G"> <TD style="font-weight:bold">E_G</TD> <TD>J/cm^3</TD>
+          <TD>4446.65</TD> <TD>NA</TD>
+          <TD>4448.08</TD> <TD>NA</TD>
+          <TD>4431.4</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>[E_G], spec cost for structure</TD>
+        </TR>
+
+        <TR id="E_Hb"> <TD style="font-weight:bold">E_Hb</TD> <TD>J</TD>
+          <TD>5.57e-06</TD> <TD>NA</TD>
+          <TD>0.0005939</TD> <TD>NA</TD>
+          <TD>0.002313</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>maturity at birth</TD>
+        </TR>
+
+        <TR id="E_Hp"> <TD style="font-weight:bold">E_Hp</TD> <TD>J</TD>
+          <TD>0.0002105</TD> <TD>NA</TD>
+          <TD>0.0328</TD> <TD>NA</TD>
+          <TD>0.2491</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>maturity at puberty</TD>
+        </TR>
+
+        <TR id="h_a"> <TD style="font-weight:bold">h_a</TD> <TD>1/d^2</TD>
+          <TD>2.568e-21</TD> <TD>20</TD>
+          <TD>3.311e-06</TD> <TD>20</TD>
+          <TD>7.761e-05</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>Weibull aging acceleration</TD>
+        </TR>
+
+        <TR id="s_G"> <TD style="font-weight:bold">s_G</TD> <TD>-</TD>
+          <TD>0.0001</TD> <TD>NA</TD>
+          <TD>0.0001</TD> <TD>NA</TD>
+          <TD>0.0001</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>Gompertz stress coefficient</TD>
+        </TR>
+
+        <TR id="d_X"> <TD style="font-weight:bold">d_X</TD> <TD>g/cm^3</TD>
+          <TD>0.17</TD> <TD>NA</TD>
+          <TD>0.17</TD> <TD>NA</TD>
+          <TD>0.17</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>specific density of food</TD>
+        </TR>
+
+        <TR id="d_V"> <TD style="font-weight:bold">d_V</TD> <TD>g/cm^3</TD>
+          <TD>0.17</TD> <TD>NA</TD>
+          <TD>0.17</TD> <TD>NA</TD>
+          <TD>0.17</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>specific density of structure</TD>
+        </TR>
+
+        <TR id="d_E"> <TD style="font-weight:bold">d_E</TD> <TD>g/cm^3</TD>
+          <TD>0.17</TD> <TD>NA</TD>
+          <TD>0.17</TD> <TD>NA</TD>
+          <TD>0.17</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>specific density of reserve</TD>
+        </TR>
+
+        <TR id="d_P"> <TD style="font-weight:bold">d_P</TD> <TD>g/cm^3</TD>
+          <TD>0.17</TD> <TD>NA</TD>
+          <TD>0.17</TD> <TD>NA</TD>
+          <TD>0.17</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>specific density of faeces</TD>
+        </TR>
+
+        <TR id="mu_X"> <TD style="font-weight:bold">mu_X</TD> <TD>J/ mol</TD>
+          <TD>525000</TD> <TD>NA</TD>
+          <TD>525000</TD> <TD>NA</TD>
+          <TD>525000</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chemical potential of food</TD>
+        </TR>
+
+        <TR id="mu_V"> <TD style="font-weight:bold">mu_V</TD> <TD>J/ mol</TD>
+          <TD>500000</TD> <TD>NA</TD>
+          <TD>500000</TD> <TD>NA</TD>
+          <TD>500000</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chemical potential of structure</TD>
+        </TR>
+
+        <TR id="mu_E"> <TD style="font-weight:bold">mu_E</TD> <TD>J/ mol</TD>
+          <TD>550000</TD> <TD>NA</TD>
+          <TD>550000</TD> <TD>NA</TD>
+          <TD>550000</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chemical potential of reserve</TD>
+        </TR>
+
+        <TR id="mu_P"> <TD style="font-weight:bold">mu_P</TD> <TD>J/ mol</TD>
+          <TD>480000</TD> <TD>NA</TD>
+          <TD>480000</TD> <TD>NA</TD>
+          <TD>480000</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chemical potential of faeces</TD>
+        </TR>
+
+        <TR id="mu_C"> <TD style="font-weight:bold">mu_C</TD> <TD>J/ mol</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chemical potential of CO2</TD>
+        </TR>
+
+        <TR id="mu_H"> <TD style="font-weight:bold">mu_H</TD> <TD>J/ mol</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chemical potential of H2O</TD>
+        </TR>
+
+        <TR id="mu_O"> <TD style="font-weight:bold">mu_O</TD> <TD>J/ mol</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chemical potential of O2</TD>
+        </TR>
+
+        <TR id="mu_N"> <TD style="font-weight:bold">mu_N</TD> <TD>J/ mol</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chemical potential of N-waste</TD>
+        </TR>
+
+        <TR id="n_CX"> <TD style="font-weight:bold">n_CX</TD> <TD>-</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of carbon in food</TD>
+        </TR>
+
+        <TR id="n_HX"> <TD style="font-weight:bold">n_HX</TD> <TD>-</TD>
+          <TD>1.8</TD> <TD>NA</TD>
+          <TD>1.8</TD> <TD>NA</TD>
+          <TD>1.8</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of hydrogen in food</TD>
+        </TR>
+
+        <TR id="n_OX"> <TD style="font-weight:bold">n_OX</TD> <TD>-</TD>
+          <TD>0.5</TD> <TD>NA</TD>
+          <TD>0.5</TD> <TD>NA</TD>
+          <TD>0.5</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of oxygen in food</TD>
+        </TR>
+
+        <TR id="n_NX"> <TD style="font-weight:bold">n_NX</TD> <TD>-</TD>
+          <TD>0.15</TD> <TD>NA</TD>
+          <TD>0.15</TD> <TD>NA</TD>
+          <TD>0.15</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of nitrogen in food</TD>
+        </TR>
+
+        <TR id="n_CV"> <TD style="font-weight:bold">n_CV</TD> <TD>-</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of carbon in structure</TD>
+        </TR>
+
+        <TR id="n_HV"> <TD style="font-weight:bold">n_HV</TD> <TD>-</TD>
+          <TD>1.8</TD> <TD>NA</TD>
+          <TD>1.8</TD> <TD>NA</TD>
+          <TD>1.8</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of hydrogen in structure</TD>
+        </TR>
+
+        <TR id="n_OV"> <TD style="font-weight:bold">n_OV</TD> <TD>-</TD>
+          <TD>0.5</TD> <TD>NA</TD>
+          <TD>0.5</TD> <TD>NA</TD>
+          <TD>0.5</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of oxygen in structure</TD>
+        </TR>
+
+        <TR id="n_NV"> <TD style="font-weight:bold">n_NV</TD> <TD>-</TD>
+          <TD>0.15</TD> <TD>NA</TD>
+          <TD>0.15</TD> <TD>NA</TD>
+          <TD>0.15</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of nitrogen in structure</TD>
+        </TR>
+
+        <TR id="n_CE"> <TD style="font-weight:bold">n_CE</TD> <TD>-</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of carbon in reserve</TD>
+        </TR>
+
+        <TR id="n_HE"> <TD style="font-weight:bold">n_HE</TD> <TD>-</TD>
+          <TD>1.8</TD> <TD>NA</TD>
+          <TD>1.8</TD> <TD>NA</TD>
+          <TD>1.8</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of hydrogen in reserve</TD>
+        </TR>
+
+        <TR id="n_OE"> <TD style="font-weight:bold">n_OE</TD> <TD>-</TD>
+          <TD>0.5</TD> <TD>NA</TD>
+          <TD>0.5</TD> <TD>NA</TD>
+          <TD>0.5</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of oxygen in reserve</TD>
+        </TR>
+
+        <TR id="n_NE"> <TD style="font-weight:bold">n_NE</TD> <TD>-</TD>
+          <TD>0.15</TD> <TD>NA</TD>
+          <TD>0.15</TD> <TD>NA</TD>
+          <TD>0.15</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of nitrogen in reserve</TD>
+        </TR>
+
+        <TR id="n_CP"> <TD style="font-weight:bold">n_CP</TD> <TD>-</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of carbon in faeces</TD>
+        </TR>
+
+        <TR id="n_HP"> <TD style="font-weight:bold">n_HP</TD> <TD>-</TD>
+          <TD>1.8</TD> <TD>NA</TD>
+          <TD>1.8</TD> <TD>NA</TD>
+          <TD>1.8</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of hydrogen in faeces</TD>
+        </TR>
+
+        <TR id="n_OP"> <TD style="font-weight:bold">n_OP</TD> <TD>-</TD>
+          <TD>0.5</TD> <TD>NA</TD>
+          <TD>0.5</TD> <TD>NA</TD>
+          <TD>0.5</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of oxygen in faeces</TD>
+        </TR>
+
+        <TR id="n_NP"> <TD style="font-weight:bold">n_NP</TD> <TD>-</TD>
+          <TD>0.15</TD> <TD>NA</TD>
+          <TD>0.15</TD> <TD>NA</TD>
+          <TD>0.15</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of nitrogen in faeces</TD>
+        </TR>
+
+        <TR id="n_CC"> <TD style="font-weight:bold">n_CC</TD> <TD>-</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of carbon in CO2</TD>
+        </TR>
+
+        <TR id="n_HC"> <TD style="font-weight:bold">n_HC</TD> <TD>-</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of hydrogen in CO2</TD>
+        </TR>
+
+        <TR id="n_OC"> <TD style="font-weight:bold">n_OC</TD> <TD>-</TD>
+          <TD>2</TD> <TD>NA</TD>
+          <TD>2</TD> <TD>NA</TD>
+          <TD>2</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of oxygen in CO2</TD>
+        </TR>
+
+        <TR id="n_NC"> <TD style="font-weight:bold">n_NC</TD> <TD>-</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of nitrogen in CO2</TD>
+        </TR>
+
+        <TR id="n_CH"> <TD style="font-weight:bold">n_CH</TD> <TD>-</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of carbon in H2O</TD>
+        </TR>
+
+        <TR id="n_HH"> <TD style="font-weight:bold">n_HH</TD> <TD>-</TD>
+          <TD>2</TD> <TD>NA</TD>
+          <TD>2</TD> <TD>NA</TD>
+          <TD>2</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of hydrogen in H2O</TD>
+        </TR>
+
+        <TR id="n_OH"> <TD style="font-weight:bold">n_OH</TD> <TD>-</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of oxygen in H2O</TD>
+        </TR>
+
+        <TR id="n_NH"> <TD style="font-weight:bold">n_NH</TD> <TD>-</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of nitrogen in H2O</TD>
+        </TR>
+
+        <TR id="n_CO"> <TD style="font-weight:bold">n_CO</TD> <TD>-</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of carbon in O2</TD>
+        </TR>
+
+        <TR id="n_HO"> <TD style="font-weight:bold">n_HO</TD> <TD>-</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of hydrogen in O2</TD>
+        </TR>
+
+        <TR id="n_OO"> <TD style="font-weight:bold">n_OO</TD> <TD>-</TD>
+          <TD>2</TD> <TD>NA</TD>
+          <TD>2</TD> <TD>NA</TD>
+          <TD>2</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of oxygen in O2</TD>
+        </TR>
+
+        <TR id="n_NO"> <TD style="font-weight:bold">n_NO</TD> <TD>-</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of nitrogen in O2</TD>
+        </TR>
+
+        <TR id="n_CN"> <TD style="font-weight:bold">n_CN</TD> <TD>-</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of carbon in N-waste</TD>
+        </TR>
+
+        <TR id="n_HN"> <TD style="font-weight:bold">n_HN</TD> <TD>-</TD>
+          <TD>3</TD> <TD>NA</TD>
+          <TD>3</TD> <TD>NA</TD>
+          <TD>3</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of hydrogen in N-waste</TD>
+        </TR>
+
+        <TR id="n_ON"> <TD style="font-weight:bold">n_ON</TD> <TD>-</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of oxygen in N-waste</TD>
+        </TR>
+
+        <TR id="n_NN"> <TD style="font-weight:bold">n_NN</TD> <TD>-</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>chem. index of nitrogen in N-waste</TD>
+        </TR>
+
+        <TR id="c_T"> <TD style="font-weight:bold">c_T</TD> <TD>-</TD>
+          <TD>0.820436</TD> <TD>15</TD>
+          <TD>1.07329</TD> <TD>22</TD>
+          <TD>0.491496</TD> <TD>15</TD>
+          <TD align="center">NA</TD> <TD>Temperature Correction factor</TD>
+        </TR>
+        <TR id="p_Am"> <TD style="font-weight:bold">p_Am</TD> <TD>J/d.cm^2</TD>
+          <TD>112.351</TD> <TD>20</TD>
+          <TD>15.8588</TD> <TD>20</TD>
+          <TD>170.247</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>{p_Am}, spec assimilation flux</TD>
+        </TR>
+        <TR id="w_X"> <TD style="font-weight:bold">w_X</TD> <TD>g/mol</TD>
+          <TD>23.9</TD> <TD>NA</TD>
+          <TD>23.9</TD> <TD>NA</TD>
+          <TD>23.9</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>molecular weight for water-free food</TD>
+        </TR>
+        <TR id="w_V"> <TD style="font-weight:bold">w_V</TD> <TD>g/mol</TD>
+          <TD>23.9</TD> <TD>NA</TD>
+          <TD>23.9</TD> <TD>NA</TD>
+          <TD>23.9</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>molecular weight for water-free structure</TD>
+        </TR>
+        <TR id="w_E"> <TD style="font-weight:bold">w_E</TD> <TD>g/mol</TD>
+          <TD>23.9</TD> <TD>NA</TD>
+          <TD>23.9</TD> <TD>NA</TD>
+          <TD>23.9</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>molecular weight for water-free reserve</TD>
+        </TR>
+        <TR id="w_P"> <TD style="font-weight:bold">w_P</TD> <TD>g/mol</TD>
+          <TD>23.9</TD> <TD>NA</TD>
+          <TD>23.9</TD> <TD>NA</TD>
+          <TD>23.9</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>molecular weight for water-free product (feaces)</TD>
+        </TR>
+        <TR id="M_V"> <TD style="font-weight:bold">M_V</TD> <TD>mol/cm^3</TD>
+          <TD>0.00711297</TD> <TD>NA</TD>
+          <TD>0.00711297</TD> <TD>NA</TD>
+          <TD>0.00711297</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>[M_V], volume-specific mass of structure</TD>
+        </TR>
+        <TR id="y_V_E"> <TD style="font-weight:bold">y_V_E</TD> <TD>mol/mol</TD>
+          <TD>0.879794</TD> <TD>NA</TD>
+          <TD>0.87951</TD> <TD>NA</TD>
+          <TD>0.88282</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>yield of structure on reserve</TD>
+        </TR>
+        <TR id="y_E_V"> <TD style="font-weight:bold">y_E_V</TD> <TD>mol/mol</TD>
+          <TD>1.13663</TD> <TD>NA</TD>
+          <TD>1.137</TD> <TD>NA</TD>
+          <TD>1.13273</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>yield of reserve on structure</TD>
+        </TR>
+        <TR id="k_M"> <TD style="font-weight:bold">k_M</TD> <TD>1/d</TD>
+          <TD>0.388362</TD> <TD>20</TD>
+          <TD>0.133251</TD> <TD>20</TD>
+          <TD>0.00484661</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>somatic maintenance rate coefficient</TD>
+        </TR>
+        <TR id="k"> <TD style="font-weight:bold">k</TD> <TD>-</TD>
+          <TD>0.00514983</TD> <TD>NA</TD>
+          <TD>0.0150093</TD> <TD>NA</TD>
+          <TD>0.412659</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>maintenance ratio</TD>
+        </TR>
+        <TR id="E_m"> <TD style="font-weight:bold">E_m</TD> <TD>J/cm^3</TD>
+          <TD>9027.77</TD> <TD>NA</TD>
+          <TD>780.609</TD> <TD>NA</TD>
+          <TD>7971.51</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>[E_m], reserve capacity</TD>
+        </TR>
+        <TR id="m_Em"> <TD style="font-weight:bold">m_Em</TD> <TD>mol/mol</TD>
+          <TD>2.30763</TD> <TD>NA</TD>
+          <TD>0.199535</TD> <TD>NA</TD>
+          <TD>2.03764</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>reserve capacity</TD>
+        </TR>
+        <TR id="g"> <TD style="font-weight:bold">g</TD> <TD>-</TD>
+          <TD>0.492755</TD> <TD>NA</TD>
+          <TD>7.34203</TD> <TD>NA</TD>
+          <TD>4.59958</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>energy investment ratio</TD>
+        </TR>
+        <TR id="L_m"> <TD style="font-weight:bold">L_m</TD> <TD>cm</TD>
+          <TD>0.065032</TD> <TD>NA</TD>
+          <TD>0.020766</TD> <TD>NA</TD>
+          <TD>0.95804</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>maximum structural length</TD>
+        </TR>
+        <TR id="L_T"> <TD style="font-weight:bold">L_T</TD> <TD>cm</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>heating length (also applies to osmotic work)</TD>
+        </TR>
+        <TR id="l_T"> <TD style="font-weight:bold">l_T</TD> <TD>-</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD>0</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>scaled heating length</TD>
+        </TR>
+        <TR id="ome"> <TD style="font-weight:bold">ome</TD> <TD>-</TD>
+          <TD>2.30763</TD> <TD>NA</TD>
+          <TD>0.199535</TD> <TD>NA</TD>
+          <TD>2.03764</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>\omega, contribution of ash free dry mass of reserve to total ash free dry biomass</TD>
+        </TR>
+        <TR id="J_E_Am"> <TD style="font-weight:bold">J_E_Am</TD> <TD>mol/d.cm^2</TD>
+          <TD>0.000204274</TD> <TD>20</TD>
+          <TD>2.88343e-05</TD> <TD>20</TD>
+          <TD>0.000309541</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>{J_EAm}, max surface-spec assimilation flux</TD>
+        </TR>
+        <TR id="y_E_X"> <TD style="font-weight:bold">y_E_X</TD> <TD>mol/mol</TD>
+          <TD>0.763636</TD> <TD>NA</TD>
+          <TD>0.763636</TD> <TD>NA</TD>
+          <TD>0.171818</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>yield of reserve on food</TD>
+        </TR>
+        <TR id="y_X_E"> <TD style="font-weight:bold">y_X_E</TD> <TD>mol/mol</TD>
+          <TD>1.30952</TD> <TD>NA</TD>
+          <TD>1.30952</TD> <TD>NA</TD>
+          <TD>5.82011</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>yield of food on reserve</TD>
+        </TR>
+        <TR id="p_Xm"> <TD style="font-weight:bold">p_Xm</TD> <TD>J/d.cm^2</TD>
+          <TD>140.438</TD> <TD>20</TD>
+          <TD>19.8236</TD> <TD>20</TD>
+          <TD>945.819</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>{p_Xm}, max spec feeding power</TD>
+        </TR>
+        <TR id="J_X_Am"> <TD style="font-weight:bold">J_X_Am</TD> <TD>mol/d.cm^2</TD>
+          <TD>0.000267501</TD> <TD>20</TD>
+          <TD>3.77592e-05</TD> <TD>20</TD>
+          <TD>0.00180156</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>{J_XAm}, max surface-spec feeding flux</TD>
+        </TR>
+        <TR id="y_P_X"> <TD style="font-weight:bold">y_P_X</TD> <TD>mol/mol</TD>
+          <TD>0.109375</TD> <TD>NA</TD>
+          <TD>0.109375</TD> <TD>NA</TD>
+          <TD>0.765625</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>yield of faeces on food</TD>
+        </TR>
+        <TR id="y_X_P"> <TD style="font-weight:bold">y_X_P</TD> <TD>mol/mol</TD>
+          <TD>9.14286</TD> <TD>NA</TD>
+          <TD>9.14286</TD> <TD>NA</TD>
+          <TD>1.30612</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>yield of food on faeces</TD>
+        </TR>
+        <TR id="y_P_E"> <TD style="font-weight:bold">y_P_E</TD> <TD>mol/mol</TD>
+          <TD>0.143229</TD> <TD>NA</TD>
+          <TD>0.143229</TD> <TD>NA</TD>
+          <TD>4.45602</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>yield of faeces on reserve</TD>
+        </TR>
+        <TR id="eta_XA"> <TD style="font-weight:bold">eta_XA</TD> <TD>mol/J</TD>
+          <TD>2.38095e-06</TD> <TD>NA</TD>
+          <TD>2.38095e-06</TD> <TD>NA</TD>
+          <TD>1.0582e-05</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>mass-power couplers for food on assimilation</TD>
+        </TR>
+        <TR id="eta_PA"> <TD style="font-weight:bold">eta_PA</TD> <TD>mol/J</TD>
+          <TD>2.60417e-07</TD> <TD>NA</TD>
+          <TD>2.60417e-07</TD> <TD>NA</TD>
+          <TD>8.10185e-06</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>mass-power couplers for product on assimlation</TD>
+        </TR>
+        <TR id="eta_VG"> <TD style="font-weight:bold">eta_VG</TD> <TD>mol/J</TD>
+          <TD>1.59962e-06</TD> <TD>NA</TD>
+          <TD>1.59911e-06</TD> <TD>NA</TD>
+          <TD>1.60513e-06</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>mass-power couplers for structure on growth</TD>
+        </TR>
+        <TR id="J_E_M"> <TD style="font-weight:bold">J_E_M</TD> <TD>mol/d.cm^3</TD>
+          <TD>0.00313984</TD> <TD>20</TD>
+          <TD>0.00107765</TD> <TD>20</TD>
+          <TD>3.90496e-05</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>[J_EM], vol-spec somatic  maint costs</TD>
+        </TR>
+        <TR id="J_E_T"> <TD style="font-weight:bold">J_E_T</TD> <TD>mol/d.cm^2</TD>
+          <TD>0</TD> <TD>20</TD>
+          <TD>0</TD> <TD>20</TD>
+          <TD>0</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>{J_ET}, surface-spec somatic  maint costs</TD>
+        </TR>
+        <TR id="j_E_M"> <TD style="font-weight:bold">j_E_M</TD> <TD>mol/d.mol</TD>
+          <TD>0.441424</TD> <TD>20</TD>
+          <TD>0.151505</TD> <TD>20</TD>
+          <TD>0.00548992</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>mass-spec somatic  maint costs</TD>
+        </TR>
+        <TR id="j_E_J"> <TD style="font-weight:bold">j_E_J</TD> <TD>mol/d.mol</TD>
+          <TD>0.00227326</TD> <TD>20</TD>
+          <TD>0.00227399</TD> <TD>20</TD>
+          <TD>0.00226547</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>mass-spec maturity maint costs</TD>
+        </TR>
+        <TR id="kap_G"> <TD style="font-weight:bold">kap_G</TD> <TD>-</TD>
+          <TD>0.799812</TD> <TD>NA</TD>
+          <TD>0.799555</TD> <TD>NA</TD>
+          <TD>0.802564</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>\kappa_G, growth efficiency</TD>
+        </TR>
+        <TR id="E_V"> <TD style="font-weight:bold">E_V</TD> <TD>J/cm^3</TD>
+          <TD>3556.49</TD> <TD>NA</TD>
+          <TD>3556.49</TD> <TD>NA</TD>
+          <TD>3556.49</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>[E_V], volume-specific energy of structure</TD>
+        </TR>
+        <TR id="K"> <TD style="font-weight:bold">K</TD> <TD>mol X/l</TD>
+          <TD>4.1154e-05</TD> <TD>NA</TD>
+          <TD>5.8091e-06</TD> <TD>NA</TD>
+          <TD>0.000277163</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>half-saturation coefficient</TD>
+        </TR>
+        <TR id="E_Hb"> <TD style="font-weight:bold">E_Hb</TD> <TD>J</TD>
+          <TD>5.57e-06</TD> <TD>NA</TD>
+          <TD>0.0005939</TD> <TD>NA</TD>
+          <TD>0.002313</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>maturity level at birth</TD>
+        </TR>
+        <TR id="M_Hb"> <TD style="font-weight:bold">M_Hb</TD> <TD>mol</TD>
+          <TD>1.01273e-11</TD> <TD>NA</TD>
+          <TD>1.07982e-09</TD> <TD>NA</TD>
+          <TD>4.20545e-09</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>maturity level at birth</TD>
+        </TR>
+        <TR id="U_Hb"> <TD style="font-weight:bold">U_Hb</TD> <TD>cm^2.d</TD>
+          <TD>4.9577e-08</TD> <TD>20</TD>
+          <TD>3.74491e-05</TD> <TD>20</TD>
+          <TD>1.35861e-05</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>scaled maturity level at birth</TD>
+        </TR>
+        <TR id="V_Hb"> <TD style="font-weight:bold">V_Hb</TD> <TD>cm^2.d</TD>
+          <TD>0.000120919</TD> <TD>20</TD>
+          <TD>0.000167266</TD> <TD>20</TD>
+          <TD>1.54539e-05</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>scaled maturity level at birth</TD>
+        </TR>
+        <TR id="u_Hb"> <TD style="font-weight:bold">u_Hb</TD> <TD>-</TD>
+          <TD>4.55264e-06</TD> <TD>NA</TD>
+          <TD>0.0115719</TD> <TD>NA</TD>
+          <TD>7.17407e-08</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>scaled maturity level at birth</TD>
+        </TR>
+        <TR id="v_Hb"> <TD style="font-weight:bold">v_Hb</TD> <TD>-</TD>
+          <TD>0.011104</TD> <TD>NA</TD>
+          <TD>0.0516857</TD> <TD>NA</TD>
+          <TD>8.16033e-08</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>scaled maturity level at birth</TD>
+        </TR>
+        <TR id="E_Hp"> <TD style="font-weight:bold">E_Hp</TD> <TD>J</TD>
+          <TD>0.0002105</TD> <TD>NA</TD>
+          <TD>0.0328</TD> <TD>NA</TD>
+          <TD>0.2491</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>maturity level at puberty</TD>
+        </TR>
+        <TR id="M_Hp"> <TD style="font-weight:bold">M_Hp</TD> <TD>mol</TD>
+          <TD>3.82727e-10</TD> <TD>NA</TD>
+          <TD>5.96364e-08</TD> <TD>NA</TD>
+          <TD>4.52909e-07</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>maturity level at puberty</TD>
+        </TR>
+        <TR id="U_Hp"> <TD style="font-weight:bold">U_Hp</TD> <TD>cm^2.d</TD>
+          <TD>1.8736e-06</TD> <TD>20</TD>
+          <TD>0.00206825</TD> <TD>20</TD>
+          <TD>0.00146316</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>scaled maturity level at puberty</TD>
+        </TR>
+        <TR id="V_Hp"> <TD style="font-weight:bold">V_Hp</TD> <TD>cm^2.d</TD>
+          <TD>0.00456976</TD> <TD>20</TD>
+          <TD>0.00923778</TD> <TD>20</TD>
+          <TD>0.00166431</TD> <TD>20</TD>
+          <TD align="center">NA</TD> <TD>scaled maturity level at puberty</TD>
+        </TR>
+        <TR id="u_Hp"> <TD style="font-weight:bold">u_Hp</TD> <TD>-</TD>
+          <TD>0.000172052</TD> <TD>NA</TD>
+          <TD>0.639096</TD> <TD>NA</TD>
+          <TD>7.72616e-06</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>scaled maturity level at puberty</TD>
+        </TR>
+        <TR id="v_Hp"> <TD style="font-weight:bold">v_Hp</TD> <TD>-</TD>
+          <TD>0.419639</TD> <TD>NA</TD>
+          <TD>2.85451</TD> <TD>NA</TD>
+          <TD>8.78832e-06</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>scaled maturity level at puberty</TD>
+        </TR>
+        <TR id="t_E"> <TD style="font-weight:bold">t_E</TD> <TD>d</TD>
+          <TD>6.36924</TD> <TD>15</TD>
+          <TD>0.952349</TD> <TD>22</TD>
+          <TD>91.269</TD> <TD>15</TD>
+          <TD align="center">NA</TD> <TD>maximum reserve residence time</TD>
+        </TR>
+        <TR id="t_starve"> <TD style="font-weight:bold">t_starve</TD> <TD>d</TD>
+          <TD>6.37185</TD> <TD>15</TD>
+          <TD>1.22708</TD> <TD>22</TD>
+          <TD>755.163</TD> <TD>15</TD>
+          <TD align="center">0</TD> <TD>maximum survival time when starved</TD>
+        </TR>
+        <TR id="s_M"> <TD style="font-weight:bold">s_M</TD> <TD>-</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>3.35771</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>acceleration factor at f=1</TD>
+        </TR>
+        <TR id="r_B"> <TD style="font-weight:bold">r_B</TD> <TD>1/d</TD>
+          <TD>0.0350593</TD> <TD>15</TD>
+          <TD>0.0419576</TD> <TD>22</TD>
+          <TD>0.000652228</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>von Bertalanffy growth rate</TD>
+        </TR>
+        <TR id="W_dWm"> <TD style="font-weight:bold">W_dWm</TD> <TD>g</TD>
+          <TD>0.000126583</TD> <TD>NA</TD>
+          <TD>1.903e-05</TD> <TD>NA</TD>
+          <TD>2.3216e-05</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>wet weight at maximum growth</TD>
+        </TR>
+        <TR id="dWm"> <TD style="font-weight:bold">dWm</TD> <TD>g/d</TD>
+          <TD>1.23788e-05</TD> <TD>15</TD>
+          <TD>4.56324e-06</TD> <TD>22</TD>
+          <TD>2.16397e-06</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>maximum growth in wet weight</TD>
+        </TR>
+        <TR id="U_E0"> <TD style="font-weight:bold">U_E0</TD> <TD>cm^2.d</TD>
+          <TD>0.000295379</TD> <TD>20</TD>
+          <TD>0.000188143</TD> <TD>20</TD>
+          <TD>1.88209e-05</TD> <TD>20</TD>
+          <TD align="center">1</TD> <TD>scaled initial reserve</TD>
+        </TR>
+        <TR id="E_0"> <TD style="font-weight:bold">E_0</TD> <TD>J</TD>
+          <TD>0.0331859</TD> <TD>NA</TD>
+          <TD>0.00298374</TD> <TD>NA</TD>
+          <TD>0.00320421</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>initial reserve</TD>
+        </TR>
+        <TR id="M_E0"> <TD style="font-weight:bold">M_E0</TD> <TD>mol</TD>
+          <TD>6.03381e-08</TD> <TD>NA</TD>
+          <TD>5.42498e-09</TD> <TD>NA</TD>
+          <TD>5.82585e-09</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>initial reserve</TD>
+        </TR>
+        <TR id="Wd_0"> <TD style="font-weight:bold">Wd_0</TD> <TD>g</TD>
+          <TD>1.44208e-06</TD> <TD>NA</TD>
+          <TD>1.29657e-07</TD> <TD>NA</TD>
+          <TD>1.39238e-07</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>initial dry weight</TD>
+        </TR>
+        <TR id="Ww_0"> <TD style="font-weight:bold">Ww_0</TD> <TD>g</TD>
+          <TD>8.48283e-06</TD> <TD>NA</TD>
+          <TD>7.62688e-07</TD> <TD>NA</TD>
+          <TD>8.19045e-07</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>initial wet weight</TD>
+        </TR>
+        <TR id="l_b"> <TD style="font-weight:bold">l_b</TD> <TD>-</TD>
+          <TD>0.199018</TD> <TD>NA</TD>
+          <TD>0.360367</TD> <TD>NA</TD>
+          <TD>0.00433607</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>scaled structural length at birth</TD>
+        </TR>
+        <TR id="L_b"> <TD style="font-weight:bold">L_b</TD> <TD>cm</TD>
+          <TD>0.0129425</TD> <TD>NA</TD>
+          <TD>0.00748339</TD> <TD>NA</TD>
+          <TD>0.00415413</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>structural length at birth</TD>
+        </TR>
+        <TR id="M_Vb"> <TD style="font-weight:bold">M_Vb</TD> <TD>mol</TD>
+          <TD>1.54208e-08</TD> <TD>NA</TD>
+          <TD>2.98089e-09</TD> <TD>NA</TD>
+          <TD>5.09907e-10</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>structural mass at birth</TD>
+        </TR>
+        <TR id="del_Ub"> <TD style="font-weight:bold">del_Ub</TD> <TD>-</TD>
+          <TD>0.589771</TD> <TD>NA</TD>
+          <TD>0.10964</TD> <TD>NA</TD>
+          <TD>0.178344</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>fraction of reserve left at birth</TD>
+        </TR>
+        <TR id="Ww_b"> <TD style="font-weight:bold">Ww_b</TD> <TD>g</TD>
+          <TD>7.17091e-06</TD> <TD>NA</TD>
+          <TD>5.02699e-07</TD> <TD>NA</TD>
+          <TD>2.17759e-07</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>wet weight at birth</TD>
+        </TR>
+        <TR id="Wd_b"> <TD style="font-weight:bold">Wd_b</TD> <TD>g</TD>
+          <TD>1.21905e-06</TD> <TD>NA</TD>
+          <TD>8.54588e-08</TD> <TD>NA</TD>
+          <TD>3.7019e-08</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>dry weight at birth</TD>
+        </TR>
+        <TR id="E_Wb"> <TD style="font-weight:bold">E_Wb</TD> <TD>J</TD>
+          <TD>0.0272825</TD> <TD>NA</TD>
+          <TD>0.00181758</TD> <TD>NA</TD>
+          <TD>0.000826407</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>energy content at birth</TD>
+        </TR>
+        <TR id="a_b"> <TD style="font-weight:bold">a_b</TD> <TD>d</TD>
+          <TD>4.33677</TD> <TD>15</TD>
+          <TD>1.68106</TD> <TD>22</TD>
+          <TD>1.77058</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>age at birth</TD>
+        </TR>
+        <TR id="g_Hb"> <TD style="font-weight:bold">g_Hb</TD> <TD>-</TD>
+          <TD>0.694119</TD> <TD>NA</TD>
+          <TD>8.10868</TD> <TD>NA</TD>
+          <TD>4.60402</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>energy divestment ratio at birth</TD>
+        </TR>
+        <TR id="s_Hbp"> <TD style="font-weight:bold">s_Hbp</TD> <TD>-</TD>
+          <TD>0.0264608</TD> <TD>NA</TD>
+          <TD>0.0181067</TD> <TD>NA</TD>
+          <TD>0.00928543</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>maturity ratio</TD>
+        </TR>
+        <TR id="s_HLbp"> <TD style="font-weight:bold">s_HLbp</TD> <TD>-</TD>
+          <TD>0.467093</TD> <TD>NA</TD>
+          <TD>0.68544</TD> <TD>NA</TD>
+          <TD>0.989948</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>maturity density ratio at f=1</TD>
+        </TR>
+        <TR id="l_p"> <TD style="font-weight:bold">l_p</TD> <TD>-</TD>
+          <TD>0.518193</TD> <TD>NA</TD>
+          <TD>1.21001</TD> <TD>NA</TD>
+          <TD>0.0205605</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>scaled structural length at puberty</TD>
+        </TR>
+        <TR id="L_p"> <TD style="font-weight:bold">L_p</TD> <TD>cm</TD>
+          <TD>0.0336992</TD> <TD>NA</TD>
+          <TD>0.0251271</TD> <TD>NA</TD>
+          <TD>0.0196978</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>structural length at puberty</TD>
+        </TR>
+        <TR id="M_Vp"> <TD style="font-weight:bold">M_Vp</TD> <TD>mol</TD>
+          <TD>2.72212e-07</TD> <TD>NA</TD>
+          <TD>1.12843e-07</TD> <TD>NA</TD>
+          <TD>5.43628e-08</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>structural mass at puberty</TD>
+        </TR>
+        <TR id="M_Ep"> <TD style="font-weight:bold">M_Ep</TD> <TD>mol</TD>
+          <TD>6.28166e-07</TD> <TD>NA</TD>
+          <TD>2.25162e-08</TD> <TD>NA</TD>
+          <TD>1.10772e-07</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>reserve mass at puberty</TD>
+        </TR>
+        <TR id="Ww_p"> <TD style="font-weight:bold">Ww_p</TD> <TD>g</TD>
+          <TD>0.000126583</TD> <TD>NA</TD>
+          <TD>1.903e-05</TD> <TD>NA</TD>
+          <TD>2.3216e-05</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>wet weight at puberty</TD>
+        </TR>
+        <TR id="Wd_p"> <TD style="font-weight:bold">Wd_p</TD> <TD>g</TD>
+          <TD>2.15191e-05</TD> <TD>NA</TD>
+          <TD>3.23509e-06</TD> <TD>NA</TD>
+          <TD>3.94671e-06</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>dry weight at puberty</TD>
+        </TR>
+        <TR id="E_Wp"> <TD style="font-weight:bold">E_Wp</TD> <TD>J</TD>
+          <TD>0.481598</TD> <TD>NA</TD>
+          <TD>0.0688056</TD> <TD>NA</TD>
+          <TD>0.0881058</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>energy content at puberty</TD>
+        </TR>
+        <TR id="a_p"> <TD style="font-weight:bold">a_p</TD> <TD>d</TD>
+          <TD>18.835</TD> <TD>15</TD>
+          <TD>17.9456</TD> <TD>22</TD>
+          <TD>26.9601</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>age at puberty</TD>
+        </TR>
+        <TR id="g_Hp"> <TD style="font-weight:bold">g_Hp</TD> <TD>-</TD>
+          <TD>1.48604</TD> <TD>NA</TD>
+          <TD>11.8299</TD> <TD>NA</TD>
+          <TD>4.65077</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>energy divestment ratio at puberty</TD>
+        </TR>
+        <TR id="s_s"> <TD style="font-weight:bold">s_s</TD> <TD>-</TD>
+          <TD>8.85312e-07</TD> <TD>NA</TD>
+          <TD>0.000152631</TD> <TD>NA</TD>
+          <TD>4.65716e-08</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>supply stress</TD>
+        </TR>
+        <TR id="l_i"> <TD style="font-weight:bold">l_i</TD> <TD>-</TD>
+          <TD>0.518193</TD> <TD>NA</TD>
+          <TD>1.21001</TD> <TD>NA</TD>
+          <TD>0.0205605</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>ultimate scaled structural length</TD>
+        </TR>
+        <TR id="L_i"> <TD style="font-weight:bold">L_i</TD> <TD>cm</TD>
+          <TD>0.0336992</TD> <TD>NA</TD>
+          <TD>0.0251271</TD> <TD>NA</TD>
+          <TD>0.0196978</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>ultimate structural length</TD>
+        </TR>
+        <TR id="M_Vi"> <TD style="font-weight:bold">M_Vi</TD> <TD>mol</TD>
+          <TD>2.72212e-07</TD> <TD>NA</TD>
+          <TD>1.12844e-07</TD> <TD>NA</TD>
+          <TD>5.43628e-08</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>ultimate structural mass</TD>
+        </TR>
+        <TR id="M_Ei"> <TD style="font-weight:bold">M_Ei</TD> <TD>mol</TD>
+          <TD>6.28166e-07</TD> <TD>NA</TD>
+          <TD>2.25163e-08</TD> <TD>NA</TD>
+          <TD>1.10772e-07</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>ultimate reserve mass</TD>
+        </TR>
+        <TR id="Ww_i"> <TD style="font-weight:bold">Ww_i</TD> <TD>g</TD>
+          <TD>0.000126583</TD> <TD>NA</TD>
+          <TD>1.903e-05</TD> <TD>NA</TD>
+          <TD>2.3216e-05</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>ultimate wet weight</TD>
+        </TR>
+        <TR id="Wd_i"> <TD style="font-weight:bold">Wd_i</TD> <TD>g</TD>
+          <TD>2.15191e-05</TD> <TD>NA</TD>
+          <TD>3.2351e-06</TD> <TD>NA</TD>
+          <TD>3.94671e-06</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>ultimate dry weight</TD>
+        </TR>
+        <TR id="E_Wi"> <TD style="font-weight:bold">E_Wi</TD> <TD>J</TD>
+          <TD>0.481598</TD> <TD>NA</TD>
+          <TD>0.0688058</TD> <TD>NA</TD>
+          <TD>0.0881058</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>ultimate energy content</TD>
+        </TR>
+        <TR id="xi_WE"> <TD style="font-weight:bold">xi_WE</TD> <TD>kJ/ g</TD>
+          <TD>22.3801</TD> <TD>NA</TD>
+          <TD>21.2685</TD> <TD>NA</TD>
+          <TD>22.3238</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>whole-body energy density of dry biomass (no reprod buffer)</TD>
+        </TR>
+        <TR id="del_Wb"> <TD style="font-weight:bold">del_Wb</TD> <TD>-</TD>
+          <TD>0.05665</TD> <TD>NA</TD>
+          <TD>0.0264161</TD> <TD>NA</TD>
+          <TD>0.00937971</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>birth weight as fraction of maximum weight</TD>
+        </TR>
+        <TR id="del_Wp"> <TD style="font-weight:bold">del_Wp</TD> <TD>-</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>0.999998</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>puberty weight as fraction of maximum weight</TD>
+        </TR>
+        <TR id="del_V"> <TD style="font-weight:bold">del_V</TD> <TD>-</TD>
+          <TD>0.302331</TD> <TD>NA</TD>
+          <TD>0.833656</TD> <TD>NA</TD>
+          <TD>0.329203</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>fraction of max weight that is structure</TD>
+        </TR>
+        <TR id="h_W"> <TD style="font-weight:bold">h_W</TD> <TD>1/d</TD>
+          <TD>4.43593e-08</TD> <TD>15</TD>
+          <TD>0.012281</TD> <TD>22</TD>
+          <TD>0.0118527</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>Weibull ageing rate</TD>
+        </TR>
+        <TR id="h_G"> <TD style="font-weight:bold">h_G</TD> <TD>1/d</TD>
+          <TD>4.21596e-06</TD> <TD>15</TD>
+          <TD>0.000516209</TD> <TD>22</TD>
+          <TD>4.63173e-10</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>Gompertz aging rate</TD>
+        </TR>
+        <TR id="S_b"> <TD style="font-weight:bold">S_b</TD> <TD>-</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>0.999986</TD> <TD>NA</TD>
+          <TD>0.999958</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>survival probability at birth</TD>
+        </TR>
+        <TR id="S_p"> <TD style="font-weight:bold">S_p</TD> <TD>-</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>0.997643</TD> <TD>NA</TD>
+          <TD>0.989658</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>survival probability at puberty</TD>
+        </TR>
+        <TR id="a_m"> <TD style="font-weight:bold">a_m</TD> <TD>d</TD>
+          <TD>2.67944e+06</TD> <TD>15</TD>
+          <TD>81.7425</TD> <TD>22</TD>
+          <TD>91.9937</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>life span</TD>
+        </TR>
+        <TR id="a_99"> <TD style="font-weight:bold">a_99</TD> <TD>d</TD>
+          <TD>-Inf</TD> <TD>15</TD>
+          <TD>-206.113</TD> <TD>22</TD>
+          <TD>-Inf</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>age at length 0.99 * L_i</TD>
+        </TR>
+        <TR id="R_i"> <TD style="font-weight:bold">R_i</TD> <TD>1/d</TD>
+          <TD>1.4444</TD> <TD>15</TD>
+          <TD>8.25323</TD> <TD>22</TD>
+          <TD>9.52927</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>ultimate reproduction rate</TD>
+        </TR>
+        <TR id="N_i"> <TD style="font-weight:bold">N_i</TD> <TD>#</TD>
+          <TD>3.87017e+06</TD> <TD>NA</TD>
+          <TD>526.531</TD> <TD>NA</TD>
+          <TD>619.723</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>life time reproductive output</TD>
+        </TR>
+        <TR id="M_E0_min_G"> <TD style="font-weight:bold">M_E0_min_G</TD> <TD>mol</TD>
+          <TD>3.01798e-08</TD> <TD>NA</TD>
+          <TD>5.03695e-09</TD> <TD>NA</TD>
+          <TD>4.78417e-09</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>egg mass whereby growth ceases at birth</TD>
+        </TR>
+        <TR id="M_E0_min_R"> <TD style="font-weight:bold">M_E0_min_R</TD> <TD>mol</TD>
+          <TD>2.5261e-08</TD> <TD>NA</TD>
+          <TD>5.01298e-09</TD> <TD>NA</TD>
+          <TD>4.79118e-09</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>egg mass whereby maturation ceases at birth</TD>
+        </TR>
+        <TR id="eb_min_G"> <TD style="font-weight:bold">eb_min_G</TD> <TD>-</TD>
+          <TD>0.185988</TD> <TD>NA</TD>
+          <TD>0.355864</TD> <TD>NA</TD>
+          <TD>0.0043274</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>scaled reserve density whereby growth ceases at birth</TD>
+        </TR>
+        <TR id="eb_min_R"> <TD style="font-weight:bold">eb_min_R</TD> <TD>-</TD>
+          <TD>0.00269103</TD> <TD>NA</TD>
+          <TD>0.00646045</TD> <TD>NA</TD>
+          <TD>0.00179582</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>scaled reserve density whereby maturation ceases at birth</TD>
+        </TR>
+        <TR id="ep_min"> <TD style="font-weight:bold">ep_min</TD> <TD>-</TD>
+          <TD>0.129287</TD> <TD>NA</TD>
+          <TD>0.355827</TD> <TD>NA</TD>
+          <TD>0.0153638</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>scaled reserve density whereby maturation and growth cease at puberty</TD>
+        </TR>
+        <TR id="sM_min"> <TD style="font-weight:bold">sM_min</TD> <TD>-</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD>1.00042</TD> <TD>NA</TD>
+          <TD>1</TD> <TD>NA</TD>
+          <TD align="center">NA</TD> <TD>acceleration factor whereby maturation ceases at puberty</TD>
+        </TR>
+        <TR id="p_Xb"> <TD style="font-weight:bold">p_Xb</TD> <TD>J/d</TD>
+          <TD>0.0193005</TD> <TD>15</TD>
+          <TD>0.00119151</TD> <TD>22</TD>
+          <TD>0.0080221</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>food intake at birth</TD>
+        </TR>
+        <TR id="J_Xb"> <TD style="font-weight:bold">J_Xb</TD> <TD>mol/d</TD>
+          <TD>3.67628e-08</TD> <TD>15</TD>
+          <TD>2.26954e-09</TD> <TD>22</TD>
+          <TD>1.52802e-08</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>food intake at birth</TD>
+        </TR>
+        <TR id="F_mb"> <TD style="font-weight:bold">F_mb</TD> <TD>l/d</TD>
+          <TD>0.000893297</TD> <TD>15</TD>
+          <TD>0.000390686</TD> <TD>22</TD>
+          <TD>5.51307e-05</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>max searching rate at birth</TD>
+        </TR>
+        <TR id="p_Xp"> <TD style="font-weight:bold">p_Xp</TD> <TD>J/d</TD>
+          <TD>0.130848</TD> <TD>15</TD>
+          <TD>0.0134333</TD> <TD>22</TD>
+          <TD>0.180369</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>food intake at puberty</TD>
+        </TR>
+        <TR id="J_Xp"> <TD style="font-weight:bold">J_Xp</TD> <TD>mol/d</TD>
+          <TD>2.49235e-07</TD> <TD>15</TD>
+          <TD>2.55873e-08</TD> <TD>22</TD>
+          <TD>3.4356e-07</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>food intake at puberty</TD>
+        </TR>
+        <TR id="F_mp"> <TD style="font-weight:bold">F_mp</TD> <TD>l/d</TD>
+          <TD>0.00605614</TD> <TD>15</TD>
+          <TD>0.00440469</TD> <TD>22</TD>
+          <TD>0.00123956</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>max searching rate at puberty</TD>
+        </TR>
+        <TR id="p_Xi"> <TD style="font-weight:bold">p_Xi</TD> <TD>J/d</TD>
+          <TD>0.130848</TD> <TD>15</TD>
+          <TD>0.0134333</TD> <TD>22</TD>
+          <TD>0.180369</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>ultimate food intake</TD>
+        </TR>
+        <TR id="J_Xi"> <TD style="font-weight:bold">J_Xi</TD> <TD>mol/d</TD>
+          <TD>2.49235e-07</TD> <TD>15</TD>
+          <TD>2.55873e-08</TD> <TD>22</TD>
+          <TD>3.4356e-07</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>ultimate food intake</TD>
+        </TR>
+        <TR id="F_mi"> <TD style="font-weight:bold">F_mi</TD> <TD>l/d</TD>
+          <TD>0.00605614</TD> <TD>15</TD>
+          <TD>0.00440469</TD> <TD>22</TD>
+          <TD>0.00123956</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>max ultimate searching rate</TD>
+        </TR>
+        <TR id="p_Ab"> <TD style="font-weight:bold">p_Ab</TD> <TD>J/d</TD>
+          <TD>0.0154428</TD> <TD>15</TD>
+          <TD>0.000953588</TD> <TD>22</TD>
+          <TD>0.00144467</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>assimilation at birth</TD>
+        </TR>
+        <TR id="p_Cb"> <TD style="font-weight:bold">p_Cb</TD> <TD>J/d</TD>
+          <TD>0.00715664</TD> <TD>15</TD>
+          <TD>0.00088047</TD> <TD>22</TD>
+          <TD>0.0011878</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>mobilisation at birth</TD>
+        </TR>
+        <TR id="p_Sb"> <TD style="font-weight:bold">p_Sb</TD> <TD>J/d</TD>
+          <TD>0.00307236</TD> <TD>15</TD>
+          <TD>0.000266704</TD> <TD>22</TD>
+          <TD>7.57275e-07</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>somatic maintenance at birth</TD>
+        </TR>
+        <TR id="p_Jb"> <TD style="font-weight:bold">p_Jb</TD> <TD>J/d</TD>
+          <TD>9.1448e-09</TD> <TD>15</TD>
+          <TD>1.27553e-06</TD> <TD>22</TD>
+          <TD>2.26839e-06</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>maturity maintenance at birth</TD>
+        </TR>
+        <TR id="p_Gb"> <TD style="font-weight:bold">p_Gb</TD> <TD>J/d</TD>
+          <TD>0.00408135</TD> <TD>15</TD>
+          <TD>0.000416638</TD> <TD>22</TD>
+          <TD>0.0001428</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>growth at birth</TD>
+        </TR>
+        <TR id="p_Rb"> <TD style="font-weight:bold">p_Rb</TD> <TD>J/d</TD>
+          <TD>2.92508e-06</TD> <TD>15</TD>
+          <TD>0.000195853</TD> <TD>22</TD>
+          <TD>0.00104197</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>maturation at birth</TD>
+        </TR>
+        <TR id="p_Db"> <TD style="font-weight:bold">p_Db</TD> <TD>J/d</TD>
+          <TD>0.0030753</TD> <TD>15</TD>
+          <TD>0.000463832</TD> <TD>22</TD>
+          <TD>0.001045</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>dissipation at birth</TD>
+        </TR>
+        <TR id="p_Ap"> <TD style="font-weight:bold">p_Ap</TD> <TD>J/d</TD>
+          <TD>0.104679</TD> <TD>15</TD>
+          <TD>0.0360841</TD> <TD>22</TD>
+          <TD>0.0324664</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>assimilation at puberty</TD>
+        </TR>
+        <TR id="p_Cp"> <TD style="font-weight:bold">p_Cp</TD> <TD>J/d</TD>
+          <TD>0.0708922</TD> <TD>15</TD>
+          <TD>0.0333174</TD> <TD>22</TD>
+          <TD>0.0267876</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>mobilisation at puberty</TD>
+        </TR>
+        <TR id="p_Sp"> <TD style="font-weight:bold">p_Sp</TD> <TD>J/d</TD>
+          <TD>0.0542215</TD> <TD>15</TD>
+          <TD>0.0100922</TD> <TD>22</TD>
+          <TD>8.06771e-05</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>somatic maintenance at puberty</TD>
+        </TR>
+        <TR id="p_Jp"> <TD style="font-weight:bold">p_Jp</TD> <TD>J/d</TD>
+          <TD>3.41597e-07</TD> <TD>15</TD>
+          <TD>7.04049e-05</TD> <TD>22</TD>
+          <TD>0.000244851</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>maturity maintenance at puberty</TD>
+        </TR>
+        <TR id="p_Gp"> <TD style="font-weight:bold">p_Gp</TD> <TD>J/d</TD>
+          <TD>0.0166416</TD> <TD>15</TD>
+          <TD>0.0157658</TD> <TD>22</TD>
+          <TD>0.00315688</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>growth at puberty</TD>
+        </TR>
+        <TR id="p_Rp"> <TD style="font-weight:bold">p_Rp</TD> <TD>J/d</TD>
+          <TD>2.87242e-05</TD> <TD>15</TD>
+          <TD>0.00738902</TD> <TD>22</TD>
+          <TD>0.0233052</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>reproduction at puberty</TD>
+        </TR>
+        <TR id="p_Dp"> <TD style="font-weight:bold">p_Dp</TD> <TD>J/d</TD>
+          <TD>0.0542506</TD> <TD>15</TD>
+          <TD>0.0175516</TD> <TD>22</TD>
+          <TD>0.0236308</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>dissipation at puberty</TD>
+        </TR>
+        <TR id="p_Ai"> <TD style="font-weight:bold">p_Ai</TD> <TD>J/d</TD>
+          <TD>0.104679</TD> <TD>15</TD>
+          <TD>0.0360842</TD> <TD>22</TD>
+          <TD>0.0324665</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>ultimate assimilation</TD>
+        </TR>
+        <TR id="p_Ci"> <TD style="font-weight:bold">p_Ci</TD> <TD>J/d</TD>
+          <TD>0.0708922</TD> <TD>15</TD>
+          <TD>0.0333174</TD> <TD>22</TD>
+          <TD>0.0267877</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>ultimate mobilisation</TD>
+        </TR>
+        <TR id="p_Si"> <TD style="font-weight:bold">p_Si</TD> <TD>J/d</TD>
+          <TD>0.0542216</TD> <TD>15</TD>
+          <TD>0.0100922</TD> <TD>22</TD>
+          <TD>8.06772e-05</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>ultimate somatic maintenance</TD>
+        </TR>
+        <TR id="p_Ji"> <TD style="font-weight:bold">p_Ji</TD> <TD>J/d</TD>
+          <TD>3.41597e-07</TD> <TD>15</TD>
+          <TD>7.04051e-05</TD> <TD>22</TD>
+          <TD>0.000244851</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>ultimate maturity maintenance</TD>
+        </TR>
+        <TR id="p_Gi"> <TD style="font-weight:bold">p_Gi</TD> <TD>J/d</TD>
+          <TD>0</TD> <TD>15</TD>
+          <TD>0</TD> <TD>22</TD>
+          <TD>0</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>ultimate growth</TD>
+        </TR>
+        <TR id="p_Ri"> <TD style="font-weight:bold">p_Ri</TD> <TD>J/d</TD>
+          <TD>0.0166703</TD> <TD>15</TD>
+          <TD>0.0231548</TD> <TD>22</TD>
+          <TD>0.0264621</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>ultimate reproduction</TD>
+        </TR>
+        <TR id="p_Di"> <TD style="font-weight:bold">p_Di</TD> <TD>J/d</TD>
+          <TD>0.0542233</TD> <TD>15</TD>
+          <TD>0.0105321</TD> <TD>22</TD>
+          <TD>0.00149079</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>ultimate dissipation</TD>
+        </TR>
+        <TR id="J_Cb"> <TD style="font-weight:bold">J_Cb</TD> <TD>mol/d</TD>
+          <TD>1.11526e-08</TD> <TD>15</TD>
+          <TD>1.22293e-09</TD> <TD>22</TD>
+          <TD>2.88676e-09</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>CO2 flux at birth</TD>
+        </TR>
+        <TR id="J_Cp"> <TD style="font-weight:bold">J_Cp</TD> <TD>mol/d</TD>
+          <TD>1.33925e-07</TD> <TD>15</TD>
+          <TD>4.6276e-08</TD> <TD>22</TD>
+          <TD>6.51296e-08</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>CO2 flux at puberty</TD>
+        </TR>
+        <TR id="J_Ci"> <TD style="font-weight:bold">J_Ci</TD> <TD>mol/d</TD>
+          <TD>1.30238e-07</TD> <TD>15</TD>
+          <TD>3.00594e-08</TD> <TD>22</TD>
+          <TD>2.42026e-08</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>ultimate CO2 flux</TD>
+        </TR>
+        <TR id="J_Hb"> <TD style="font-weight:bold">J_Hb</TD> <TD>mol/d</TD>
+          <TD>8.04229e-09</TD> <TD>15</TD>
+          <TD>8.81866e-10</TD> <TD>22</TD>
+          <TD>2.08167e-09</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>water flux at birth</TD>
+        </TR>
+        <TR id="J_Hp"> <TD style="font-weight:bold">J_Hp</TD> <TD>mol/d</TD>
+          <TD>9.65745e-08</TD> <TD>15</TD>
+          <TD>3.33702e-08</TD> <TD>22</TD>
+          <TD>4.69657e-08</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>water flux at puberty</TD>
+        </TR>
+        <TR id="J_Hi"> <TD style="font-weight:bold">J_Hi</TD> <TD>mol/d</TD>
+          <TD>9.3916e-08</TD> <TD>15</TD>
+          <TD>2.16762e-08</TD> <TD>22</TD>
+          <TD>1.74527e-08</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>ultimate water flux</TD>
+        </TR>
+        <TR id="J_Ob"> <TD style="font-weight:bold">J_Ob</TD> <TD>mol/d</TD>
+          <TD>1.21285e-08</TD> <TD>15</TD>
+          <TD>1.32993e-09</TD> <TD>22</TD>
+          <TD>3.13935e-09</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>O2 flux at birth</TD>
+        </TR>
+        <TR id="J_Op"> <TD style="font-weight:bold">J_Op</TD> <TD>mol/d</TD>
+          <TD>1.45643e-07</TD> <TD>15</TD>
+          <TD>5.03252e-08</TD> <TD>22</TD>
+          <TD>7.08285e-08</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>O2 flux at puberty</TD>
+        </TR>
+        <TR id="J_Oi"> <TD style="font-weight:bold">J_Oi</TD> <TD>mol/d</TD>
+          <TD>1.41634e-07</TD> <TD>15</TD>
+          <TD>3.26896e-08</TD> <TD>22</TD>
+          <TD>2.63203e-08</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>ultimate O2 flux</TD>
+        </TR>
+        <TR id="J_Nb"> <TD style="font-weight:bold">J_Nb</TD> <TD>mol/d</TD>
+          <TD>1.67289e-09</TD> <TD>15</TD>
+          <TD>1.83439e-10</TD> <TD>22</TD>
+          <TD>4.33014e-10</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>N-waste flux at birth</TD>
+        </TR>
+        <TR id="J_Np"> <TD style="font-weight:bold">J_Np</TD> <TD>mol/d</TD>
+          <TD>2.00887e-08</TD> <TD>15</TD>
+          <TD>6.9414e-09</TD> <TD>22</TD>
+          <TD>9.76944e-09</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>N-waste flux at puberty</TD>
+        </TR>
+        <TR id="J_Ni"> <TD style="font-weight:bold">J_Ni</TD> <TD>mol/d</TD>
+          <TD>1.95357e-08</TD> <TD>15</TD>
+          <TD>4.50891e-09</TD> <TD>22</TD>
+          <TD>3.63039e-09</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>ultimate N-waste flux</TD>
+        </TR>
+        <TR id="RQ_b"> <TD style="font-weight:bold">RQ_b</TD> <TD>mol C/mol O</TD>
+          <TD>0.91954</TD> <TD>NA</TD>
+          <TD>0.91954</TD> <TD>NA</TD>
+          <TD>0.91954</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>resp quotient at birth</TD>
+        </TR>
+        <TR id="UQ_b"> <TD style="font-weight:bold">UQ_b</TD> <TD>mol N/mol O</TD>
+          <TD>0.137931</TD> <TD>NA</TD>
+          <TD>0.137931</TD> <TD>NA</TD>
+          <TD>0.137931</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>urine quotient at birth</TD>
+        </TR>
+        <TR id="WQ_b"> <TD style="font-weight:bold">WQ_b</TD> <TD>mol H/mol O</TD>
+          <TD>0.62069</TD> <TD>NA</TD>
+          <TD>0.62069</TD> <TD>NA</TD>
+          <TD>0.62069</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>water quotient at birth</TD>
+        </TR>
+        <TR id="SDA_b"> <TD style="font-weight:bold">SDA_b</TD> <TD>mol O/mol X</TD>
+          <TD>0.1381</TD> <TD>NA</TD>
+          <TD>0.1381</TD> <TD>NA</TD>
+          <TD>0.0680305</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>specific dynamic action at birth</TD>
+        </TR>
+        <TR id="VO_b"> <TD style="font-weight:bold">VO_b</TD> <TD>L/h.g</TD>
+          <TD>-0.00498468</TD> <TD>15</TD>
+          <TD>-0.0109851</TD> <TD>22</TD>
+          <TD>-0.0557781</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>dioxygen use per gram max dry weight, &lt;J_OD&gt; at birth</TD>
+        </TR>
+        <TR id="p_Tb"> <TD style="font-weight:bold">p_Tb</TD> <TD>J/d</TD>
+          <TD>0.00582268</TD> <TD>15</TD>
+          <TD>0.000666544</TD> <TD>22</TD>
+          <TD>0.00203631</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>total heat at birth</TD>
+        </TR>
+        <TR id="RQ_p"> <TD style="font-weight:bold">RQ_p</TD> <TD>mol C/mol O</TD>
+          <TD>0.91954</TD> <TD>NA</TD>
+          <TD>0.91954</TD> <TD>NA</TD>
+          <TD>0.91954</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>resp quotient at puberty</TD>
+        </TR>
+        <TR id="UQ_p"> <TD style="font-weight:bold">UQ_p</TD> <TD>mol N/mol O</TD>
+          <TD>0.137931</TD> <TD>NA</TD>
+          <TD>0.137931</TD> <TD>NA</TD>
+          <TD>0.137931</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>urine quotient at puberty</TD>
+        </TR>
+        <TR id="WQ_p"> <TD style="font-weight:bold">WQ_p</TD> <TD>mol H/mol O</TD>
+          <TD>0.62069</TD> <TD>NA</TD>
+          <TD>0.62069</TD> <TD>NA</TD>
+          <TD>0.62069</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>water quotient at puberty</TD>
+        </TR>
+        <TR id="SDA_p"> <TD style="font-weight:bold">SDA_p</TD> <TD>mol O/mol X</TD>
+          <TD>0.1381</TD> <TD>NA</TD>
+          <TD>0.1381</TD> <TD>NA</TD>
+          <TD>0.0680305</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>specific dynamic action at puberty</TD>
+        </TR>
+        <TR id="VO_p"> <TD style="font-weight:bold">VO_p</TD> <TD>L/h.g</TD>
+          <TD>-0.00498144</TD> <TD>15</TD>
+          <TD>-0.0109807</TD> <TD>22</TD>
+          <TD>-0.0118309</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>dioxygen use per gram max dry weight, &lt;J_OD&gt; at puberty</TD>
+        </TR>
+        <TR id="p_Tp"> <TD style="font-weight:bold">p_Tp</TD> <TD>J/d</TD>
+          <TD>0.0706668</TD> <TD>15</TD>
+          <TD>0.0252223</TD> <TD>22</TD>
+          <TD>0.0458983</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>total heat at puberty</TD>
+        </TR>
+        <TR id="RQ_i"> <TD style="font-weight:bold">RQ_i</TD> <TD>mol C/mol O</TD>
+          <TD>0.91954</TD> <TD>NA</TD>
+          <TD>0.91954</TD> <TD>NA</TD>
+          <TD>0.91954</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>ultimate resp quotient</TD>
+        </TR>
+        <TR id="UQ_i"> <TD style="font-weight:bold">UQ_i</TD> <TD>mol N/mol O</TD>
+          <TD>0.137931</TD> <TD>NA</TD>
+          <TD>0.137931</TD> <TD>NA</TD>
+          <TD>0.137931</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>ultimate urine quotient</TD>
+        </TR>
+        <TR id="WQ_i"> <TD style="font-weight:bold">WQ_i</TD> <TD>mol H/mol O</TD>
+          <TD>0.62069</TD> <TD>NA</TD>
+          <TD>0.62069</TD> <TD>NA</TD>
+          <TD>0.62069</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>ultimate water quotient</TD>
+        </TR>
+        <TR id="SDA_i"> <TD style="font-weight:bold">SDA_i</TD> <TD>mol O/mol X</TD>
+          <TD>0.1381</TD> <TD>NA</TD>
+          <TD>0.1381</TD> <TD>NA</TD>
+          <TD>0.0680305</TD> <TD>NA</TD>
+          <TD align="center">1</TD> <TD>ultimate specific dynamic action</TD>
+        </TR>
+        <TR id="VO_i"> <TD style="font-weight:bold">VO_i</TD> <TD>L/h.g</TD>
+          <TD>-0.00497894</TD> <TD>15</TD>
+          <TD>-0.00658906</TD> <TD>22</TD>
+          <TD>-0.000746372</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>ultimate dioxygen use per gram max dry weight, &lt;J_OD&gt;</TD>
+        </TR>
+        <TR id="p_Ti"> <TD style="font-weight:bold">p_Ti</TD> <TD>J/d</TD>
+          <TD>0.0673082</TD> <TD>15</TD>
+          <TD>0.0150426</TD> <TD>22</TD>
+          <TD>0.0231351</TD> <TD>15</TD>
+          <TD align="center">1</TD> <TD>ultimate total heat</TD>
+        </TR>
+      </TABLE>
+
+      <script>
+        function FunctionSymbol() {
+          // Declare variables
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("InputSymbol");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("Table");
+          tr = table.getElementsByTagName("tr");
+
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+        function FunctionUnits() {
+          // Declare variables
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("InputUnits");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("Table");
+          tr = table.getElementsByTagName("tr");
+
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[1];
+          if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+        function FunctionLabel() {
+          // Declare variables
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("InputLabel");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("Table");
+          tr = table.getElementsByTagName("tr");
+
+          // Loop through all table rows, and hide those who don't match the search query
+          for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[5];
+          if (td) {
+            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+
+        function FunctionShort() {
+          // Declare variables
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("InputShort");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("Table");
+          tr = table.getElementsByTagName("tr");
+
+          // Loop through all table rows, and show some from the long list
+          if (filter == "S") {
+            for (i = 0; i < tr.length; i++) {
+              td = tr[i].getElementsByTagName("td")[0];
+              if (td) {
+                if (
+                    td.innerHTML == "model" ||
+                    td.innerHTML == "T_typical" ||
+                    td.innerHTML == "c_T" ||
+                    td.innerHTML == "Ww_0" ||
+                    td.innerHTML == "Ww_b" ||
+                    td.innerHTML == "Ww_p" ||
+                    td.innerHTML == "Ww_i" ||
+                    td.innerHTML == "a_b" ||
+                    td.innerHTML == "a_p" ||
+                    td.innerHTML == "a_m" ||
+                    td.innerHTML == "t_starve" ||
+                    td.innerHTML == "J_Ci" ||
+                    td.innerHTML == "J_Hi" ||
+                    td.innerHTML == "J_Oi" ||
+                    td.innerHTML == "J_Ni" ||
+                    td.innerHTML == "J_Xi" ||
+                    td.innerHTML == "J_Pi" ||
+                    td.innerHTML == "p_Ti" ||
+                    td.innerHTML == "r_B" ||
+                    td.innerHTML == "R_i" ||
+                    td.innerHTML == "del_V"
+                  ) {
+                  tr[i].style.display = "";
+                } else {
+                  tr[i].style.display = "none";
+                }
+              }
+            }
+          } else if (filter == "M") {
+            for (i = 0; i < tr.length; i++) {
+              td = tr[i].getElementsByTagName("td")[0];
+              if (td) {
+                if (
+                    td.innerHTML == "model" ||
+                    td.innerHTML == "T_typical" ||
+                    td.innerHTML == "z" ||
+                    td.innerHTML == "c_T" ||
+                    td.innerHTML == "s_M" ||
+                    td.innerHTML == "s_Hbp" ||
+                    td.innerHTML == "s_s" ||
+                    td.innerHTML == "E_0" ||
+                    td.innerHTML == "Ww_0" ||
+                    td.innerHTML == "Ww_b" ||
+                    td.innerHTML == "Ww_p" ||
+                    td.innerHTML == "Ww_i" ||
+                    td.innerHTML == "a_b" ||
+                    td.innerHTML == "a_p" ||
+                    td.innerHTML == "a_99" ||
+                    td.innerHTML == "a_m" ||
+                    td.innerHTML == "t_starve" ||
+                    td.innerHTML == "J_Ci" ||
+                    td.innerHTML == "J_Hi" ||
+                    td.innerHTML == "J_Oi" ||
+                    td.innerHTML == "J_Ni" ||
+                    td.innerHTML == "J_Xi" ||
+                    td.innerHTML == "J_Pi" ||
+                    td.innerHTML == "p_Ti" ||
+                    td.innerHTML == "r_B" ||
+                    td.innerHTML == "R_i" ||
+                    td.innerHTML == "N_i" ||
+                    td.innerHTML == "del_V" ||
+                    td.innerHTML == "W_dWm" ||
+                    td.innerHTML == "dWm" ||
+                    td.innerHTML == "del_Wb" ||
+                    td.innerHTML == "del_Wp" ||
+                    td.innerHTML == "t_E" ||
+                    td.innerHTML == "xi_WE"
+                  ) {
+                  tr[i].style.display = "";
+                } else {
+                  tr[i].style.display = "none";
+                }
+              }
+            }
+          } else if (filter == "L") {
+            for (i = 0; i < tr.length; i++) {
+              td = tr[i].getElementsByTagName("td")[0];
+              if (td) {
+                if (
+                    td.innerHTML == "model" ||
+                    td.innerHTML == "T_typical" ||
+                    td.innerHTML == "c_T" ||
+                    td.innerHTML == "p_Am" ||
+                    td.innerHTML == "w_X" ||
+                    td.innerHTML == "w_V" ||
+                    td.innerHTML == "w_E" ||
+                    td.innerHTML == "w_P" ||
+                    td.innerHTML == "M_V" ||
+                    td.innerHTML == "y_V_E" ||
+                    td.innerHTML == "y_E_V" ||
+                    td.innerHTML == "k_M" ||
+                    td.innerHTML == "k" ||
+                    td.innerHTML == "E_m" ||
+                    td.innerHTML == "m_Em" ||
+                    td.innerHTML == "g" ||
+                    td.innerHTML == "L_m" ||
+                    td.innerHTML == "L_T" ||
+                    td.innerHTML == "l_T" ||
+                    td.innerHTML == "ome" ||
+                    td.innerHTML == "J_E_Am" ||
+                    td.innerHTML == "y_E_X" ||
+                    td.innerHTML == "y_X_E" ||
+                    td.innerHTML == "p_Xm" ||
+                    td.innerHTML == "J_X_Am" ||
+                    td.innerHTML == "y_P_X" ||
+                    td.innerHTML == "y_X_P" ||
+                    td.innerHTML == "y_P_E" ||
+                    td.innerHTML == "eta_XA" ||
+                    td.innerHTML == "eta_PA" ||
+                    td.innerHTML == "eta_VG" ||
+                    td.innerHTML == "J_E_M" ||
+                    td.innerHTML == "J_E_T" ||
+                    td.innerHTML == "j_E_M" ||
+                    td.innerHTML == "j_E_J" ||
+                    td.innerHTML == "kap_G" ||
+                    td.innerHTML == "E_V" ||
+                    td.innerHTML == "K" ||
+                    td.innerHTML == "E_Hb" ||
+                    td.innerHTML == "M_Hb" ||
+                    td.innerHTML == "U_Hb" ||
+                    td.innerHTML == "V_Hb" ||
+                    td.innerHTML == "u_Hb" ||
+                    td.innerHTML == "v_Hb" ||
+                    td.innerHTML == "E_Hp" ||
+                    td.innerHTML == "M_Hp" ||
+                    td.innerHTML == "U_Hp" ||
+                    td.innerHTML == "V_Hp" ||
+                    td.innerHTML == "u_Hp" ||
+                    td.innerHTML == "v_Hp" ||
+                    td.innerHTML == "t_E" ||
+                    td.innerHTML == "t_starve" ||
+                    td.innerHTML == "s_M" ||
+                    td.innerHTML == "r_B" ||
+                    td.innerHTML == "W_dWm" ||
+                    td.innerHTML == "dWm" ||
+                    td.innerHTML == "U_E0" ||
+                    td.innerHTML == "E_0" ||
+                    td.innerHTML == "M_E0" ||
+                    td.innerHTML == "Wd_0" ||
+                    td.innerHTML == "Ww_0" ||
+                    td.innerHTML == "l_b" ||
+                    td.innerHTML == "L_b" ||
+                    td.innerHTML == "M_Vb" ||
+                    td.innerHTML == "del_Ub" ||
+                    td.innerHTML == "Ww_b" ||
+                    td.innerHTML == "Wd_b" ||
+                    td.innerHTML == "E_Wb" ||
+                    td.innerHTML == "a_b" ||
+                    td.innerHTML == "g_Hb" ||
+                    td.innerHTML == "s_Hbp" ||
+                    td.innerHTML == "s_HLbp" ||
+                    td.innerHTML == "l_p" ||
+                    td.innerHTML == "L_p" ||
+                    td.innerHTML == "M_Vp" ||
+                    td.innerHTML == "M_Ep" ||
+                    td.innerHTML == "Ww_p" ||
+                    td.innerHTML == "Wd_p" ||
+                    td.innerHTML == "E_Wp" ||
+                    td.innerHTML == "a_p" ||
+                    td.innerHTML == "g_Hp" ||
+                    td.innerHTML == "s_s" ||
+                    td.innerHTML == "l_i" ||
+                    td.innerHTML == "L_i" ||
+                    td.innerHTML == "M_Vi" ||
+                    td.innerHTML == "M_Ei" ||
+                    td.innerHTML == "Ww_i" ||
+                    td.innerHTML == "Wd_i" ||
+                    td.innerHTML == "E_Wi" ||
+                    td.innerHTML == "xi_WE" ||
+                    td.innerHTML == "del_Wb" ||
+                    td.innerHTML == "del_Wp" ||
+                    td.innerHTML == "del_V" ||
+                    td.innerHTML == "h_W" ||
+                    td.innerHTML == "h_G" ||
+                    td.innerHTML == "S_b" ||
+                    td.innerHTML == "S_p" ||
+                    td.innerHTML == "a_m" ||
+                    td.innerHTML == "a_99" ||
+                    td.innerHTML == "R_i" ||
+                    td.innerHTML == "N_i" ||
+                    td.innerHTML == "M_E0_min_G" ||
+                    td.innerHTML == "M_E0_min_R" ||
+                    td.innerHTML == "eb_min_G" ||
+                    td.innerHTML == "eb_min_R" ||
+                    td.innerHTML == "ep_min" ||
+                    td.innerHTML == "sM_min" ||
+                    td.innerHTML == "p_Xb" ||
+                    td.innerHTML == "J_Xb" ||
+                    td.innerHTML == "F_mb" ||
+                    td.innerHTML == "p_Xp" ||
+                    td.innerHTML == "J_Xp" ||
+                    td.innerHTML == "F_mp" ||
+                    td.innerHTML == "p_Xi" ||
+                    td.innerHTML == "J_Xi" ||
+                    td.innerHTML == "F_mi" ||
+                    td.innerHTML == "p_Ab" ||
+                    td.innerHTML == "p_Cb" ||
+                    td.innerHTML == "p_Sb" ||
+                    td.innerHTML == "p_Jb" ||
+                    td.innerHTML == "p_Gb" ||
+                    td.innerHTML == "p_Rb" ||
+                    td.innerHTML == "p_Db" ||
+                    td.innerHTML == "p_Ap" ||
+                    td.innerHTML == "p_Cp" ||
+                    td.innerHTML == "p_Sp" ||
+                    td.innerHTML == "p_Jp" ||
+                    td.innerHTML == "p_Gp" ||
+                    td.innerHTML == "p_Rp" ||
+                    td.innerHTML == "p_Dp" ||
+                    td.innerHTML == "p_Ai" ||
+                    td.innerHTML == "p_Ci" ||
+                    td.innerHTML == "p_Si" ||
+                    td.innerHTML == "p_Ji" ||
+                    td.innerHTML == "p_Gi" ||
+                    td.innerHTML == "p_Ri" ||
+                    td.innerHTML == "p_Di" ||
+                    td.innerHTML == "J_Cb" ||
+                    td.innerHTML == "J_Cp" ||
+                    td.innerHTML == "J_Ci" ||
+                    td.innerHTML == "J_Hb" ||
+                    td.innerHTML == "J_Hp" ||
+                    td.innerHTML == "J_Hi" ||
+                    td.innerHTML == "J_Ob" ||
+                    td.innerHTML == "J_Op" ||
+                    td.innerHTML == "J_Oi" ||
+                    td.innerHTML == "J_Nb" ||
+                    td.innerHTML == "J_Np" ||
+                    td.innerHTML == "J_Ni" ||
+                    td.innerHTML == "RQ_b" ||
+                    td.innerHTML == "UQ_b" ||
+                    td.innerHTML == "WQ_b" ||
+                    td.innerHTML == "SDA_b" ||
+                    td.innerHTML == "VO_b" ||
+                    td.innerHTML == "p_Tb" ||
+                    td.innerHTML == "RQ_p" ||
+                    td.innerHTML == "UQ_p" ||
+                    td.innerHTML == "WQ_p" ||
+                    td.innerHTML == "SDA_p" ||
+                    td.innerHTML == "VO_p" ||
+                    td.innerHTML == "p_Tp" ||
+                    td.innerHTML == "RQ_i" ||
+                    td.innerHTML == "UQ_i" ||
+                    td.innerHTML == "WQ_i" ||
+                    td.innerHTML == "SDA_i" ||
+                    td.innerHTML == "VO_i" ||
+                    td.innerHTML == "p_Ti"
+                  ) {
+                  tr[i].style.display = "";
+                } else {
+                  tr[i].style.display = "none";
+                }
+              }
+            }
+          } else if (filter == "P") {
+            for (i = 0; i < tr.length; i++) {
+              td = tr[i].getElementsByTagName("td")[0];
+              if (td) {
+                if (
+                    td.innerHTML == "model" ||
+                    td.innerHTML == "T_A" ||
+                    td.innerHTML == "z" ||
+                    td.innerHTML == "F_m" ||
+                    td.innerHTML == "kap_X" ||
+                    td.innerHTML == "kap_P" ||
+                    td.innerHTML == "v" ||
+                    td.innerHTML == "kap" ||
+                    td.innerHTML == "kap_R" ||
+                    td.innerHTML == "p_M" ||
+                    td.innerHTML == "p_T" ||
+                    td.innerHTML == "k_J" ||
+                    td.innerHTML == "E_G" ||
+                    td.innerHTML == "E_Hb" ||
+                    td.innerHTML == "E_Hp" ||
+                    td.innerHTML == "h_a" ||
+                    td.innerHTML == "s_G" ||
+                    td.innerHTML == "d_X" ||
+                    td.innerHTML == "d_V" ||
+                    td.innerHTML == "d_E" ||
+                    td.innerHTML == "d_P" ||
+                    td.innerHTML == "mu_X" ||
+                    td.innerHTML == "mu_V" ||
+                    td.innerHTML == "mu_E" ||
+                    td.innerHTML == "mu_P" ||
+                    td.innerHTML == "mu_C" ||
+                    td.innerHTML == "mu_H" ||
+                    td.innerHTML == "mu_O" ||
+                    td.innerHTML == "mu_N" ||
+                    td.innerHTML == "n_CX" ||
+                    td.innerHTML == "n_HX" ||
+                    td.innerHTML == "n_OX" ||
+                    td.innerHTML == "n_NX" ||
+                    td.innerHTML == "n_CV" ||
+                    td.innerHTML == "n_HV" ||
+                    td.innerHTML == "n_OV" ||
+                    td.innerHTML == "n_NV" ||
+                    td.innerHTML == "n_CE" ||
+                    td.innerHTML == "n_HE" ||
+                    td.innerHTML == "n_OE" ||
+                    td.innerHTML == "n_NE" ||
+                    td.innerHTML == "n_CP" ||
+                    td.innerHTML == "n_HP" ||
+                    td.innerHTML == "n_OP" ||
+                    td.innerHTML == "n_NP" ||
+                    td.innerHTML == "n_CC" ||
+                    td.innerHTML == "n_HC" ||
+                    td.innerHTML == "n_OC" ||
+                    td.innerHTML == "n_NC" ||
+                    td.innerHTML == "n_CH" ||
+                    td.innerHTML == "n_HH" ||
+                    td.innerHTML == "n_OH" ||
+                    td.innerHTML == "n_NH" ||
+                    td.innerHTML == "n_CO" ||
+                    td.innerHTML == "n_HO" ||
+                    td.innerHTML == "n_OO" ||
+                    td.innerHTML == "n_NO" ||
+                    td.innerHTML == "n_CN" ||
+                    td.innerHTML == "n_HN" ||
+                    td.innerHTML == "n_ON" ||
+                    td.innerHTML == "n_NN"
+                  ) {
+                  tr[i].style.display = "";
+                } else {
+                  tr[i].style.display = "none";
+                }
+              }
+            }
+          } else {
+            for (i = 0; i < tr.length; i++) {
+              tr[i].style.display = "";
+            }
+          }
+        }
+
+      </script>
+</BODY>
+</HTML>
