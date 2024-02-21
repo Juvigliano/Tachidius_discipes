@@ -4,34 +4,71 @@
 load('results_Tachidius_discipes.mat','par') %this is to load the parameters from .mat
 %into a structure called pars
 % unpack par, data, auxData
+
 cPar = parscomp_st(par);  vars_pull(par); vars_pull(cPar);
 %2: a place where you specify food and temp.
-T=297.15; %temperature = 24C
-f=1;
+T=285.15; %temperature = 12C
+f=1.4;
 %3: define the time you want to model
-t_max=30;
-t= linspace(0,t_max,1000);
+t_max=40;
+t= linspace(1,t_max,1000);
 %second part: think about what i want to predict
-%i.e: length and weight. then I build a code for predicting length and
-%weight for the time I specified (I can use code from my predict file).
+%i.e: length. then I build a code for predicting lengtht for the time I specified (I can use code from my predict file).
 
-pars_T = T_A;
+pars_T = [T_A, T_L, T_AL];
 TC = tempcorr(T, T_ref, pars_T);
-
 pars_UE0 = [V_Hb; g; k_J; k_M; v]; % compose parameter vector
 [U_E0, ~, info] = initial_scaled_reserve(f, pars_UE0); % d.cm^2, initial scaled reserve
 E_0 = U_E0 * p_Am; % J, initial energy in egg
 
 
 p = [p_Am; v; p_M; k_J; kap; kap_G; E_G; E_Hb; E_Hp];
-ELHR0 = [E_0, 1E-5, 0, 0];
+% ELHR0 = [E_0, 1E-5, 0, 0];
+pars_tp = [g, k, l_T, v_Hb, v_Hp];
+[tau_p, tau_b, l_p, l_b, info] = get_tp (pars_tp, f);
+L_b = L_m * l_b;  
+E_b = f * E_m * L_b^3; % J, energy in reserve at birth
+ELHR0 = [E_b; L_b; E_Hb; 0]; % state variables at birth
 [~, ELHR] = ode45(@dget_ELHR_sbp, t, ELHR0,[], p, TC, f);
 L_phys = ELHR(:,2)/ del_M; 
 
 %third: print out results. and save results into files
+data_tL = readmatrix('tL12.txt');
+[t_data, ai, ci] = unique(data_tL (:,1)); maxci = max(ci); 
+Lmean = zeros(size(t_data,1),1); % preallocate zeros for mean L values
+Lsd = zeros(size(t_data,1),1); % preallocate zeros for sd values
+for i = 1:maxci
+ Lmean(i) =    mean(data_tL (ci==i,2));
+ Lsd(i) =    std(data_tL (ci==i,2));
+end
+data.tL12 = [t_data, Lmean]; % d, cm- time, mean length
+units.tL12 = {'d', 'cm'}; label.tL12 = {'time', 'area^{(1/2)}'};
+temp.tL12 = C2K(12); units.temp.tL12 = 'K'; label.temp.tL12 = 'temperature';
+bibkey.tL12 = {'Vigl2023'};
+stdev.tL12 =Lsd ; units.stdev.tL12 = 'cm'; label.stdev.tL12 = 'standard deviation';
 
 plot(t, L_phys);
+hold on
+scatter(t_data,Lmean);
+xlabel('time, d'); ylabel('length, cm'); title('12 deg C')
 
+
+  
+
+% fldnm = 'tL12';
+% data2plot =  data.(fldnm); stdev2plot = auxData.stdev.(fldnm); prdData2plot = prdData.(fldnm);
+% figure(10); hold on
+% plot(data2plot(:,1), data2plot(:,2), 'color',color, 'markersize', 8,'marker', 'o')
+% for i = 1:size(stdev2plot,1)
+% plot([data2plot(i,1), data2plot(i,1)],[data2plot(i,2) + stdev2plot, data2plot(i,2) - stdev2plot], 'LineStyle','-', 'color', color, 'LineWidth',1)
+% end
+% plot(dataNew.(fldnm), prdData2plot, 'color',color, 'LineStyle', '-','LineWidth', 2)
+% xlabel('time, d'); ylabel('length, cm'); title('12 deg C')
+%               set(gca,'Fontsize',10); 
+%               set(gcf,'PaperPositionMode','manual');
+%               set(gcf,'PaperUnits','points'); 
+%               set(gcf,'PaperPosition',[0 0 350 250]); % left bottom width height
+%  print('results_Tachidius_discipes_06.png', '-dpng')
 
 function dELHR = dget_ELHR_sbp(t, ELHR, p, TC, f)
   % Define changes in the state variables for abj model
@@ -84,3 +121,5 @@ function dELHR = dget_ELHR_sbp(t, ELHR, p, TC, f)
   % pack derivatives
   dELHR = [dE; dL; dE_H; dE_R]; 
 end
+
+

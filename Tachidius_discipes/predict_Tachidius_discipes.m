@@ -13,7 +13,7 @@ if filterChecks
 end
 
 % compute temperature correction factors
-pars_T = T_A;
+pars_T = [T_A T_L T_AL];
 TC_ah = tempcorr(temp.ah, T_ref, pars_T);
 TC_Tap = tempcorr(C2K(Tap(:,1)), T_ref, pars_T);
 TC_Tab = tempcorr(C2K(Tah(:,1)), T_ref, T_A);
@@ -125,6 +125,7 @@ s_M = 1;
   EWC = (LWCN(:,1) * del_M).^3 * (1 + f * w) * d_V * 12/ w_V*1e6;  % mug, carbon weight
   EWN = (LWCN(:,1) * del_M).^3 * (1 + f * w) * d_V * n_NV * 14/ w_V*1e6;  % mug, nitrogen weightf
  
+ 
 % pack to output
 prdData.tL12 = EL12;
 prdData.tL15 = EL15;
@@ -171,7 +172,7 @@ function dELHR = dget_ELHR_sbp(t, ELHR, p, TC, f)
 
   pA = (pT_Am * f * L^2) * (E_H >= E_Hb);
   if E_H < E_Hp
-    if  kap * E * vT >= pT_M * L^4 % section 4.1.5 comments to Kooy2010
+    if  kap * E * vT >= pT_M * L^4 % section 4.1.5 comments to Kooy2010 (if the energy is higher than mantainance costs)
         r = (E * vT/ L - pT_M * L^3/ kap)/ (E + E_G * L^3/ kap); % d^-1, specific growth rate  
     else 
         r = (E * vT/ L - pT_M * L^3/ kap)/ (E + kap_G * E_G * L^3/ kap); % d^-1, specific growth rate                                      

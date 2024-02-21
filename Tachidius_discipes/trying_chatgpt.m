@@ -1,34 +1,70 @@
+
 % intialization has components
 %1: reading the parameters from the matlab file. Depneding of what I prefer
 %I can read it from the pars_init or.mat
 load('results_Tachidius_discipes.mat','par') %this is to load the parameters from .mat
 %into a structure called pars
-% unpack par, data, auxData. % I also need to call my parscomp_st and pull it with vars_pull
-cPar = parscomp_st(par);  vars_pull(par);
+% unpack par, data, auxData
+
+cPar = parscomp_st(par);  vars_pull(par); vars_pull(cPar);
 %2: a place where you specify food and temp.
 T=297.15; %temperature = 24C
-f=1;
 %3: define the time you want to model
-t_max=30;
-t= linspace(0,t_max,1000);
+t_max=20;
+t= linspace(1,t_max,1000);
 %second part: think about what i want to predict
-%i.e: length and weight. then I build a code for predicting length and
-%weight for the time I specified (I can use code from my predict file).
+%i.e: length. then I build a code for predicting lengtht for the time I specified (I can use code from my predict file).
 
-% [tsort, ~, ci] = unique(tL24(:,1)); this line was wrong, my t vector is
-% already defined. I dont need it
-% [~, ELHR] = ode45(@dget_ELHR_sbp, tsort, ELHR0,[], p, TC24, f); i dont
-% need tsort (my time vector is t). I also
-% need all my initialization parameters ELHR0 that I can take fro predict file. 
-% p= if I look in my ELHR0 function p is a
-% vector that I need to define. TC24 its just my temp correction factor so
-% I need to bring in th etemperature correction from my predict. 
-EL24 = ELHR(ci,2)/ del_M; 
-prdData.tL24 = EL24;
-% pack to output
+pars_T = T_A;
+TC = tempcorr(T, T_ref, pars_T);
+
+pars_UE0 = [V_Hb; g; k_J; k_M; v]; % compose parameter vector
+[U_E0, ~, info] = initial_scaled_reserve(f, pars_UE0); % d.cm^2, initial scaled reserve
+E_0 = U_E0 * p_Am; % J, initial energy in egg
+
+% Define a range of f values
+f_values = [0.85, 0.9, 1];
+
+% Initialize a cell array to store model predictions for different f values
+L_phys_all = cell(length(f_values), 1);
+
+% Loop over each f value
+for i = 1:length(f_values)
+    f = f_values(i);
+    
+    % Re-run the model to obtain predictions of length over time
+    [~, ELHR] = ode45(@dget_ELHR_sbp, t, ELHR0,[], p, TC, f);
+    L_phys_all{i} = ELHR(:,2) / del_M; % Store the model predictions for the current f value
+end
 %third: print out results. and save results into files
-
+data_tL = readmatrix('tL24.txt');
+[t_data, ai, ci] = unique(data_tL (:,1)); maxci = max(ci); 
+Lmean = zeros(size(t_data,1),1); % preallocate zeros for mean L values
+Lsd = zeros(size(t_data,1),1); % preallocate zeros for sd values
+for i = 1:maxci
+ Lmean(i) =    mean(data_tL (ci==i,2));
+ Lsd(i) =    std(data_tL (ci==i,2));
+end
+data.tL24 = [t_data, Lmean]; % d, cm- time, mean length
+units.tL24 = {'d', 'cm'}; label.tL24 = {'time', 'area^{(1/2)}'};
+temp.tL24 = C2K(24); units.temp.tL24 = 'K'; label.temp.tL24 = 'temperature';
+bibkey.tL24 = {'Vigl2023'};
+stdev.tL24 =Lsd ; units.stdev.tL24 = 'cm'; label.stdev.tL24 = 'standard deviation';
+% Plot model predictions for different f values
+figure;
+hold on;
+for i = 1:length(f_values)
+    plot(t, L_phys_all{i}, 'DisplayName', ['f = ', num2str(f_values(i))]);
+end
+xlabel('Time (days)');
+ylabel('Length (cm)');
+title('Model Predictions for Different f Values at 24  C');
+legend('show');
+hold on
+scatter(t_data,Lmean);
 function dELHR = dget_ELHR_sbp(t, ELHR, p, TC, f)
+
+
   % Define changes in the state variables for abj model
   % t: time
   % ELHR: 4-vector with state variables
