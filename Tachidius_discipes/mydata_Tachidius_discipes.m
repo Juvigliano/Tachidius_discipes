@@ -122,6 +122,14 @@ temp.tL24 = C2K(24); units.temp.tL24 = 'K'; label.temp.tL24 = 'temperature';
 bibkey.tL24 = {'Vigl2023'};
 stdev.tL24 =Lsd ; units.stdev.tL24 = 'cm'; label.stdev.tL24 = 'standard deviation';
 
+% T-tj data
+data.Ttj = [ ... % temperature (C), time since hatch at metam (d)
+   14.86   15
+   19.34   10
+   24.90   7];
+  units.Ttj = {'C', 'd'};  label.Ttj = {'temperature', 'time since hatch at metam'};  
+  bibkey.Ttj = 'KochBui2017';
+  
 %%time- number of offspring
 data.tN12 = [...
 37.00	25
@@ -326,7 +334,13 @@ data.LWCN= [...
 units.LWCN = {'cm', 'mugC', 'mugN'}; label.LWCN= {'length', 'carbon mass', 'nitrogen mass'};
 bibkey.LWCN = {'Vigl2023'};  
 treat.LWCN = {1, {'Carbon weight','Nitrogen weight'}};
-
+% T-tp data
+data.Ttp = [ ... % temperature (C), time since metam at puberty (d)
+   14.86   12.31
+   19.34   10.12
+   24.90    8.86];
+  units.Ttp = {'C', 'd'};  label.Ttp = {'temperature', 'time since metam at puberty'};  
+  bibkey.Ttp = 'KochBui2017';
 % temperature age at puberty
 data.Tap = [... time since hatch, age at puberty
 12  25.73
