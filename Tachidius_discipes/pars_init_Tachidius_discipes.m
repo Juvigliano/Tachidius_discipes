@@ -1,6 +1,6 @@
 function [par, metaPar, txtPar] = pars_init_Tachidius_discipes(metaData)
 
-metaPar.model = 'sbp'; 
+metaPar.model = 'abp'; 
 
 %% reference parameter (not to be changed) 
 par.T_ref = 293.15;   free.T_ref = 0;   units.T_ref = 'K';        label.T_ref = 'Reference temperature'; 
@@ -24,6 +24,12 @@ par.h_a = 1.790e-22;  free.h_a   = 1;   units.h_a = '1/d^2';      label.h_a = 'W
 par.s_G = 0.0001;     free.s_G   = 0;   units.s_G = '-';          label.s_G = 'Gompertz stress coefficient'; 
 
 %% other parameters 
+par.E_Hj = 4.098e-03; free.E_Hj  = 1;   units.E_Hj = 'J';         label.E_Hj = 'maturity at metam'; 
+par.K_hs = 0.21177;   free.K_hs  = 1;   units.K_hs = 'mug C/mL';  label.K_hs = 'half-saturation coeffcient'; 
+par.f_Tt = 1;         free.f_Tt  = 0;   units.f_Tt = '-';         label.f_Tt = 'scaled functional response for Tah, Ttj, and Ttp data'; 
+par.f_tL = 1;         free.f_tL  = 0;   units.f_tL = '-';         label.f_tL = 'scaled functional response for tL data'; 
+par.t_0 = 1.6419;     free.t_0   = 1;   units.t_0 = 'd';          label.t_0 = 'time at start development (since release of previous brood)'; 
+
 par.E_Hh = 4.743e-06; free.E_Hh  = 0;   units.E_Hh = 'J';         label.E_Hh = 'maturity at hatch'; 
 par.T_AL = 87042.4349;  free.T_AL  = 1;   units.T_AL = 'K';         label.T_AL = 'Arrhenius temperature low boundary'; 
 par.T_L = 280;        free.T_L   = 0;   units.T_L = 'K';          label.T_L = 'Lower temperature boundary for optimal growth'; 

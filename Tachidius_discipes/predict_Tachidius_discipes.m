@@ -1,4 +1,4 @@
-function [prdData, info] = predict_Nitocra_spinipes_abp(par, data, auxData)
+function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   
   % unpack par, data, auxData
   cPar = parscomp_st(par);  vars_pull(par);
@@ -7,15 +7,20 @@ function [prdData, info] = predict_Nitocra_spinipes_abp(par, data, auxData)
   % compute temperature correction factors
   TC     = tempcorr(temp.ah, T_ref, T_A);  kT_M = k_M * TC; % 22 C
   TC_T   = tempcorr(C2K(Tah(:,1)), T_ref, T_A);             % 14.86 C, 19.34 C, 24.90 C
+  TC_Tab = tempcorr(C2K(Tah(:,1)), T_ref, T_A);
+  TC_Ttj = tempcorr(C2K(Ttj(:,1)), T_ref, T_A);
+  TC_Ttp = tempcorr(C2K(Ttp(:,1)), T_ref, T_A);
   
   % zero-variate data at f = f and T = 20 C (except for respiration at 20 C)
   
   % life cycle
-  pars_tjj = [g, k, l_T, v_Hb, v_Hj];
-  pars_tjp = [g, k, l_T, v_Hb, v_Hp];
+  % life cycle
+  pars_tjj = [g k l_T v_Hb v_Hj];
+  pars_tjp = [g k l_T v_Hb v_Hp];
+  
   % gets scaled age and length at birth and metam
   [t_j, ~, t_b, l_j, ~, l_b, ~, ~, ~, info_j] = get_tj(pars_tjj, f);
-  % gets scaled age and length at puberty
+   % gets scaled age and length at puberty
   [t_p, ~, ~, l_p, ~, ~, ~, ~, ~, info_p] = get_tj(pars_tjp, f);
   info = info_j == 1 && info_p == 1;
   
@@ -47,15 +52,11 @@ function [prdData, info] = predict_Nitocra_spinipes_abp(par, data, auxData)
   % pack to output
   prdData.am  = aT_m;            % d, life span
   prdData.ah  = (t_0 + a_b)/ TC; % d, age at hatch
-  prdData.tj  = aT_j - aT_b;     % d, time since hatch at metam
   prdData.tp  = aT_p - aT_j;     % d, time since metam at puberty
   prdData.Lh  = Lw_b;            % cm, length at hatch (assumed to equal length at birth)
-  prdData.Lj  = Lw_j;            % cm, length at metam
   prdData.Lp  = Lw_p;            % cm, length at puberty
   prdData.Li  = Lw_i;            % cm, ultimate length (same as at puberty)
   prdData.Wdi = Wd_i;            % mug, ultimate dry weight (same as at puberty)
-  prdData.JOi = JT_O_p;          % nL/h/mug, dry weight specific O2 consumption
-  prdData.Ri  = RT_i;            % #/d, ultimate reproduction rate
   
   % uni-variate data
   
@@ -73,6 +74,12 @@ function [prdData, info] = predict_Nitocra_spinipes_abp(par, data, auxData)
   Ea_b = (t_0 + t_b/ k_M) ./ TC_T;        % d, age at birth at all temperatures at f = f_Tt
   Et_j = (t_j - t_b)/ k_M ./ TC_T;        % d, age at metam at all temperatures at f = f_Tt
   Et_p = (t_p - t_j)/ k_M ./ TC_T;        % d, age at puberty at all temperatures at f = f_Tt
+  
+   % get scaled time and length at birth at f = 1 (parents fed ad libitum)
+  [t_b, l_b] = get_tb(pars_tjj([1 2 4]), 1); % overwrite t_b and l_b
+  
+  % birth
+  aT_bX = t_b/ kT_M; % d, age at birth at f = 1 (parents fed ad libitum)
   
   % pack to output
   prdData.tL  = ELw;           % d, time        - cm, length
