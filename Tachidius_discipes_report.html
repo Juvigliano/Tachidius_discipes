@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tachidius_discipes</title>
+
+  <style>
+    div.left {
+      width: 30%;
+      float: left;
+    }
+
+    div.middle {
+      width: 15%;
+      float: left;
+      padding-top: 60px;
+    }
+
+    div.right {
+      width: 55%;
+      float: right;
+      padding-top: 60px;
+    }
+
+    p.clear {
+      clear: both;
+      padding-top: 15px;
+    }
+
+    div.footer{
+      margin: auto;
+      clear: both;
+      text-align: center;
+      font-size: 0.8em;
+    }
+
+    /*-------- Figs -----------*/
+
+    /* not-enlarged on page */
+    .myImg {
+      max-width:300px;
+      max-height:200px;
+    }
+
+    /* enlarge figs: to Trigger the Modal */
+    .myImg {
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .myImg:hover {opacity: 0.7;}
+
+    /* The Modal (background) */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 20px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+      font-size: 30px;
+    }
+
+    /* Modal Content (Image) */
+    .modal-content {
+      margin: auto;
+      display: block;
+      height: 80%;
+      max-height: 700px;
+    }
+
+    /* Caption of Modal Image (Image Text) - Same Width as the Image */
+    #caption {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0;
+      height: 150px;
+    }
+
+    /* Add Animation - Zoom in the Modal */
+    .modal-content, #caption {
+      -webkit-animation-name: zoom;
+      -webkit-animation-duration: 0.6s;
+      animation-name: zoom;
+      animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+      from {-webkit-transform:scale(0)}
+      to {-webkit-transform:scale(1)}
+    }
+
+    @keyframes zoom {
+      from {transform:scale(0)}
+      to {transform:scale(1)}
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="left">
+  <h1>Tachidius_discipes</h1>
+    <b>phylum: </b>Arthropoda<br>
+    <b>class: </b>Copepoda<br>
+    <b>order: </b>Harpacticoida<br>
+    <b>family: </b>Tachidiidae<br>
+    <b>species: </b>Tachidius_discipes<br>
+    <b>species_en: </b>Copepod<br>
+    <b>T_typical: </b>288.15<br>
+    <b>author: </b>Julieta Vigliano Relva<br>
+    <b>date_subm: </b>2023     6    16<br>
+    <b>email: </b>julieta.vigliano@ugent.be<br>
+    <b>address: </b>UGent Ghent University<br>
+    <b>author_mod_1: </b>Julieta Vigliano Relva<br>
+    <b>date_mod_1: </b>2023     6    16<br>
+    <b>email_mod_1: </b>julieta.vigliano@ugent.be<br>
+    <b>address_mod_1: </b>UGent Ghent University<br>
+  </div>
+
+  <div class="middle">
+    <h3><a href="Tachidius_discipes_res.html">results</a></h3>
+
+    <h3><a href="Tachidius_discipes_bib.bib">bibliography</a></h3>
+  </div>
+
+  <div class="right">

@@ -24,6 +24,9 @@ TC21 = tempcorr(temp.tL21, T_ref, pars_T);
 TC24 = tempcorr(temp.tL24, T_ref, pars_T);
 %reproduction ct
  TC_TR = tempcorr(C2K(TR(:,1)), T_ref, T_A);
+   
+ TC_JOi = tempcorr(temp.JOi, T_ref, T_A);                  % 20 C
+
 % life cycle
 pars_tp = [g, k, l_T, v_Hb, v_Hp];
 [tau_p, tau_b, l_p, l_b, info] = get_tp (pars_tp, f);
@@ -46,6 +49,8 @@ Lw_b = L_b/ del_M;                % cm, physical length at birth
 L_p = L_m * l_p; % cm, structural length at puberty
 Lw_p = L_p/ del_M; % cm, physical length at puberty
 Wd_p = L_p^3 * (1 + f * ome) * d_V; % g, ultimate dry weight
+Ww_p = 1e6 * L_p^3 * (1 + f * w);  % mug, wet weight at puberty
+Wd_i = Ww_p * d_V;                 % mug, ultimate dry weight
 
 % pack to output
 prdData.ah = a_h;
@@ -125,7 +130,17 @@ s_M = 1;
   EWC = (LWCN(:,1) * del_M).^3 * (1 + f * w) * d_V * 12/ w_V*1e6;  % mug, carbon weight
   EWN = (LWCN(:,1) * del_M).^3 * (1 + f * w) * d_V * n_NV * 14/ w_V*1e6;  % mug, nitrogen weightf
  
- 
+  % respiration at (and after) puberty at 20 C
+  pTA_p = TC_JOi * f * p_Am * L_p^2;                     % J/d, assimilation flux at puberty
+  pTC_p = pTA_p;                                         % J/d, mobilization flux at puberty is equivalent to assimilation flux
+  pTG_p = TC_JOi * 0;                                    % J/d, growth flux at puberty = 0
+  pTs_p = TC_JOi * p_M * L_p^3;                          % J/d, somatic maintenance flux at puberty
+  pTJ_p = TC_JOi * k_J * E_Hp;                           % J/d, maturity maintenance flux at puberty
+  pTR_p = pTC_p - pTs_p - pTJ_p;                         % J/d, reproduction flux at puberty
+  pTD_p = pTs_p + pTJ_p + (1 - kap_R) * pTR_p;           % J/d, dissipation flux at puberty
+  JT_M_p = -(n_M\ n_O) * eta_O * [pTA_p, pTD_p, pTG_p]'; % mol/d, mineral fluxes (J_C, J_H, J_O, J_N in rows)
+  JT_O_p = -JT_M_p(3) * 24.4/ 24/ 1e-9/ Wd_i;            % nL O2/h/mug, dry weight specific O2 consumption (with 24.4 L O2/mol)
+   
 % pack to output
 prdData.tL12 = EL12;
 prdData.tL15 = EL15;
@@ -142,6 +157,8 @@ prdData.Tah = Ea_b; %age at birth
 prdData.Tap = Ea_p;
 prdData.LWCN = [EWC EWN]; %carbon and nitrogen mass
 prdData.TR= ER_i;
+prdData.JOi = JT_O_p; % nL/h/mug, dry weight specific O2 consumption
+
 end
 
 function dELHR = dget_ELHR_sbp(t, ELHR, p, TC, f)
