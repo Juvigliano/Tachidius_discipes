@@ -51,7 +51,7 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
    
   % pack to output
   % prdData.am  = aT_m;            % d, life span
-  prdData.ah  = (t_0 + a_b)/ TC; % d, age at hatch
+  % prdData.ah  = (t_0 + a_b)/ TC; % d, age at hatch
   prdData.tp  = aT_p - aT_j;     % d, time since metam at puberty
   prdData.Lh  = Lw_b;            % cm, length at hatch (assumed to equal length at birth)
   prdData.Lp  = Lw_p;            % cm, length at puberty
@@ -61,32 +61,32 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   % uni-variate data
   
   % time-length at f = f_tL and T = 22 C
-  [~, ~, ~, l_p, ~, l_b] = get_tj(pars_tjp, f_tL);      % overwrite l_p and l_b for f = f_tL
+  [~, ~, ~, l_p, ~, l_b] = get_tj(pars_tjp, f);      % overwrite l_p and l_b for f = f_tL
   L_b  = L_m * l_b;                                     % cm, structural length at birth at f = f_tL
   L_p  = L_m * l_p;                                     % cm, structural length at puberty at f = f_tL
-  rT_j = TC * v * (f_tL/ L_b - 1/ L_m)/ (f_tL + g);     % 1/d, specific growth rate during accelleration at f = f_tL
-  ELw  = min(L_p, L_b * exp(f_tL(:,1) * rT_j/ 3))/ del_M; % cm, length at f = f_tL
-  
-  
-  % temperature-development time at f = f_Tt
-  [t_j, ~, t_b] = get_tj(pars_tjj, f_Tt); % overwrite t_j and t_b for f = f_Tt
-  t_p  = get_tj(pars_tjp, f_Tt);          % overwrite t_p for f = f_Tt
-  Ea_b = (t_0 + t_b/ k_M) ./ TC_T;        % d, age at birth at all temperatures at f = f_Tt
-  Et_j = (t_j - t_b)/ k_M ./ TC_T;        % d, age at metam at all temperatures at f = f_Tt
-  Et_p = (t_p - t_j)/ k_M ./ TC_T;        % d, age at puberty at all temperatures at f = f_Tt
-  
-   % get scaled time and length at birth at f = 1 (parents fed ad libitum)
-  [t_b, l_b] = get_tb(pars_tjj([1 2 4]), 1); % overwrite t_b and l_b
-  
+  rT_j = TC * v * (f/ L_b - 1/ L_m)/ (f + g);     % 1/d, specific growth rate during accelleration at f = f_tL
+  ELw  = min(L_p, L_b * exp(f(:,1) * rT_j/ 3))/ del_M; % cm, length at f = f_tL
+
+
+  % % temperature-development time at f = f_Tt
+  % [t_j, ~, t_b] = get_tj(pars_tjj, f_Tt); % overwrite t_j and t_b for f = f_Tt
+  % t_p  = get_tj(pars_tjp, f_Tt);          % overwrite t_p for f = f_Tt
+  % Ea_b = (t_0 + t_b/ k_M) ./ TC_T;        % d, age at birth at all temperatures at f = f_Tt
+  % Et_j = (t_j - t_b)/ k_M ./ TC_T;        % d, age at metam at all temperatures at f = f_Tt
+  % Et_p = (t_p - t_j)/ k_M ./ TC_T;        % d, age at puberty at all temperatures at f = f_Tt
+  % 
+  %  % get scaled time and length at birth at f = 1 (parents fed ad libitum)
+  % [t_b, l_b] = get_tb(pars_tjj([1 2 4]), 1); % overwrite t_b and l_b
+  % 
   % birth
   aT_bX = t_b/ kT_M; % d, age at birth at f = 1 (parents fed ad libitum)
   
   % pack to output
-  prdData.tL  = ELw;           % d, time        - cm, length
+  prdData.tL12  = ELw;           % d, time        - cm, length
   % prdData.Xtj = aT_jX - aT_bX; % mug C/mL, food - d, time since hatch at metam
   % prdData.Xtp = aT_pX - aT_jX; % mug C/mL, food - d, time since metam at puberty
   % prdData.XR  = RT_iX;         % mug C/mL, food - #/d, reprod rate
-  prdData.Tah = Ea_b;          % C, temperature - d, inter-brood time
-  prdData.Ttj = Et_j;          % C, temperature - d, time since hatch at metam
-  prdData.Ttp = Et_p;          % C, temperature - d, time since metam at puberty
-  
+  % prdData.Tah = Ea_b;          % C, temperature - d, inter-brood time
+  % prdData.Ttj = Et_j;          % C, temperature - d, time since hatch at metam
+  % prdData.Ttp = Et_p;          % C, temperature - d, time since metam at puberty
+  % 
