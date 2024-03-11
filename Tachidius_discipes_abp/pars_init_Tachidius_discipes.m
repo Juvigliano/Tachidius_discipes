@@ -1,6 +1,6 @@
 function [par, metaPar, txtPar] = pars_init_Tachidius_discipes(metaData)
 
-metaPar.model = 'sbp'; 
+metaPar.model = 'abp'; 
 
 %% reference parameter (not to be changed) 
 par.T_ref = 293.15;   free.T_ref = 0;   units.T_ref = 'K';        label.T_ref = 'Reference temperature'; 
