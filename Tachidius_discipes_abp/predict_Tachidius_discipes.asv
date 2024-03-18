@@ -117,8 +117,6 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   fs = [f_tL12; f_tL15; f_tL18; f_tL21; f_tL24];
   ETap = zeros(size(Tap,1),1);
   if size(Tap,1) > length(fs)
-    % During prediction for visualization, Tap is large, so interpolation
-    % needed for visualization if multiple fs required
     % ETap_short = zeros(length(fs),1);
     % [~, indices] = ismember([12; 15; 18; 21; 24], round(Tap,0));
     % indices(end) = length(Tap);
@@ -127,9 +125,9 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
     %     ETap_short(c) = t_p / k_M / TC_Tap(c);
     % end
     % ETap = interp1(indices, ETap_short, 1:length(ETap), 'spline', 'extrap');
-    for c = 1:length(ETap)
-        [t_p, ~, ~, ~, ~, ~, ~, ~, ~, info] = get_tj(pars_tjp, f);
-        ETap(c) = t_p / k_M / TC_Tap(c);
+    for c = 1:length(fs)
+        [t_p, ~, ~, ~, ~, ~, ~, ~, ~, info] = get_tj(pars_tjp, fs(c));
+        E(c) = t_p / k_M / TC_Tap(c);
     end
   else
       for c = 1:length(ETap)

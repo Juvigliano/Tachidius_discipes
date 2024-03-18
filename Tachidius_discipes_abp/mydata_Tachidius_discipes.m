@@ -123,12 +123,12 @@ bibkey.tL24 = {'Vigl2023'};
 stdev.tL24 =Lsd ; units.stdev.tL24 = 'cm'; label.stdev.tL24 = 'standard deviation';
 
 % T-tj data
-data.Ttj = [ ... % temperature (C), time since hatch at metam (d)
-   14.86   15
-   19.34   10
-   24.90   7];
-  units.Ttj = {'C', 'd'};  label.Ttj = {'temperature', 'time since hatch at metam'};  
-  bibkey.Ttj = 'KochBui2017';
+% data.Ttj = [ ... % temperature (C), time since hatch at metam (d)
+%    14.86   15
+%    19.34   10
+%    24.90   7];
+%   units.Ttj = {'C', 'd'};  label.Ttj = {'temperature', 'time since hatch at metam'};  
+%   bibkey.Ttj = 'KochBui2017';
   
 %%time- number of offspring
 data.tN12 = [...
@@ -270,77 +270,77 @@ bibkey.Tah = {'Vigl2023'};
 
 
 % temperature-max reprod rate
-data.TR= [...
-12	0.971628449
-12	1.127089001
-12	0.855033035
-12	1.010493587
-12	1.049358725
-12	1.282549553
-12	1.282549553
-12	1.049358725
-12	0.971628449
-12	1.165954139
-12	1.127089001
-12	0.777302759
-15	1.630867144
-15	0.994431185
-15	0.397772474
-15	1.23309467
-15	1.312649165
-15	1.23309467
-15	0.835322196
-15	0.994431185
-18	0.885391048
-18	0.983767831
-18	0.885391048
-18	1.426463355
-18	1.032956222
-18	1.180521397
-18	1.672405312
-18	1.672405312
-18	1.574028529
-18	2.262666011
-21	1.82160804
-21	1.130653266
-21	0.314070352
-21	1.130653266
-21	1.067839196
-21	0.753768844
-21	1.507537688
-21	2.135678392
-21	0.628140704
-24	0.857142857
-24	1.5
-24	0.714285714
-24	1.642857143
-24	1.357142857
-24	0.714285714
-24	0.785714286
-24	0.857142857
-24	0.785714286
-24	0.714285714
-24	1.142857143
-24	1.071428571];
-units.TR = {'C', '#'}; label.TR= {'temperature', 'max reproduction rate'};
-bibkey.TR = {'Vigl2023'};
+% data.TR= [...
+% 12	0.971628449
+% 12	1.127089001
+% 12	0.855033035
+% 12	1.010493587
+% 12	1.049358725
+% 12	1.282549553
+% 12	1.282549553
+% 12	1.049358725
+% 12	0.971628449
+% 12	1.165954139
+% 12	1.127089001
+% 12	0.777302759
+% 15	1.630867144
+% 15	0.994431185
+% 15	0.397772474
+% 15	1.23309467
+% 15	1.312649165
+% 15	1.23309467
+% 15	0.835322196
+% 15	0.994431185
+% 18	0.885391048
+% 18	0.983767831
+% 18	0.885391048
+% 18	1.426463355
+% 18	1.032956222
+% 18	1.180521397
+% 18	1.672405312
+% 18	1.672405312
+% 18	1.574028529
+% 18	2.262666011
+% 21	1.82160804
+% 21	1.130653266
+% 21	0.314070352
+% 21	1.130653266
+% 21	1.067839196
+% 21	0.753768844
+% 21	1.507537688
+% 21	2.135678392
+% 21	0.628140704
+% 24	0.857142857
+% 24	1.5
+% 24	0.714285714
+% 24	1.642857143
+% 24	1.357142857
+% 24	0.714285714
+% 24	0.785714286
+% 24	0.857142857
+% 24	0.785714286
+% 24	0.714285714
+% 24	1.142857143
+% 24	1.071428571];
+% units.TR = {'C', '#'}; label.TR= {'temperature', 'max reproduction rate'};
+% bibkey.TR = {'Vigl2023'};
 
 % length-C mass-N mass 
-data.LWCN= [...
-0.026656936	0.983820513	0.247615385
-0.026656937	1.035122449	0.254292517
-0.026656938	0.93593141	0.20389359];
+%data.LWCN= [...
+%0.026656936	0.983820513	0.247615385
+%0.026656937	1.035122449	0.254292517
+%0.026656938	0.93593141	0.20389359];
 % data.LWC = LWCN(:,[1 2]);
-units.LWCN = {'cm', 'mugC', 'mugN'}; label.LWCN= {'length', 'carbon mass', 'nitrogen mass'};
-bibkey.LWCN = {'Vigl2023'};  
-treat.LWCN = {1, {'Carbon weight','Nitrogen weight'}};
+%units.LWCN = {'cm', 'mugC', 'mugN'}; label.LWCN= {'length', 'carbon mass', 'nitrogen mass'};
+%bibkey.LWCN = {'Vigl2023'};  
+%treat.LWCN = {1, {'Carbon weight','Nitrogen weight'}};
 % T-tp data
-data.Ttp = [ ... % temperature (C), time since metam at puberty (d)
-   14.86   12.31
-   19.34   10.12
-   24.90    8.86];
-  units.Ttp = {'C', 'd'};  label.Ttp = {'temperature', 'time since metam at puberty'};  
-  bibkey.Ttp = 'KochBui2017';
+%data.Ttp = [ ... % temperature (C), time since metam at puberty (d)
+%   14.86   12.31
+%   19.34   10.12
+%   24.90    8.86];
+%  units.Ttp = {'C', 'd'};  label.Ttp = {'temperature', 'time since metam at puberty'};  
+%  bibkey.Ttp = 'KochBui2017';
 % temperature age at puberty
 data.Tap = [... time since hatch, age at puberty
 12  25.73
@@ -353,7 +353,7 @@ bibkey.Tap = {'Vigl2023'};
 
 %% set weights for all real data
 weights = setweights(data, []);
-weights.LWCN= 0* weights.LWCN;
+%weights.LWCN= 0* weights.LWCN;
 
 %% set pseudodata and respective weights
 [data, units, label, weights] = addpseudodata(data, units, label, weights);
