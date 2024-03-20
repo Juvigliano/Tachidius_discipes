@@ -14,7 +14,8 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   TC18 = tempcorr(temp.tL18, T_ref, pars_T);
   TC21 = tempcorr(temp.tL21, T_ref, pars_T);
   TC24 = tempcorr(temp.tL24, T_ref, pars_T);
-
+  TC_JOi = tempcorr(temp.JOi, T_ref, pars_T);                  % 20 C
+  
   % zero-variate data at f = f and T = 20 C (except for age at hatching at 15 C)
   
   % life cycle
@@ -44,13 +45,27 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   L_p  = L_m * l_p;                  % cm, structural length at puberty
   Lw_p = L_p/ del_M;                 % cm, length at puberty
   Wd_p = L_p^3 * (1 + f * ome) * d_V; % g, ultimate dry weight
-   
+  Ww_p = 1e6 * L_p^3 * (1 + f * w);  % mug, wet weight at puberty
+  Wd_i = Ww_p * d_V;                 % mug, ultimate dry weight
+
+  % respiration at (and after) puberty at 20 C (using f_tL21)
+  pTA_p = TC_JOi * f * p_Am * L_p^2;                     % J/d, assimilation flux at puberty
+  pTC_p = pTA_p;                                         % J/d, mobilization flux at puberty is equivalent to assimilation flux
+  pTG_p = TC_JOi * 0;                                    % J/d, growth flux at puberty = 0
+  pTs_p = TC_JOi * p_M * L_p^3;                          % J/d, somatic maintenance flux at puberty
+  pTJ_p = TC_JOi * k_J * E_Hp;                           % J/d, maturity maintenance flux at puberty
+  pTR_p = pTC_p - pTs_p - pTJ_p;                         % J/d, reproduction flux at puberty
+  pTD_p = pTs_p + pTJ_p + (1 - kap_R) * pTR_p;           % J/d, dissipation flux at puberty
+  JT_M_p = -(n_M\ n_O) * eta_O * [pTA_p, pTD_p, pTG_p]'; % mol/d, mineral fluxes (J_C, J_H, J_O, J_N in rows)
+  JT_O_p = -JT_M_p(3) * 24.4/ 24/ 1e-9/ Wd_i;            % nL O2/h/mug, dry weight specific O2 consumption (with 24.4 L O2/mol)
+  
   % pack to output
   prdData.ah  = a_h;             % d, age at hatch
   prdData.Lh  = Lw_h;            % cm, length at hatch
   prdData.Lb  = Lw_b;            % cm, length at birth
   prdData.Lp  = Lw_p;            % cm, length at puberty
   prdData.Wdp = Wd_p;            % g, dry weight at puberty
+  prdData.JOi = JT_O_p; % nL/h/mug, dry weight specific O2 consumption
   
   % uni-variate data
   p = [p_Am; v; p_M; k_J; kap; kap_G; E_G; E_Hb; E_Hp];

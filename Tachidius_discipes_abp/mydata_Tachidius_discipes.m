@@ -48,7 +48,9 @@ data.Lb = 0.007812255; units.Lb = 'cm'; label.Lb = 'length at birth'; bibkey.Lb 
 data.Lp = 0.0266569358756218; units.Lp = 'cm'; label.Lp = 'length at puberty'; bibkey.Lp = {'Vigl2023'};
 
 data.Wdp = 0.0000205716902; units.Wdp = 'g'; label.Wdp = 'ultimate dry weight at puberty'; bibkey.Wdp = {'Vigl2023'};
-
+data.JOi = mean([17.44, 11.75]);  units.JOi = 'nL/h/mug';  label.JOi = 'ultimate specific O2 consumption';
+  bibkey.JOi = 'HermHeip1983';  temp.JOi = C2K(20);  units.temp.JOi = 'K'; label.temp.JOi = 'temperature';
+  comment.JOi = 'specific O2 consumption of four brackish water harpacticoida at ultimate length';
 %% set uni-variate data
 % time - length
 % code modified to work with means and standard deviation
