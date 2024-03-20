@@ -49,9 +49,6 @@ data.Lp = 0.0266569358756218; units.Lp = 'cm'; label.Lp = 'length at puberty'; b
 
 data.Wdp = 0.0000205716902; units.Wdp = 'g'; label.Wdp = 'ultimate dry weight at puberty'; bibkey.Wdp = {'Vigl2023'};
 
-data.JOi = mean([17.44, 11.75]);  units.JOi = 'nL/h/mug';  label.JOi = 'ultimate specific O2 consumption';
-  bibkey.JOi = 'HermHeip1983';  temp.JOi = C2K(20);  units.temp.JOi = 'K'; label.temp.JOi = 'temperature';
-  comment.JOi = 'specific O2 consumption of four brackish water harpacticoida at ultimate length';
 %% set uni-variate data
 % time - length
 % code modified to work with means and standard deviation
@@ -125,6 +122,14 @@ temp.tL24 = C2K(24); units.temp.tL24 = 'K'; label.temp.tL24 = 'temperature';
 bibkey.tL24 = {'Vigl2023'};
 stdev.tL24 =Lsd ; units.stdev.tL24 = 'cm'; label.stdev.tL24 = 'standard deviation';
 
+% T-tj data
+% data.Ttj = [ ... % temperature (C), time since hatch at metam (d)
+%    14.86   15
+%    19.34   10
+%    24.90   7];
+%   units.Ttj = {'C', 'd'};  label.Ttj = {'temperature', 'time since hatch at metam'};  
+%   bibkey.Ttj = 'KochBui2017';
+  
 %%time- number of offspring
 data.tN12 = [...
 37.00	25
@@ -321,15 +326,21 @@ bibkey.Tah = {'Vigl2023'};
 % bibkey.TR = {'Vigl2023'};
 
 % length-C mass-N mass 
-% data.LWCN= [...
-% 0.026656936	0.983820513	0.247615385
-% 0.026656937	1.035122449	0.254292517
-% 0.026656938	0.93593141	0.20389359];
-% % data.LWC = LWCN(:,[1 2]);
-% units.LWCN = {'cm', 'mugC', 'mugN'}; label.LWCN= {'length', 'carbon mass', 'nitrogen mass'};
-% bibkey.LWCN = {'Vigl2023'};  
-% treat.LWCN = {1, {'Carbon weight','Nitrogen weight'}};
-
+%data.LWCN= [...
+%0.026656936	0.983820513	0.247615385
+%0.026656937	1.035122449	0.254292517
+%0.026656938	0.93593141	0.20389359];
+% data.LWC = LWCN(:,[1 2]);
+%units.LWCN = {'cm', 'mugC', 'mugN'}; label.LWCN= {'length', 'carbon mass', 'nitrogen mass'};
+%bibkey.LWCN = {'Vigl2023'};  
+%treat.LWCN = {1, {'Carbon weight','Nitrogen weight'}};
+% T-tp data
+%data.Ttp = [ ... % temperature (C), time since metam at puberty (d)
+%   14.86   12.31
+%   19.34   10.12
+%   24.90    8.86];
+%  units.Ttp = {'C', 'd'};  label.Ttp = {'temperature', 'time since metam at puberty'};  
+%  bibkey.Ttp = 'KochBui2017';
 % temperature age at puberty
 data.Tap = [... time since hatch, age at puberty
 12  25.73

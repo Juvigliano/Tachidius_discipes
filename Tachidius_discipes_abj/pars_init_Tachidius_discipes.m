@@ -1,6 +1,6 @@
 function [par, metaPar, txtPar] = pars_init_Tachidius_discipes(metaData)
 
-metaPar.model = 'abp'; 
+metaPar.model = 'abj'; 
 
 %% reference parameter (not to be changed) 
 par.T_ref = 293.15;   free.T_ref = 0;   units.T_ref = 'K';        label.T_ref = 'Reference temperature'; 
@@ -25,6 +25,7 @@ par.s_G = 0.0001;     free.s_G   = 0;   units.s_G = '-';          label.s_G = 'G
 
 %% other parameters 
 par.E_Hh = 4.743e-06; free.E_Hh  = 1;   units.E_Hh = 'J';         label.E_Hh = 'maturity at hatch'; 
+par.E_Hj = 5e-05; free.E_Hj  = 1;   units.E_Hj = 'J';         label.E_Hj = 'maturity at metamorphosis';
 par.T_AL = 20000;  free.T_AL  = 1;   units.T_AL = 'K';         label.T_AL = 'Arrhenius temperature low boundary'; 
 par.T_L = 280;        free.T_L   = 0;   units.T_L = 'K';          label.T_L = 'Lower temperature boundary for optimal growth'; 
 par.del_M = 1.3692;   free.del_M = 1;   units.del_M = '-';        label.del_M = 'shape coefficient'; 

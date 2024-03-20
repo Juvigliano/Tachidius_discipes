@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<HTML>
+<HEAD>
+  <TITLE>Tachidius_discipes</TITLE>
+  <style>
+    div.prd {
+      width: 50%;
+      float: left;
+    }
+
+    div.par {
+      width: 50%;
+      float: right;
+    }
+
+    p.clear {
+      clear: both;
+    }
+
+    .head {
+      background-color: #FFE7C6
+    }
+
+    .psd {
+      color: blue
+    }
+
+    #prd {
+      border-style: solid hidden solid hidden;
+    }
+
+    #par {
+      border-style: solid hidden solid hidden;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2}
+  </style>
+</HEAD>
+
+<BODY>
+
+  <div class="prd">
+  <h1>Tachidius discipes</h1>
+  </div>
+
+  <div class="par">
+  <h4>COMPLETE = 2.0; MRE =    0.139; SMAE =    0.145; SMSE =    0.044 </h4>
+  </div>
+
+  <p class="clear"></p>
+
+  <div class="prd">
+  <h2>Data & predictions</h2>
+  <TABLE id="prd">
+    <TR  class="head"><TH>data</TH> <TH>prd</TH> <TH>RE</TH>  <TH>symbol</TH> <TH>units</TH> <TH>description</TH> </TR>
+    <TR><TD>4.375</TD> <TD>4.274</TD> <TD>0.0231</TD> <TD>ah</TD> <TD>d</TD> <TD>age at hatch</TD></TR>
+    <TR><TD>0.006853</TD> <TD>0.006839</TD> <TD>0.00202</TD> <TD>Lh</TD> <TD>cm</TD> <TD>length at hatch</TD></TR>
+    <TR><TD>0.007812</TD> <TD>0.008386</TD> <TD>0.07344</TD> <TD>Lb</TD> <TD>cm</TD> <TD>length at birth</TD></TR>
+    <TR><TD>0.02666</TD> <TD>0.02335</TD> <TD>0.124</TD> <TD>Lp</TD> <TD>cm</TD> <TD>length at puberty</TD></TR>
+    <TR><TD>2.057e-05</TD> <TD>1.996e-05</TD> <TD>0.02977</TD> <TD>Wdp</TD> <TD>g</TD> <TD>ultimate dry weight at puberty</TD></TR>
+    <TR><TD colspan="2">see figure</TD> <TD>0.1217</TD> <TD>tL12</TD> <TD colspan="2">time <font color="blue"><i>vs.</i></font> area^{(1/2)}</TD>
+    <TR><TD colspan="2">see figure</TD> <TD>0.1011</TD> <TD>tL15</TD> <TD colspan="2">time <font color="blue"><i>vs.</i></font> area^{(1/2)}</TD>
+    <TR><TD colspan="2">see figure</TD> <TD>0.1236</TD> <TD>tL18</TD> <TD colspan="2">time <font color="blue"><i>vs.</i></font> area^{(1/2)}</TD>
+    <TR><TD colspan="2">see figure</TD> <TD>0.1149</TD> <TD>tL21</TD> <TD colspan="2">time <font color="blue"><i>vs.</i></font> area^{(1/2)}</TD>
+    <TR><TD colspan="2">see figure</TD> <TD>0.069</TD> <TD>tL24</TD> <TD colspan="2">time <font color="blue"><i>vs.</i></font> area^{(1/2)}</TD>
+    <TR><TD colspan="2">see figure</TD> <TD>0.1129</TD> <TD>tN12</TD> <TD colspan="2">time <font color="blue"><i>vs.</i></font> clutch size</TD>
+    <TR><TD colspan="2">see figure</TD> <TD>0.2685</TD> <TD>tN15</TD> <TD colspan="2">time <font color="blue"><i>vs.</i></font> clutch size</TD>
+    <TR><TD colspan="2">see figure</TD> <TD>0.138</TD> <TD>tN18</TD> <TD colspan="2">time <font color="blue"><i>vs.</i></font> clutch size</TD>
+    <TR><TD colspan="2">see figure</TD> <TD>0.4963</TD> <TD>tN21</TD> <TD colspan="2">time <font color="blue"><i>vs.</i></font> clutch size</TD>
+    <TR><TD colspan="2">see figure</TD> <TD>0.275</TD> <TD>tN24</TD> <TD colspan="2">time <font color="blue"><i>vs.</i></font> clutch size</TD>
+    <TR><TD colspan="2">see figure</TD> <TD>0.2265</TD> <TD>Tah</TD> <TD colspan="2">temperature <font color="blue"><i>vs.</i></font> age at hatching</TD>
+    <TR><TD colspan="2">see figure</TD> <TD>0.07128</TD> <TD>Tap</TD> <TD colspan="2">temperature <font color="blue"><i>vs.</i></font> age at puberty</TD>
+    <TR class="psd"><TD>0.02</TD> <TD>0.01161</TD> <TD>0.4196</TD> <TD>psd.v</TD> <TD>cm/d</TD> <TD>energy conductance</TD></TR>
+    <TR class="psd"><TD> 18</TD> <TD>1400</TD> <TD>76.79</TD> <TD>psd.p_M</TD> <TD>J/d.cm^3</TD> <TD>vol-spec som maint</TD></TR>
+    <TR class="psd"><TD>0.002</TD> <TD>0.002162</TD> <TD>0.08096</TD> <TD>psd.k_J</TD> <TD>1/d</TD> <TD>maturity maint rate coefficient</TD></TR>
+    <TR class="psd"><TD>0.3</TD> <TD>0.006873</TD> <TD>0.9771</TD> <TD>psd.k</TD> <TD>-</TD> <TD>maintenance ratio</TD></TR>
+    <TR class="psd"><TD>0.8</TD> <TD>0.9994</TD> <TD>0.2493</TD> <TD>psd.kap</TD> <TD>-</TD> <TD>allocation fraction to soma</TD></TR>
+    <TR class="psd"><TD>0.8</TD> <TD>0.7989</TD> <TD>0.001324</TD> <TD>psd.kap_G</TD> <TD>-</TD> <TD>growth efficiency</TD></TR>
+    <TR class="psd"><TD>0.95</TD> <TD>0.95</TD> <TD>  0</TD> <TD>psd.kap_R</TD> <TD>-</TD> <TD>reproduction efficiency</TD></TR>
+  </TABLE>
+  </div>
+
+  <div class="par">
+  <h2>abj parameters at 20.0&deg;C</h2>
+  <TABLE id="par">
+    <TR class="head"><TH>symbol</TH> <TH>units</TH> <TH>value</TH>  <TH>free</TH> <TH>description</TH> </TR>
+    <TR><TD>T_ref</TD> <TD>K</TD> <TD>293.1</TD> <TD>0</TD> <TD>Reference temperature</TD></TR>
+    <TR><TD>T_A</TD> <TD>K</TD> <TD>4301</TD> <TD>1</TD> <TD>Arrhenius temperature</TD></TR>
+    <TR><TD>z</TD> <TD>-</TD> <TD>0.04366</TD> <TD>1</TD> <TD>zoom factor</TD></TR>
+    <TR><TD>F_m</TD> <TD>l/d.cm^2</TD> <TD>6.5</TD> <TD>0</TD> <TD>{F_m}, max spec searching rate</TD></TR>
+    <TR><TD>kap_X</TD> <TD>-</TD> <TD>0.8</TD> <TD>0</TD> <TD>digestion efficiency of food to reserve</TD></TR>
+    <TR><TD>kap_P</TD> <TD>-</TD> <TD>0.1</TD> <TD>0</TD> <TD>faecation efficiency of food to faeces</TD></TR>
+    <TR><TD>v</TD> <TD>cm/d</TD> <TD>0.01161</TD> <TD>1</TD> <TD>energy conductance</TD></TR>
+    <TR><TD>kap</TD> <TD>-</TD> <TD>0.9994</TD> <TD>1</TD> <TD>allocation fraction to soma</TD></TR>
+    <TR><TD>kap_R</TD> <TD>-</TD> <TD>0.95</TD> <TD>0</TD> <TD>reproduction efficiency</TD></TR>
+    <TR><TD>p_M</TD> <TD>J/d.cm^3</TD> <TD>1400</TD> <TD>1</TD> <TD>[p_M], vol-spec somatic maint</TD></TR>
+    <TR><TD>p_T</TD> <TD>J/d.cm^2</TD> <TD>  0</TD> <TD>0</TD> <TD>{p_T}, surf-spec somatic maint</TD></TR>
+    <TR><TD>k_J</TD> <TD>1/d</TD> <TD>0.002162</TD> <TD>1</TD> <TD>maturity maint rate coefficient</TD></TR>
+    <TR><TD>E_G</TD> <TD>J/cm^3</TD> <TD>4451</TD> <TD>1</TD> <TD>[E_G], spec cost for structure</TD></TR>
+    <TR><TD>E_Hb</TD> <TD>J</TD> <TD>8.063e-06</TD> <TD>1</TD> <TD>maturity at birth</TD></TR>
+    <TR><TD>E_Hp</TD> <TD>J</TD> <TD>0.0003025</TD> <TD>1</TD> <TD>maturity at puberty</TD></TR>
+    <TR><TD>h_a</TD> <TD>1/d^2</TD> <TD>2.737e-22</TD> <TD>0</TD> <TD>Weibull aging acceleration</TD></TR>
+    <TR><TD>s_G</TD> <TD>-</TD> <TD>0.0001</TD> <TD>0</TD> <TD>Gompertz stress coefficient</TD></TR>
+    <TR><TD>E_Hh</TD> <TD>J</TD> <TD>3.888e-06</TD> <TD>1</TD> <TD>maturity at hatch</TD></TR>
+    <TR><TD>E_Hj</TD> <TD>J</TD> <TD>4.618e-05</TD> <TD>1</TD> <TD>maturity at metamorphosis</TD></TR>
+    <TR><TD>T_AL</TD> <TD>K</TD> <TD>1.795e+04</TD> <TD>1</TD> <TD>Arrhenius temperature low boundary</TD></TR>
+    <TR><TD>T_L</TD> <TD>K</TD> <TD>280</TD> <TD>0</TD> <TD>Lower temperature boundary for optimal growth</TD></TR>
+    <TR><TD>del_M</TD> <TD>-</TD> <TD>1.578</TD> <TD>1</TD> <TD>shape coefficient</TD></TR>
+    <TR><TD>f</TD> <TD>-</TD> <TD>  1</TD> <TD>0</TD> <TD>scaled functional response for 0-var data</TD></TR>
+    <TR><TD>f_tL12</TD> <TD>-</TD> <TD>1.131</TD> <TD>1</TD> <TD>scaled functional response for data at 12 C</TD></TR>
+    <TR><TD>f_tL15</TD> <TD>-</TD> <TD>  1</TD> <TD>0</TD> <TD>scaled functional response for data at 15 C</TD></TR>
+    <TR><TD>f_tL18</TD> <TD>-</TD> <TD>  1</TD> <TD>0</TD> <TD>scaled functional response for data at 18 C</TD></TR>
+    <TR><TD>f_tL21</TD> <TD>-</TD> <TD>0.9505</TD> <TD>1</TD> <TD>scaled functional response for data at 21 C</TD></TR>
+    <TR><TD>f_tL24</TD> <TD>-</TD> <TD>0.8764</TD> <TD>1</TD> <TD>scaled functional response for data at 24 C</TD></TR>
+  </TABLE>
+  </div>
+
+</BODY>
+</HTML>

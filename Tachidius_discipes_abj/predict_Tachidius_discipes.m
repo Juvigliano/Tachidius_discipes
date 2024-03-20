@@ -18,10 +18,10 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   % zero-variate data at f = f and T = 20 C (except for age at hatching at 15 C)
   
   % life cycle
-  pars_tjp = [g k l_T v_Hb v_Hp v_Hp];
+  pars_tjp = [g k l_T v_Hb v_Hj v_Hp];
   
    % gets scaled age and length at puberty
-  [~, ~, ~, l_p, ~, l_b, ~, ~, ~, info] = get_tj(pars_tjp, f);
+  [tau_j, tau_p, tau_b, l_j, l_p, l_b, ~, ~, ~, info] = get_tj(pars_tjp, f);
   if info == 0;  prdData = []; return; end
   
   % initial reserve
@@ -40,7 +40,7 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   L_b  = L_m * l_b;                  % cm, structural length at birth
   Lw_b = L_b/ del_M;                 % cm, length at birth
   
-  % puberty (end of acceleration and growth and kappa-rule)
+  % puberty (end of growth and kappa-rule)
   L_p  = L_m * l_p;                  % cm, structural length at puberty
   Lw_p = L_p/ del_M;                 % cm, length at puberty
   Wd_p = L_p^3 * (1 + f * ome) * d_V; % g, ultimate dry weight
@@ -53,58 +53,68 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   prdData.Wdp = Wd_p;            % g, dry weight at puberty
   
   % uni-variate data
-  p = [p_Am; v; p_M; k_J; kap; kap_G; E_G; E_Hb; E_Hp];
+  p = [p_Am; v; p_M; k_J; kap; kap_G; E_G; E_Hb; E_Hj; E_Hp];
   E_b = E_m * L_b^3; % J, energy in reserve at birth
   ELHR0 = [E_b; L_b; E_Hb; 0]; % state variables at birth
 
-  [tsort, ~, ci] = unique(tL12(:,1)); 
-  [~, ELHR] = ode45(@dget_ELHR_abp, tsort, ELHR0,[], p, TC12, L_b, f_tL12);
+  [tsort, ~, ci] = unique(tL12(:,1));
+  [~, ~, ~, l_j, ~, ~, ~, ~, ~, ~] = get_tj(pars_tjp, f_tL12);
+  L_j_12 = L_m * l_j;
+  [~, ELHR] = ode45(@dget_ELHR_abp, tsort, ELHR0,[], p, TC12, L_b, L_j_12, f_tL12);
   EL12 = ELHR(ci,2)./ del_M; 
 
-  [tsort, ~, ci] = unique(tL15(:,1)); 
-  [~, ELHR] = ode45(@dget_ELHR_abp, tsort, ELHR0,[], p, TC15, L_b, f_tL15);
+  [tsort, ~, ci] = unique(tL15(:,1));
+  [~, ~, ~, l_j, ~, ~, ~, ~, ~, ~] = get_tj(pars_tjp, f_tL15);
+  L_j_15 = L_m * l_j;
+  [~, ELHR] = ode45(@dget_ELHR_abp, tsort, ELHR0,[], p, TC15, L_b, L_j_15, f_tL15);
   EL15 = ELHR(ci,2)/ del_M; 
 
-  [tsort, ~, ci] = unique(tL18(:,1)); 
-  [~, ELHR] = ode45(@dget_ELHR_abp, tsort, ELHR0,[], p, TC18, L_b, f_tL18);
+  [tsort, ~, ci] = unique(tL18(:,1));
+  [~, ~, ~, l_j, ~, ~, ~, ~, ~, ~] = get_tj(pars_tjp, f_tL18);
+  L_j_18 = L_m * l_j;
+  [~, ELHR] = ode45(@dget_ELHR_abp, tsort, ELHR0,[], p, TC18, L_b, L_j_18, f_tL18);
   EL18 = ELHR(ci,2)/ del_M; 
 
-  [tsort, ~, ci] = unique(tL21(:,1)); 
-  [~, ELHR] = ode45(@dget_ELHR_abp, tsort, ELHR0,[], p, TC21, L_b, f_tL21);
+  [tsort, ~, ci] = unique(tL21(:,1));
+  [~, ~, ~, l_j, ~, ~, ~, ~, ~, ~] = get_tj(pars_tjp, f_tL21);
+  L_j_21 = L_m * l_j;
+  [~, ELHR] = ode45(@dget_ELHR_abp, tsort, ELHR0,[], p, TC21, L_b, L_j_21, f_tL21);
   EL21 = ELHR(ci,2)/ del_M; 
 
-  [tsort, ~, ci] = unique(tL24(:,1)); 
-  [~, ELHR] = ode45(@dget_ELHR_abp, tsort, ELHR0,[], p, TC24, L_b, f_tL24);
+  [tsort, ~, ci] = unique(tL24(:,1));
+  [~, ~, ~, l_j, ~, ~, ~, ~, ~, ~] = get_tj(pars_tjp, f_tL24);
+  L_j_24 = L_m * l_j;
+  [~, ELHR] = ode45(@dget_ELHR_abp, tsort, ELHR0,[], p, TC24, L_b, L_j_24, f_tL24);
   EL24 = ELHR(ci,2)/ del_M; 
       
   % time-clutch size at 12 C
   EN12 = zeros(size(tN12,1),1);
   for i = 1:length(tN12)
-      [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN12(i,1)], ELHR0,[], p, TC12, L_b, f_tL12);
+      [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN12(i,1)], ELHR0,[], p, TC12, L_b, L_j_12, f_tL12);
       EN12(i) = kap_R * ELHR(end,4)/E_0; 
   end
 
   EN15 = zeros(size(tN15,1),1);
   for i = 1:length(tN15)
-      [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN15(i,1)], ELHR0,[], p, TC15, L_b, f_tL15);
+      [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN15(i,1)], ELHR0,[], p, TC15, L_b, L_j_15, f_tL15);
       EN15(i) = kap_R * ELHR(end,4)/E_0; 
   end
 
   EN18 = zeros(size(tN18,1),1);
   for i = 1:length(tN18)
-      [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN18(i,1)], ELHR0,[], p, TC18, L_b, f_tL18);
+      [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN18(i,1)], ELHR0,[], p, TC18, L_b, L_j_18, f_tL18);
       EN18(i) = kap_R * ELHR(end,4)/E_0; 
   end
 
   EN21 = zeros(size(tN21,1),1);
   for i = 1:length(tN21)
-      [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN21(i,1)], ELHR0,[], p, TC21, L_b, f_tL21);
+      [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN21(i,1)], ELHR0,[], p, TC21, L_b, L_j_21, f_tL21);
       EN21(i) = kap_R * ELHR(end,4)/E_0; 
   end
 
   EN24 = zeros(size(tN24,1),1);
   for i = 1:length(tN24)
-      [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN24(i,1)], ELHR0,[], p, TC24, L_b, f_tL24);
+      [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN24(i,1)], ELHR0,[], p, TC24, L_b, L_j_24, f_tL24);
       EN24(i) = kap_R * ELHR(end,4)/E_0; 
   end
 
@@ -112,11 +122,14 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   [~, aUL] = ode45(@dget_aul, [0; U_Hh], [0 U_E0 1e-10], [], kap, v, k_J, g, L_m);
   ETah = aUL(end,1)./ TC_Tah; % d, age at hatch
 
+  % Visualization is still weird
   % temperature-age at puberty (accounting for variable functional
   % response)
   fs = [f_tL12; f_tL15; f_tL18; f_tL21; f_tL24];
   ETap = zeros(size(Tap,1),1);
   if size(Tap,1) > length(fs)
+    % During prediction for visualization, Tap is large, so interpolation
+    % needed for visualization if multiple fs required
     % ETap_short = zeros(length(fs),1);
     % [~, indices] = ismember([12; 15; 18; 21; 24], round(Tap,0));
     % indices(end) = length(Tap);
@@ -125,13 +138,13 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
     %     ETap_short(c) = t_p / k_M / TC_Tap(c);
     % end
     % ETap = interp1(indices, ETap_short, 1:length(ETap), 'spline', 'extrap');
-    for c = 1:length(fs)
-        [t_p, ~, ~, ~, ~, ~, ~, ~, ~, info] = get_tj(pars_tjp, fs(c));
-        E(c) = t_p / k_M / TC_Tap(c);
+    for c = 1:length(ETap)
+        [~, t_p, ~, ~, ~, ~, ~, ~, ~, info] = get_tj(pars_tjp, f);
+        ETap(c) = t_p / k_M / TC_Tap(c);
     end
   else
       for c = 1:length(ETap)
-        [t_p, ~, ~, ~, ~, ~, ~, ~, ~, info] = get_tj(pars_tjp, fs(c));
+        [~, t_p, ~, ~, ~, ~, ~, ~, ~, info] = get_tj(pars_tjp, fs(c));
         ETap(c) = t_p / k_M / TC_Tap(c);
       end
   end
@@ -152,7 +165,7 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   prdData.Tap   = ETap;           % C, temperature - d, age at puberty
 end
 
-function dELHR = dget_ELHR_abp(t, ELHR, p, TC, L_b, f)
+function dELHR = dget_ELHR_abp(t, ELHR, p, TC, L_b, L_j, f)
   % Define changes in the state variables for abp model
   % t: time
   % ELHR: 4-vector with state variables
@@ -170,13 +183,15 @@ function dELHR = dget_ELHR_abp(t, ELHR, p, TC, L_b, f)
   % unpack par
   p_Am = p(1); v = p(2); p_M = p(3); k_J = p(4); 
   kap = p(5); kap_G = p(6); 
-  E_G = p(7); E_Hb = p(8); E_Hp = p(9);
+  E_G = p(7); E_Hb = p(8); E_Hj = p(9); E_Hp = p(10);
 
   % temp and acceleration correction
   if E_H < E_Hb
       s_M = 1;
-  else
+  elseif (E_H >= E_Hb) && (E_H < E_Hj)
       s_M = L / L_b;
+  elseif E_H >= E_Hj
+      s_M = L_j / L_b;
   end
   pT_Am = TC * p_Am * s_M;
   vT = TC * v * s_M;  

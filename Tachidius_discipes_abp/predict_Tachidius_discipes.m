@@ -112,6 +112,7 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   [~, aUL] = ode45(@dget_aul, [0; U_Hh], [0 U_E0 1e-10], [], kap, v, k_J, g, L_m);
   ETah = aUL(end,1)./ TC_Tah; % d, age at hatch
 
+  % Visualization is still weird
   % temperature-age at puberty (accounting for variable functional
   % response)
   fs = [f_tL12; f_tL15; f_tL18; f_tL21; f_tL24];
