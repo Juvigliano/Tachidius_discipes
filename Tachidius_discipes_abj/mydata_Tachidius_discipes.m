@@ -51,7 +51,10 @@ data.Wdp = 0.0000205716902; units.Wdp = 'g'; label.Wdp = 'ultimate dry weight at
 data.JOi = mean([17.44, 11.75]);  units.JOi = 'nL/h/mug';  label.JOi = 'ultimate specific O2 consumption';
   bibkey.JOi = 'HermHeip1983';  temp.JOi = C2K(20);  units.temp.JOi = 'K'; label.temp.JOi = 'temperature';
   comment.JOi = 'specific O2 consumption of four brackish water harpacticoida at ultimate length';
-
+data.WCp = mean([0.983820513, 1.035122449, 0.93593141]); units.WCp = 'mugC'; label.WCp= 'carbon mass at puberty';
+bibkey.WCp = 'Vigl2023';
+data.WNp = mean([0.247615385, 0.254292517, 0.20389359]); units.WNp = 'mugN'; label.WNp= 'nitrogen mass at puberty';
+bibkey.WNp = 'Vigl2023';
 %% set uni-variate data
 % time - length
 % code modified to work with means and standard deviation
@@ -329,14 +332,26 @@ bibkey.Tah = {'Vigl2023'};
 % bibkey.TR = {'Vigl2023'};
 
 % length-C mass-N mass 
+
+% old LWCN data
 %data.LWCN= [...
 %0.026656936	0.983820513	0.247615385
 %0.026656937	1.035122449	0.254292517
 %0.026656938	0.93593141	0.20389359];
-% data.LWC = LWCN(:,[1 2]);
+%data.LWCN = LWCN(:,[1 2]);
 %units.LWCN = {'cm', 'mugC', 'mugN'}; label.LWCN= {'length', 'carbon mass', 'nitrogen mass'};
 %bibkey.LWCN = {'Vigl2023'};  
 %treat.LWCN = {1, {'Carbon weight','Nitrogen weight'}};
+
+% new LWCN data
+LWCN = readmatrix('LCN.txt');
+LWCN(:,1) = LWCN(:,1) / 1e5;
+data.LWCN= LWCN;
+%data.LWCN = LWCN(:,[1 2]);
+units.LWCN = {'cm', 'mugC', 'mugN'}; label.LWCN= {'length', 'carbon mass', 'nitrogen mass'};
+bibkey.LWCN = {'Vigl2023'};  
+treat.LWCN = {1, {'Carbon weight','Nitrogen weight'}};
+
 % T-tp data
 %data.Ttp = [ ... % temperature (C), time since metam at puberty (d)
 %   14.86   12.31
@@ -345,6 +360,8 @@ bibkey.Tah = {'Vigl2023'};
 %  units.Ttp = {'C', 'd'};  label.Ttp = {'temperature', 'time since metam at puberty'};  
 %  bibkey.Ttp = 'KochBui2017';
 % temperature age at puberty
+
+
 data.Tap = [... time since hatch, age at puberty
 12  25.73
 15  25.14
@@ -356,7 +373,10 @@ bibkey.Tap = {'Vigl2023'};
 
 %% set weights for all real data
 weights = setweights(data, []);
-%weights.LWCN= 0* weights.LWCN;
+weights.WCp = 0;
+weights.WNp = 0;
+%weights.Wdp = 0;
+%weights.LWCN= 0*weights.LWCN;
 
 %% set pseudodata and respective weights
 [data, units, label, weights] = addpseudodata(data, units, label, weights);
