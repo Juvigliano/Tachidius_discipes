@@ -26,9 +26,9 @@ par.s_G = 0.0001;     free.s_G   = 0;   units.s_G = '-';          label.s_G = 'G
 %% other parameters 
 par.E_Hh = 4.743e-06; free.E_Hh  = 1;   units.E_Hh = 'J';         label.E_Hh = 'maturity at hatch'; 
 par.T_AL = 20000;     free.T_AL  = 1;   units.T_AL = 'K';         label.T_AL = 'Arrhenius temperature low boundary'; 
-par.T_L = 280;        free.T_L   = 0;   units.T_L = 'K';          label.T_L = 'Lower temperature boundary for optimal growth';
+par.T_L = 280;        free.T_L   = 1;   units.T_L = 'K';          label.T_L = 'Lower temperature boundary for optimal growth';
 %par.T_AH = 30000;     free.T_AH  = 1;   units.T_AH = 'K';         label.T_AH = 'Arrhenius temperature high boundary'; 
-%par.T_H = 303;        free.T_H   = 0;   units.T_H = 'K';          label.T_H = 'Higher temperature boundary for optimal growth'; 
+%par.T_H = 310;        free.T_H   = 0;   units.T_H = 'K';          label.T_H = 'Higher temperature boundary for optimal growth'; 
 par.del_M = 1.3692;   free.del_M = 1;   units.del_M = '-';        label.del_M = 'shape coefficient'; 
 par.f = 1;            free.f     = 0;   units.f = '-';            label.f = 'scaled functional response for 0-var data'; 
 par.f_tL12 = 1.0;     free.f_tL12 = 1;  units.f_tL12 = '-';       label.f_tL12 = 'scaled functional response for data at 12 C';
