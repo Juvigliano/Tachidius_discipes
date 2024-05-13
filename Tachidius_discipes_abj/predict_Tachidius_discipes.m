@@ -5,10 +5,10 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   vars_pull(cPar);  vars_pull(data);  vars_pull(auxData);
   
   % compute temperature correction factors
-  pars_T = [T_A T_L T_AL];    % with lower tolerance limit
+  %pars_T = [T_A T_L T_AL];    % with lower tolerance limit
   %pars_T = [T_A T_H T_AH];    % with upper tolerance limit
   %pars_T = T_A;                % without tolerance limits
-  %pars_T = [T_A, T_L, T_H, T_AL, T_AH]; % with all tolerance limits
+  pars_T = [T_A, T_L, T_H, T_AL, T_AH]; % with all tolerance limits
 
   TC_ah  = tempcorr(temp.ah, T_ref, pars_T);                     % 15 C
   TC_Tah = tempcorr(C2K(Tah(:,1)), T_ref, pars_T);             % 12, 15, 18, 21, 24 C

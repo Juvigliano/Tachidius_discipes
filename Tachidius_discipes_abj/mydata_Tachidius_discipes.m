@@ -345,7 +345,7 @@ bibkey.Tah = {'Vigl2023'};
 
 % new LWCN data
 LWCN = readmatrix('LCN.txt');
-LWCN(:,1) = LWCN(:,1) / 1e5;
+%LWCN(:,1) = LWCN(:,1) / 1e5;
 data.LWCN= LWCN;
 %data.LWCN = LWCN(:,[1 2]);
 units.LWCN = {'cm', 'mugC', 'mugN'}; label.LWCN= {'length', 'carbon mass', 'nitrogen mass'};
@@ -376,7 +376,7 @@ weights = setweights(data, []);
 weights.WCp = 0;
 weights.WNp = 0;
 %weights.Wdp = 0;
-%weights.LWCN= 0*weights.LWCN;
+weights.LWCN= 0*weights.LWCN;
 
 %% set pseudodata and respective weights
 [data, units, label, weights] = addpseudodata(data, units, label, weights);

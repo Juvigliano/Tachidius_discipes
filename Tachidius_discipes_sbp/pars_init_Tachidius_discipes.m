@@ -6,7 +6,7 @@ metaPar.model = 'sbp';
 par.T_ref = 293.15;   free.T_ref = 0;   units.T_ref = 'K';        label.T_ref = 'Reference temperature'; 
 
 %% core primary parameters 
-par.T_A = 4000;       free.T_A   = 1;   units.T_A = 'K';          label.T_A = 'Arrhenius temperature'; 
+par.T_A = 8036;       free.T_A   = 0;   units.T_A = 'K';          label.T_A = 'Arrhenius temperature'; 
 par.z = 0.0564;       free.z     = 1;   units.z = '-';            label.z = 'zoom factor'; 
 par.F_m = 6.5;        free.F_m   = 0;   units.F_m = 'l/d.cm^2';   label.F_m = '{F_m}, max spec searching rate'; 
 par.kap_X = 0.8;      free.kap_X = 0;   units.kap_X = '-';        label.kap_X = 'digestion efficiency of food to reserve'; 
@@ -25,18 +25,20 @@ par.s_G = 0.0001;     free.s_G   = 0;   units.s_G = '-';          label.s_G = 'G
 
 %% other parameters 
 par.E_Hh = 4.743e-06; free.E_Hh  = 1;   units.E_Hh = 'J';         label.E_Hh = 'maturity at hatch'; 
-par.del_M = 1.3692;   free.del_M = 1;   units.del_M = '-';        label.del_M = 'shape coefficient';
-par.T_AL = 20000;  free.T_AL  = 1;   units.T_AL = 'K';         label.T_AL = 'Arrhenius temperature low boundary'; 
-par.T_L = 280;        free.T_L   = 0;   units.T_L = 'K';          label.T_L = 'Lower temperature boundary for optimal growth'; 
+par.T_AL = 462923;     free.T_AL  = 0;   units.T_AL = 'K';         label.T_AL = 'Arrhenius temperature low boundary'; 
+par.T_L = 277.23;        free.T_L   = 0;   units.T_L = 'K';          label.T_L = 'Lower temperature boundary for optimal growth';
+par.T_AH = 31465;     free.T_AH  = 0;   units.T_AH = 'K';         label.T_AH = 'Arrhenius temperature high boundary'; 
+par.T_H = 298.88;        free.T_H   = 0;   units.T_H = 'K';          label.T_H = 'Higher temperature boundary for optimal growth'; 
+par.del_M = 1.3692;   free.del_M = 1;   units.del_M = '-';        label.del_M = 'shape coefficient'; 
 par.f = 1;            free.f     = 0;   units.f = '-';            label.f = 'scaled functional response for 0-var data'; 
-par.f_tL12 = 1.0;     free.f_tL12 = 1;  units.f_tL12 = '-';            label.f_tL12 = 'scaled functional response for data at 12 C';
-par.f_tL15 = 1.0;     free.f_tL15 = 0;  units.f_tL15 = '-';            label.f_tL15 = 'scaled functional response for data at 15 C';
-par.f_tL18 = 1.0;     free.f_tL18 = 0;  units.f_tL18 = '-';            label.f_tL18 = 'scaled functional response for data at 18 C';
-par.f_tL21 = 1.0;     free.f_tL21 = 1;  units.f_tL21 = '-';            label.f_tL21 = 'scaled functional response for data at 21 C';
-par.f_tL24 = 1.0;     free.f_tL24 = 1;  units.f_tL24 = '-';            label.f_tL24 = 'scaled functional response for data at 24 C';
+par.f_tL12 = 1.0;     free.f_tL12 = 1;  units.f_tL12 = '-';       label.f_tL12 = 'scaled functional response for data at 12 C';
+par.f_tL15 = 1.0;     free.f_tL15 = 0;  units.f_tL15 = '-';       label.f_tL15 = 'scaled functional response for data at 15 C';
+par.f_tL18 = 1.0;     free.f_tL18 = 1;  units.f_tL18 = '-';       label.f_tL18 = 'scaled functional response for data at 18 C';
+par.f_tL21 = 1.0;     free.f_tL21 = 1;  units.f_tL21 = '-';       label.f_tL21 = 'scaled functional response for data at 21 C';
+par.f_tL24 = 1.0;     free.f_tL24 = 1;  units.f_tL24 = '-';       label.f_tL24 = 'scaled functional response for data at 24 C';
 
 %% set chemical parameters from Kooy2010 
 [par, units, label, free] = addchem(par, units, label, free, metaData.phylum, metaData.class); 
-
+ 
 %% Pack output: 
 txtPar.units = units; txtPar.label = label; par.free = free; 

@@ -13,7 +13,7 @@ if filterChecks
 end
 
 % compute temperature correction factors
-pars_T = [T_A T_L T_AL];
+pars_T = [T_A, T_L, T_H, T_AL, T_AH]; % with all tolerance limits
 TC_ah = tempcorr(temp.ah, T_ref, pars_T);
 TC_Tap = tempcorr(C2K(Tap(:,1)), T_ref, pars_T);
 TC_Tah = tempcorr(C2K(Tah(:,1)), T_ref, pars_T);
@@ -61,6 +61,10 @@ pTD_p = pTs_p + pTJ_p + (1 - kap_R) * pTR_p;           % J/d, dissipation flux a
 JT_M_p = -(n_M\ n_O) * eta_O * [pTA_p, pTD_p, pTG_p]'; % mol/d, mineral fluxes (J_C, J_H, J_O, J_N in rows)
 JT_O_p = -JT_M_p(3) * 24.4/ 24/ 1e-9/ Wd_i;            % nL O2/h/mug, dry weight specific O2 consumption (with 24.4 L O2/mol)
 
+% carbon and nitrogen mass at puberty
+WC_p = L_p.^3 * (1 + f * ome) * d_V * 12/ w_V*1e6;  % mug, carbon weight
+WN_p = L_p.^3 * (1 + f * ome) * d_V * n_NV * 14/ w_V*1e6;  % mug, nitrogen weight
+
 % pack to output
 prdData.ah = a_h;
 prdData.Lh = Lw_h;
@@ -68,6 +72,8 @@ prdData.Lb = Lw_b;
 prdData.Lp = Lw_p;
 prdData.Wdp = Wd_p;
 prdData.JOi = JT_O_p; % nL/h/mug, dry weight specific O2 consumption
+prdData.WCp = WC_p;            % mug, carbon weight at puberty
+prdData.WNp = WN_p;            % mug, nitrogen weight at puberty
 
 % uni-variate data
 p = [p_Am; v; p_M; k_J; kap; kap_G; E_G; E_Hb; E_Hp];
@@ -163,8 +169,8 @@ end
 
 
 % % weight of carbon and nitrogen
-% EWC = (LWCN(:,1) * del_M).^3 * (1 + f * w) * d_V * 12/ w_V*1e6;  % mug, carbon weight
-% EWN = (LWCN(:,1) * del_M).^3 * (1 + f * w) * d_V * n_NV * 14/ w_V*1e6;  % mug, nitrogen weightf
+EWC = (LWCN(:,1) * del_M).^3 * (1 + f * w) * d_V * 12/ w_V*1e6;  % mug, carbon weight
+EWN = (LWCN(:,1) * del_M).^3 * (1 + f * w) * d_V * n_NV * 14/ w_V*1e6;  % mug, nitrogen weightf
    
 % pack to output
 prdData.tL12 = EL12;
@@ -180,7 +186,7 @@ prdData.tN21 = EN21;
 prdData.tN24 = EN24;
 prdData.Tah = Ea_h; %age at hatching
 prdData.Tap = Ea_p;
-%prdData.LWCN = [EWC EWN]; %carbon and nitrogen mass
+prdData.LWCN = [EWC EWN]; %carbon and nitrogen mass
 %prdData.TR= ER_i;
 
 end

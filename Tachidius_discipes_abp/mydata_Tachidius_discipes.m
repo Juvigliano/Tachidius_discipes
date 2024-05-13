@@ -376,7 +376,7 @@ weights = setweights(data, []);
 weights.WCp = 0;
 weights.WNp = 0;
 %weights.Wdp = 0;
-%weights.LWCN= 0*weights.LWCN;
+weights.LWCN= 0*weights.LWCN;
 
 %% set pseudodata and respective weights
 [data, units, label, weights] = addpseudodata(data, units, label, weights);
