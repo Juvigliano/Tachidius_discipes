@@ -34,7 +34,7 @@ estim_options('max_fun_evals',5e3);
 
 estim_options('pars_init_method', 2);
 estim_options('results_output', 5);
-estim_options('method', 'nm');
+estim_options('method', 'no');
 
 estim_pars;
 % mat2pars_init;

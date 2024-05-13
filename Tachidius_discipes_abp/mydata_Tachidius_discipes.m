@@ -138,31 +138,15 @@ stdev.tL24 =Lsd ; units.stdev.tL24 = 'cm'; label.stdev.tL24 = 'standard deviatio
   
 %%time- number of offspring
 data.tN12 = [...
-37.00	25
-37.00	29
-37.00	22
-37.00	26
-37.00	27
-37.00	33
-37.00	33
-37.00	27
-37.00	25
-37.00	30
-37.00	29
-37.00	20];
+   37.00	mean([25,29,22,26,33,33,27,25,30,29,20])];
 units.tN12 = {'d', '#'}; label.tN12= {'time', 'clutch size'};
 temp.tN12 = C2K(12); units.temp.tN12 = 'K'; label.temp.tN12 = 'temperature';
 bibkey.tN12 = {'Vigl2023'}; treat.tN12 = {0};
 %
 data.tN15 = [...
-32.00	41
-32.00	25
-32.00	10
+32.00	mean([41,25,10])
 33.00	31
-37.00	33
-37.00	31
-37.00	21
-37.00	25];
+37.00	mean([33,31,21,25])];
 units.tN15 = {'d', '#'}; label.tN15= {'time', 'clutch size'};
 temp.tN15 = C2K(15); units.temp.tN15 = 'K'; label.temp.tN15 = 'temperature';
 bibkey.tN15 = {'Vigl2023'};
@@ -170,15 +154,8 @@ treat.tN15 = {0};
 %
 data.tN18 = [...
 23.00	18
-24.00	20
-24.00	18
-24.00	29
-24.00	21
-30.00	24
-30.00	34
-30.00	34
-30.00	32
-30.00	46];
+24.00	mean([20,18,29, 21])
+30.00	mean([24,34,34,32,46])];
 units.tN18 = {'d', '#'}; label.tN18= {'time', 'clutch size'};
 temp.tN18 = C2K(18); units.temp.tN18 = 'C'; label.temp.tN18 = 'temperature';
 bibkey.tN18 = {'Vigl2023'};
@@ -189,10 +166,8 @@ data.tN21 = [...
 18.00	18
 20.00	5
 23.00	18
-22.00	17
-22.00	12
-23.00	24
-23.00	34
+22.00	mean([17,12])
+23.00	mean([24,34])
 24.00	10];
 units.tN21 = {'d', '#'}; label.tN21= {'time', 'clutch size'};
 temp.tN21 = C2K(21); units.temp.tN21 = 'K'; label.temp.tN21 = 'temperature';
@@ -202,16 +177,8 @@ treat.tN21 = {0};
 data.tN24 = [...
 17.00	12
 18.00	21
-19.00	10
-19.00	23
-18.00	19
-19.00	10
-18.00	11
-18.00	12
-18.00	11
-18.00	10
-18.00	16
-18.00	15];
+19.00	mean([10,23,10])
+18.00	mean([19,11,12,	11,	10,	16,	15])];
 units.tN24 = {'d', '#'}; label.tN24= {'time', 'clutch size'};
 temp.tN24 = C2K(24); units.temp.tN24 = 'C'; label.temp.tN24 = 'temperature';
 bibkey.tN24 = {'Vigl2023'};
