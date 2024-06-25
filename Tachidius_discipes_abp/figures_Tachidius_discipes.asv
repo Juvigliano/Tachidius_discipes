@@ -1,0 +1,47 @@
+% unpack par, data, auxData
+[data, auxData, metaData, txtData, weights] = mydata_Tachidius_discipes;
+[par, metaPar, txtPar] = pars_init_Tachidius_discipes(metaData);
+
+cPar = parscomp_st(par);  vars_pull(par);
+vars_pull(cPar);  vars_pull(data);  vars_pull(auxData);
+
+% Set temperature and food availability
+T = C2K(20);
+f = 1.0;
+
+% predicting fluxes and other statistics
+[stat, txtStat] = statistics_st('abp', par, T, f);
+
+% fluxes: birth
+fluxes = [stat.p_Sb/stat.p_Cb, stat.p_Jb/stat.p_Cb, stat.p_Gb/stat.p_Cb, stat.p_Rb/stat.p_Cb];
+flux_labels = {'Somatic maintenance at birth', 'Maturity maintenance at birth', 'Growth at birth', 'Maturation at birth'}; % Corresponding labels
+label_with_proportions = strcat(flux_labels, {' '}, string(round(fluxes, 2)));
+
+% pie plot
+figure('Position', [100, 100, 800, 600]); % [left, bottom, width, height]
+pie(fluxes, [1 1 0 0], label_with_proportions);
+title('Energy budget at birth');
+
+% bar plot
+figure('Position', [100, 100, 800, 600]); % [left, bottom, width, height]
+bar(fluxes);
+set(gca, 'XTickLabel', flux_labels);
+ylabel('Proportion');
+title('Energy budget at birth');
+
+% fluxes: puberty
+fluxes = [stat.p_Sp/stat.p_Cp, stat.p_Jp/stat.p_Cp, stat.p_Gp/stat.p_Cp, stat.p_Rp/stat.p_Cp];
+flux_labels = {'Somatic maintenance at puberty', 'Maturity maintenance at puberty', 'Growth at pubertyy', 'Maturation at birth'}; % Corresponding labels
+label_with_proportions = strcat(flux_labels, {' '}, string(round(fluxes, 2)));
+
+% pie plot
+figure('Position', [100, 100, 800, 600]); % [left, bottom, width, height]
+pie(fluxes, [1 1 0 0], label_with_proportions);
+title('Energy budget at birth');
+
+% bar plot
+figure('Position', [100, 100, 800, 600]); % [left, bottom, width, height]
+bar(fluxes);
+set(gca, 'XTickLabel', flux_labels);
+ylabel('Proportion');
+title('Energy budget at birth');

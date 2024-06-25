@@ -104,31 +104,31 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
       
   % time-clutch size at 12 C
   EN12 = zeros(size(tN12,1),1);
-  for i = 1:length(tN12)
+  for i = 1:size(tN12,1)
       [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN12(i,1)], ELHR0,[], p, TC12, L_b, f_tL12);
       EN12(i) = kap_R * ELHR(end,4)/E_0; 
   end
 
   EN15 = zeros(size(tN15,1),1);
-  for i = 1:length(tN15)
+  for i = 1:size(tN15,1)
       [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN15(i,1)], ELHR0,[], p, TC15, L_b, f_tL15);
       EN15(i) = kap_R * ELHR(end,4)/E_0; 
   end
 
   EN18 = zeros(size(tN18,1),1);
-  for i = 1:length(tN18)
+  for i = 1:size(tN18,1)
       [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN18(i,1)], ELHR0,[], p, TC18, L_b, f_tL18);
       EN18(i) = kap_R * ELHR(end,4)/E_0; 
   end
 
   EN21 = zeros(size(tN21,1),1);
-  for i = 1:length(tN21)
+  for i = 1:size(tN21,1)
       [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN21(i,1)], ELHR0,[], p, TC21, L_b, f_tL21);
       EN21(i) = kap_R * ELHR(end,4)/E_0; 
   end
 
   EN24 = zeros(size(tN24,1),1);
-  for i = 1:length(tN24)
+  for i = 1:size(tN24,1)
       [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN24(i,1)], ELHR0,[], p, TC24, L_b, f_tL24);
       EN24(i) = kap_R * ELHR(end,4)/E_0; 
   end
