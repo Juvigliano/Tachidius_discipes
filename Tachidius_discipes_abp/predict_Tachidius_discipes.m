@@ -99,7 +99,7 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   EL21 = ELHR(ci,2)/ del_M; 
 
   [tsort, ~, ci] = unique(tL24(:,1)); 
-  [~, ELHR] = ode45(@dget_ELHR_abp, tsort, ELHR0,[], p, TC24, L_b, f_tL24);
+  [~, ELHR] = ode45(@dget_ELHR_abp, tsort, ELHR0,[], p, TC24, L_b, f_tL21);
   EL24 = ELHR(ci,2)/ del_M; 
       
   % time-clutch size at 12 C
@@ -129,7 +129,7 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
 
   EN24 = zeros(size(tN24,1),1);
   for i = 1:size(tN24,1)
-      [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN24(i,1)], ELHR0,[], p, TC24, L_b, f_tL24);
+      [~, ELHR] = ode45(@dget_ELHR_abp, [0 tN24(i,1)], ELHR0,[], p, TC24, L_b, f_tL21);
       EN24(i) = kap_R * ELHR(end,4)/E_0; 
   end
 
@@ -140,7 +140,7 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   % Visualization is still weird
   % temperature-age at puberty (accounting for variable functional
   % response)
-  fs = [f_tL12; f_tL15; f_tL18; f_tL21; f_tL24];
+  fs = [f_tL12; f_tL15; f_tL18; f_tL21; f_tL21];
   ETap = zeros(size(Tap,1),1);
   if size(Tap,1) > length(fs)
     % During prediction for visualization, Tap is large, so interpolation

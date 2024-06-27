@@ -6,8 +6,8 @@ cPar = parscomp_st(par);  vars_pull(par);
 vars_pull(cPar);  vars_pull(data);  vars_pull(auxData);
 
 % Set temperature and food availability
-T = C2K(18);
-f = 0.72;
+T = C2K(24);
+f = 1.112;
 
 % predicting fluxes and other statistics
 [stat, txtStat] = statistics_st('abp', par, T, f);
@@ -24,7 +24,7 @@ label_with_proportions = strcat(flux_labels, {' '}, string(round(fluxes, 2)));
 % pie plot
 figure('Position', [100, 100, 800, 600]); % [left, bottom, width, height]
 h = pie(fluxes, [1 1 0 0], label_with_proportions);
-title(strcat({'Energy budget at birth at '}, string(K2C(T)), {'°C and f = '}, string(f)));
+title(strcat({'Energy budget at birth at '}, string(K2C(T)), {'C and f = '}, string(f)));
 
 % Define custom colors (RGB)
 colors = [
@@ -44,9 +44,9 @@ figure('Position', [100, 100, 800, 600]); % [left, bottom, width, height]
 b = bar(fluxes);
 set(gca, 'XTickLabel', flux_labels);
 ylabel('Proportion');
-title(strcat({'Energy budget at birth at '}, string(K2C(T)), {'°C and f = '}, string(f)));
+title(strcat({'Energy budget at birth at '}, string(K2C(T)), {'C and f = '}, string(f)));
 
-% Rotate the x-axis labels
+% Rotate the x-axis labelst
 xtickangle(45);
 
 % Define custom colors
@@ -73,7 +73,7 @@ label_with_proportions = strcat(flux_labels, {' '}, string(round(fluxes_p, 2)));
 % pie plot
 figure('Position', [100, 100, 800, 600]); % [left, bottom, width, height]
 h = pie(fluxes_p, [1 1 0 0], label_with_proportions);
-title(strcat({'Energy budget after puberty at '}, string(K2C(T)), {'°C and f = '}, string(f)));
+title(strcat({'Energy budget after puberty at '}, string(K2C(T)), {'C and f = '}, string(f)));
 
 % Define custom colors (RGB)
 colors = [
@@ -93,7 +93,7 @@ fig = figure('Position', [100, 100, 800, 600]); % [left, bottom, width, height]
 b = bar(fluxes_p);
 set(gca, 'XTickLabel', flux_labels);
 ylabel('Proportion');
-title(strcat({'Energy budget after puberty at '}, string(K2C(T)), {'°C and f = '}, string(f)));
+title(strcat({'Energy budget after puberty at '}, string(K2C(T)), {'C and f = '}, string(f)));
 
 % Rotate the x-axis labels
 xtickangle(45);
