@@ -8,24 +8,30 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   %pars_T = [T_A T_L T_AL];    % with lower tolerance limit
   %pars_T = [T_A T_H T_AH];    % with upper tolerance limit
   %pars_T = T_A;                % without tolerance limits
+
+  % After trying different fits, all parameters were decided to be included
+  % in the arrhenius parameters
   pars_T = [T_A, T_L, T_H, T_AL, T_AH]; % with all tolerance limits
 
   TC_ah  = tempcorr(temp.ah, T_ref, pars_T);                     % 15 C
-  TC_Tah = tempcorr(C2K(Tah(:,1)), T_ref, pars_T);             % 12, 15, 18, 21, 24 C
+  % TC_TRi = tempcorr(C2K(TRi(:,1)), T_ref, pars_T); 
+  TC_Tah = tempcorr(C2K(Tah(:,1)), T_ref, pars_T); % 12, 15, 18, 21, 24 C
   TC_Tap = tempcorr(C2K(Tap(:,1)), T_ref, pars_T);             % 12, 15, 18, 21, 24 C
   TC12 = tempcorr(temp.tL12, T_ref, pars_T);                % temp corr for both length and clutch size
   TC15 = tempcorr(temp.tL15, T_ref, pars_T);
   TC18 = tempcorr(temp.tL18, T_ref, pars_T);
   TC21 = tempcorr(temp.tL21, T_ref, pars_T);
   TC24 = tempcorr(temp.tL24, T_ref, pars_T);
-  TC_JOi = tempcorr(temp.JOi, T_ref, pars_T);                  % 20 C
+  % Temperature correction for oxygen consumption added
+  TC_JOi = tempcorr(temp.JOi, T_ref, pars_T);                  % 10 C
   
   % zero-variate data at f = f and T = 20 C (except for age at hatching at 15 C)
   
-  % life cycle
+  % life cycle (modified from previous version which was pars_tp)
   pars_tjp = [g k l_T v_Hb v_Hp v_Hp];
   
-   % gets scaled age and length at puberty
+   % gets scaled age and length at puberty (modified from previous version)
+   
   [~, ~, ~, l_p, ~, l_b, ~, ~, ~, info] = get_tj(pars_tjp, f);
   if info == 0;  prdData = []; return; end
   
@@ -52,6 +58,12 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   Ww_p = 1e6 * L_p^3 * (1 + f * ome);  % mug, wet weight at puberty
   Wd_i = Ww_p * d_V;                 % mug, ultimate dry weight
 
+
+% reproduction (no kappa-rule)
+  % s_M  = L_p/ L_b;                   % -, acceleration factor
+  % RT_i = TC_TRi * kap_R * (p_Am * s_M * L_p^2 - p_M * L_p^3 - k_J * E_Hp)/ E_0; % #/d, ultimate reproduction rate
+  % % 
+ % New
   % respiration at (and after) puberty at 20 C
   pTA_p = TC_JOi * f * p_Am * L_p^2;                     % J/d, assimilation flux at puberty
   pTC_p = pTA_p;                                         % J/d, mobilization flux at puberty is equivalent to assimilation flux
@@ -63,10 +75,7 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   JT_M_p = -(n_M\ n_O) * eta_O * [pTA_p, pTD_p, pTG_p]'; % mol/d, mineral fluxes (J_C, J_H, J_O, J_N in rows)
   JT_O_p = -JT_M_p(3) * 24.4/ 24/ 1e-9/ Wd_i;            % nL O2/h/mug, dry weight specific O2 consumption (with 24.4 L O2/mol)
   
-  % carbon and nitrogen mass at puberty
-  WC_p = L_p.^3 * (1 + f * ome) * d_V * 12/ w_V*1e6;  % mug, carbon weight
-  WN_p = L_p.^3 * (1 + f * ome) * d_V * n_NV * 14/ w_V*1e6;  % mug, nitrogen weight
-
+   
   % pack to output
   prdData.ah  = a_h;             % d, age at hatch
   prdData.Lh  = Lw_h;            % cm, length at hatch
@@ -74,8 +83,7 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   prdData.Lp  = Lw_p;            % cm, length at puberty
   prdData.Wdp = Wd_p;            % g, dry weight at puberty
   prdData.JOi = JT_O_p;          % nL/h/mug, dry weight specific O2 consumption
-  prdData.WCp = WC_p;            % mug, carbon weight at puberty
-  prdData.WNp = WN_p;            % mug, nitrogen weight at puberty
+ 
   
   % uni-variate data
   p = [p_Am; v; p_M; k_J; kap; kap_G; E_G; E_Hb; E_Hp];
@@ -163,10 +171,13 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
         ETap(c) = t_p / k_M / TC_Tap(c);
       end
   end
+  %  % temperature-reprod rate
+  % ER_i = RT_i;
   
-  % weight of carbon and nitrogen
-  EWC = (LWCN(:,1) * del_M).^3 * (1 + f * ome) * d_V * 12/ w_V*1e6;  % mug, carbon weight
-  EWN = (LWCN(:,1) * del_M).^3 * (1 + f * ome) * d_V * n_NV * 14/ w_V*1e6;  % mug, nitrogen weight
+  
+  % weight of carbon and nitrogen. This can be deleted (no more LWCN data)
+  % EWC = (LWCN(:,1) * del_M).^3 * (1 + f * ome) * d_V * 12/ w_V*1e6;  % mug, carbon weight
+  % EWN = (LWCN(:,1) * del_M).^3 * (1 + f * ome) * d_V * n_NV * 14/ w_V*1e6;  % mug, nitrogen weight
 
   % pack to output
   prdData.tL12  = EL12;           % d, time        - cm, length
@@ -174,6 +185,7 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   prdData.tL18  = EL18;           % d, time        - cm, length
   prdData.tL21  = EL21;           % d, time        - cm, length
   prdData.tL24  = EL24;           % d, time        - cm, length
+ 
   prdData.tN12  = EN12;           % d, time        - #, clutch size
   prdData.tN15  = EN15;           % d, time        - #, clutch size
   prdData.tN18  = EN18;           % d, time        - #, clutch size
@@ -181,9 +193,9 @@ function [prdData, info] = predict_Tachidius_discipes(par, data, auxData)
   prdData.tN24  = EN24;           % d, time        - #, clutch size
   prdData.Tah   = ETah;           % C, temperature - d, age at hatch
   prdData.Tap   = ETap;           % C, temperature - d, age at puberty
-  prdData.LWCN = [EWC EWN];       % mug carbon and mug nitrogen mass
+  
+  % prdData.TRi = ER_i;
 end
-
 function dELHR = dget_ELHR_abp(t, ELHR, p, TC, L_b, f)
   % Define changes in the state variables for abp model
   % t: time

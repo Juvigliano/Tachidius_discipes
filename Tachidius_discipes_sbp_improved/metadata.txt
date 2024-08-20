@@ -1,0 +1,5 @@
+This folder is improved in the following:
+
+-updated dry weight
+-updated O2 consumptions
+-removed the CN data

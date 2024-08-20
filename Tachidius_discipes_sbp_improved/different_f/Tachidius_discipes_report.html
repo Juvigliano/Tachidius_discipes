@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tachidius_discipes</title>
+
+  <style>
+    div.left {
+      width: 30%;
+      float: left;
+    }
+
+    div.middle {
+      width: 15%;
+      float: left;
+      padding-top: 60px;
+    }
+
+    div.right {
+      width: 55%;
+      float: right;
+      padding-top: 60px;
+    }
+
+    p.clear {
+      clear: both;
+      padding-top: 15px;
+    }
+
+    div.footer{
+      margin: auto;
+      clear: both;
+      text-align: center;
+      font-size: 0.8em;
+    }
+
+    /*-------- Figs -----------*/
+
+    /* not-enlarged on page */
+    .myImg {
+      max-width:300px;
+      max-height:200px;
+    }
+
+    /* enlarge figs: to Trigger the Modal */
+    .myImg {
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .myImg:hover {opacity: 0.7;}
+
+    /* The Modal (background) */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      padding-top: 20px; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+      font-size: 30px;
+    }
+
+    /* Modal Content (Image) */
+    .modal-content {
+      margin: auto;
+      display: block;
+      height: 80%;
+      max-height: 700px;
+    }
+
+    /* Caption of Modal Image (Image Text) - Same Width as the Image */
+    #caption {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+      text-align: center;
+      color: #ccc;
+      padding: 10px 0;
+      height: 150px;
+    }
+
+    /* Add Animation - Zoom in the Modal */
+    .modal-content, #caption {
+      -webkit-animation-name: zoom;
+      -webkit-animation-duration: 0.6s;
+      animation-name: zoom;
+      animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+      from {-webkit-transform:scale(0)}
+      to {-webkit-transform:scale(1)}
+    }
+
+    @keyframes zoom {
+      from {transform:scale(0)}
+      to {transform:scale(1)}
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="left">
+  <h1>Tachidius_discipes</h1>
+    <b>phylum: </b>Arthropoda<br>
+    <b>class: </b>Copepoda<br>
+    <b>order: </b>Harpacticoida<br>
+    <b>family: </b>Tachidiidae<br>
+    <b>species: </b>Tachidius_discipes<br>
+    <b>species_en: </b>Copepod<br>
+    <b>T_typical: </b>288.15<br>
+    <b>author: </b>Julieta Vigliano Relva<br>
+    <b>date_subm: </b>2023     6    16<br>
+    <b>email: </b>julieta.vigliano@ugent.be<br>
+    <b>address: </b>UGent Ghent University<br>
+    <b>author_mod_1: </b>Julieta Vigliano Relva<br>
+    <b>date_mod_1: </b>2023     6    16<br>
+    <b>email_mod_1: </b>julieta.vigliano@ugent.be<br>
+    <b>address_mod_1: </b>UGent Ghent University<br>
+  </div>
+
+  <div class="middle">
+    <h3><a href="Tachidius_discipes_res.html">results</a></h3>
+
+    <h3><a href="Tachidius_discipes_bib.bib">bibliography</a></h3>
+  </div>
+
+  <div class="right">
+    <img class="myImg" src=results_Tachidius_discipes_01.png alt="<i>Ref: Vigl2023</i>">
+    <img class="myImg" src=results_Tachidius_discipes_01_legend.png alt="<i></i>">
+    <img class="myImg" src=results_Tachidius_discipes_02.png alt="<i>Ref: Vigl2023</i>">
+    <img class="myImg" src=results_Tachidius_discipes_03.png alt="<i>Ref: Vigl2023</i>">
+    <img class="myImg" src=results_Tachidius_discipes_04.png alt="<i>Ref: Vigl2023</i>">
+    <img class="myImg" src=results_Tachidius_discipes_05.png alt="<i>Ref: Vigl2023</i>">
+    <img class="myImg" src=results_Tachidius_discipes_06.png alt="<i>Ref: Vigl2023</i>">
+    <img class="myImg" src=results_Tachidius_discipes_07.png alt="<i>Ref: Vigl2023</i>">
+    <img class="myImg" src=results_Tachidius_discipes_08.png alt="<i>Ref: Vigl2023</i>">
+    <img class="myImg" src=results_Tachidius_discipes_09.png alt="<i>Ref: Vigl2023</i>">
+    <img class="myImg" src=results_Tachidius_discipes_10.png alt="<i>Ref: Vigl2023</i>">
+    
+    <div id="myModal" class="modal">
+      <img class="modal-content" id="img01">
+      <div id="caption"></div>
+    </div>
+  </div>
+
+  <script>
+    var modal = document.getElementById("myModal");
+    var i;
+
+    var img = document.getElementsByClassName("myImg");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+
+    for(i=0;i< img.length;i++) {
+      img[i].onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+      }
+    }
+
+    // When the user clicks on modelImg, close the modal
+    modalImg.onclick = function() {
+      modal.style.display = "none";
+    }
+  </script>
+
+  <p class="clear"></p>
+
+  <h3 class="pet">Discussion</h3>
+  <ul> 
+    <li>
+      There is a change of shape at metamorphosis, between naupliar stage 6 and copepodite 1 stages, and the length is the square root of the ellipse surface
+    </li>
+    <li>
+      sbp model is coded as subfunction, and assumes no kappa rule in the adult stage. more investigations pending to resolve the final choice of model for this species.
+    </li>
+  </ul>
+
+      <h3>Facts</h3>
+      <ul> 
+        <li>
+          Sexual reproduction in adult stage; 12 molts: 6 naupliar stages, 5 copepodite stages, 1 adult stage  (ref: Arnd2013)
+        </li>
+      </ul>
+
+  <hr>
+
+  <div class="footer">
+    Report generated by <a href="https://add-my-pet.github.io/AmPtox/docs/">AmPtox</a>
+    at 2024/02/20; 
+    <a href="https://www.bio.vu.nl/thb/deb/deblab/add_my_pet/sys/disclaimer.html">
+      Disclaimer/Terms of use
+    </a> &#169; 2009-2024 Add-my-Pet
+  </div>
+
+</body>
+</html>

@@ -47,14 +47,14 @@ data.Lh = 0.006852623; units.Lh = 'cm'; label.Lh = 'length at hatch'; bibkey.Lh 
 data.Lb = 0.007812255; units.Lb = 'cm'; label.Lb = 'length at birth'; bibkey.Lb = {'Vigl2023'};
 data.Lp = 0.0266569358756218; units.Lp = 'cm'; label.Lp = 'length at puberty'; bibkey.Lp = {'Vigl2023'};
 
-data.Wdp = 0.0000205716902; units.Wdp = 'g'; label.Wdp = 'ultimate dry weight at puberty'; bibkey.Wdp = {'Vigl2023'};
-data.JOi = mean([17.44, 11.75]);  units.JOi = 'nL/h/mug';  label.JOi = 'ultimate specific O2 consumption';
-  bibkey.JOi = 'HermHeip1983';  temp.JOi = C2K(20);  units.temp.JOi = 'K'; label.temp.JOi = 'temperature';
+data.Wdp = 0.00000205716902; units.Wdp = 'g'; label.Wdp = 'ultimate dry weight at puberty'; bibkey.Wdp = {'Vigl2023'};
+
+% 'Data taken from my own experiments conducted in april 2024 and then converted to these units'
+data.JOi = mean([7.083628049]);  units.JOi = 'nL/h/mug';  label.JOi = 'ultimate specific O2 consumption';
+  bibkey.JOi = 'HermHeip1983';  temp.JOi = C2K(15);  units.temp.JOi = 'K'; label.temp.JOi = 'temperature';
   comment.JOi = 'specific O2 consumption of four brackish water harpacticoida at ultimate length';
-data.WCp = mean([0.983820513, 1.035122449, 0.93593141]); units.WCp = 'mugC'; label.WCp= 'carbon mass at puberty';
-bibkey.WCp = 'Vigl2023';
-data.WNp = mean([0.247615385, 0.254292517, 0.20389359]); units.WNp = 'mugN'; label.WNp= 'nitrogen mass at puberty';
-bibkey.WNp = 'Vigl2023';
+
+
 %% set uni-variate data
 % time - length
 % code modified to work with means and standard deviation
@@ -128,15 +128,9 @@ temp.tL24 = C2K(24); units.temp.tL24 = 'K'; label.temp.tL24 = 'temperature';
 bibkey.tL24 = {'Vigl2023'};
 stdev.tL24 =Lsd ; units.stdev.tL24 = 'cm'; label.stdev.tL24 = 'standard deviation';
 
-% T-tj data
-% data.Ttj = [ ... % temperature (C), time since hatch at metam (d)
-%    14.86   15
-%    19.34   10
-%    24.90   7];
-%   units.Ttj = {'C', 'd'};  label.Ttj = {'temperature', 'time since hatch at metam'};  
-%   bibkey.Ttj = 'KochBui2017';
   
 %%time- number of offspring
+% data modified to work with means per day
 data.tN12 = [...
    37.00	mean([25,29,22,26,33,33,27,25,30,29,20])];
 units.tN12 = {'d', '#'}; label.tN12= {'time', 'clutch size'};
@@ -240,9 +234,20 @@ data.Tah= [...
 ];
 units.Tah = {'K', 'd'}; label.Tah= {'temperature', 'age at hatching'};
 bibkey.Tah = {'Vigl2023'};
-
-
+% 
+% data.TRi = [ ... % temperature (C), reprod rate (#/d)
+% 24	5.631944444
+% 21	10.45666667
+% 18	9.766666667
+% 15	6.072916667
+% 12	5.080952381
+% 
+% ];
+% units.TRi   = {'C', '#/d'};  label.TRi = {'temperature', 'reproduction rate'};  
+% bibkey.TRi = 'Vigliano 2023'; 
 % temperature-max reprod rate
+% This can be deleted, it does not actually represent rep rate because its
+% only based on one clutch and not life time reproductive output
 % data.TR= [...
 % 12	0.971628449
 % 12	1.127089001
@@ -300,7 +305,9 @@ bibkey.Tah = {'Vigl2023'};
 
 % length-C mass-N mass 
 
-% old LWCN data
+% old LWCN data. We decided to drop this from the estimation. It is way
+% off, we dont know why but may be related to different elemental
+% composition from assumed in DEB
 %data.LWCN= [...
 %0.026656936	0.983820513	0.247615385
 %0.026656937	1.035122449	0.254292517
@@ -309,24 +316,6 @@ bibkey.Tah = {'Vigl2023'};
 %units.LWCN = {'cm', 'mugC', 'mugN'}; label.LWCN= {'length', 'carbon mass', 'nitrogen mass'};
 %bibkey.LWCN = {'Vigl2023'};  
 %treat.LWCN = {1, {'Carbon weight','Nitrogen weight'}};
-
-% new LWCN data
-LWCN = readmatrix('LCN.txt');
-%LWCN(:,1) = LWCN(:,1) / 1e5;
-data.LWCN= LWCN;
-%data.LWCN = LWCN(:,[1 2]);
-units.LWCN = {'cm', 'mugC', 'mugN'}; label.LWCN= {'length', 'carbon mass', 'nitrogen mass'};
-bibkey.LWCN = {'Vigl2023'};  
-treat.LWCN = {1, {'Carbon weight','Nitrogen weight'}};
-
-% T-tp data
-%data.Ttp = [ ... % temperature (C), time since metam at puberty (d)
-%   14.86   12.31
-%   19.34   10.12
-%   24.90    8.86];
-%  units.Ttp = {'C', 'd'};  label.Ttp = {'temperature', 'time since metam at puberty'};  
-%  bibkey.Ttp = 'KochBui2017';
-% temperature age at puberty
 
 
 data.Tap = [... time since hatch, age at puberty
@@ -340,10 +329,7 @@ bibkey.Tap = {'Vigl2023'};
 
 %% set weights for all real data
 weights = setweights(data, []);
-weights.WCp = 0;
-weights.WNp = 0;
-%weights.Wdp = 0;
-weights.LWCN= 0*weights.LWCN;
+% weights.LWCN= 0*weights.LWCN;
 
 %% set pseudodata and respective weights
 [data, units, label, weights] = addpseudodata(data, units, label, weights);

@@ -6,8 +6,9 @@ cPar = parscomp_st(par);  vars_pull(par);
 vars_pull(cPar);  vars_pull(data);  vars_pull(auxData);
 
 % Set temperature and food availability
-T = C2K(24);
-f = 1.112;
+
+T=C2K(18)
+f =0.9583;
 
 % predicting fluxes and other statistics
 [stat, txtStat] = statistics_st('abp', par, T, f);
@@ -38,6 +39,7 @@ colors = [
 for k = 1:2:length(h)
     h(k).FaceColor = colors((k+1)/2, :);
 end
+
 
 % bar plot
 figure('Position', [100, 100, 800, 600]); % [left, bottom, width, height]
@@ -109,3 +111,7 @@ colors = [
 % Apply custom colors to bars
 b.FaceColor = 'flat';
 b.CData = colors;
+
+
+% to save into a table use
+writetable( struct2table( stat ), 'stats_12_final_final.xlsx' );
